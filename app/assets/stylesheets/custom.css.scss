@@ -4,6 +4,7 @@
 /* universal */
 body {
     padding-top: 60px;
+    background-color: #f5f4f0;
 }
 
 section {
@@ -22,6 +23,12 @@ textarea {
     margin-bottom: 10px;
 }
 
+/* new fonts */
+@font-face {
+    font-family: 'Triomphe Bold';
+    src: url('/assets/Triomphe-Bold.otf');
+}
+
 /* typography */
 h1, h2, h3, h4, h5, h6 {
     line-height: 1;
@@ -32,6 +39,7 @@ h1 {
     letter-spacing: -2px;
     margin-bottom: 30px;
     text-align: center;
+    font-family: 'Triomphe Bold';
 }
 
 h2 {
@@ -51,10 +59,11 @@ p {
 /* header */
 #logo {
     float: left;
-    margin-right: 10px;
-    font-size: 1.7em;
+    margin-right: 0px;
+    font-size: 2em;
     color: #000;
-    text-transform: uppercase;
+    font-family: 'Triomphe Bold';
+    /* text-transform: uppercase; */
     letter-spacing: -1 px;
     padding-top: 9px;
     font-weight:bold;
@@ -62,4 +71,9 @@ p {
         color: #000;
         text-decoration: none;
     }
+}
+
+#headerelements {
+    font-family: 'Futura';
+    color: #2B2D2F;
 }

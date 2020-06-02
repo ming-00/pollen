@@ -3,4 +3,13 @@ class WelcomeController < ApplicationController
 
   def index
   end
+
+  def forum
+  end
+
+  def profile
+  end
+
+  def feed
+  end
 end

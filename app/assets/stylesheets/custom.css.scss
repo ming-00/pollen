@@ -65,17 +65,19 @@ p {
     font-family: 'Triomphe Bold';
     /* text-transform: uppercase; */
     letter-spacing: -1 px;
-    padding-top: 9px;
+    padding-top: 1em;
     font-weight:bold;
     &:hover {
-        color: #8b0000;
+        color: #850941;
         text-decoration: none;
     }
 }
 
 #headerelements {
+    padding-top: 3em;
     font-family: 'Futura';
     color: #2B2D2F;
+
     &:hover {
         border-bottom: 3px solid currentColor;
         display: inline-block;
@@ -87,8 +89,30 @@ p {
 
 .active #headerelements{
     font-family: 'Futura';
-    color: #8b0000;
+    color: #850941; 
     
-    border-bottom: 3px solid currentColor; 
+    /* border-bottom: 3px solid currentColor; */
     /* box-shadow: inset 1 0px 0 white, inset 0 -3px 0 currentColor; */
+}
+
+/*buttons*/
+.btn {
+    font-family: 'Futura';
+    font-size: 1em;
+    background-color: #000;
+    border-radius: 2em;
+    padding: 9px 45px !important;
+    margin-top: 2.2em;
+    margin-left: 1.8em;
+    border-color: transparent;
+
+    &:hover {
+        background-color: #850941 !important;
+        text-decoration: none;
+        border-color: transparent;
+    }
+}
+
+.active .btn {
+    background-color: #850941;
 }

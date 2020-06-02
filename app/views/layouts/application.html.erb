@@ -19,7 +19,7 @@
             <li class="<%= 'active' if current_page?(root_path) %>"><%=link_to "HOME", root_path, id: "headerelements" %></li>
             <li class="<%= 'active' if current_page?(forum_path) %>"><%=link_to "FORUM", forum_path, id: "headerelements"%></li>
             <li class="<%= 'active' if current_page?(feed_path) %>"><%=link_to "FEED", feed_path, id: "headerelements" %></li>
-            <li class="<%= 'active' if current_page?(profile_path) %>"><%=link_to "PROFILE", profile_path, id: "headerelements" %></li>
+            <li class="<%= 'active' if current_page?(profile_path) %>"><%=link_to "PROFILE", profile_path, class: "btn btn-lg btn-primary" %></li>
           </u1>
         </nav>
       </div>

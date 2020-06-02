@@ -10,13 +10,27 @@
   </head>
 
   <body>
-    <header>
+    <header class="navbar navbar-fixed-top navbar">
+
+      <div class="container">
+        <%=link_to "Pollen", root_path, id: "logo" %>
+        <nav>
+          <u1 class = "nav navbar-nav navbar-right" %>
+            <li><%=link_to "HOME", root_path %></li>
+            <li><%=link_to "FORUM", forum_path %></li>
+            <li><%=link_to "FEED", feed_path %></li>
+            <li><%=link_to "PROFILE", profile_path %></li>
+          </u1>
+        </nav>
+      </div>
+
       <% if signed_in? %>
         Signed in as: <%= current_user.email %>
         <%= button_to 'Sign out', sign_out_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', sign_in_path %>
       <% end %>
+
     </header>
 
   <section>

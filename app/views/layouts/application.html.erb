@@ -16,10 +16,10 @@
         <%=link_to "Pollen.", root_path, id: "logo" %>
         <nav class = .bg-transparent>
           <u1 class = "nav navbar-nav navbar-right" %>
-            <li><%=link_to "HOME", root_path, id: "headerelements" %></li>
-            <li><%=link_to "FORUM", forum_path, id: "headerelements"%></li>
-            <li><%=link_to "FEED", feed_path, id: "headerelements" %></li>
-            <li><%=link_to "PROFILE", profile_path, id: "headerelements" %></li>
+            <li class="<%= 'active' if current_page?(root_path) %>"><%=link_to "HOME", root_path, id: "headerelements" %></li>
+            <li class="<%= 'active' if current_page?(forum_path) %>"><%=link_to "FORUM", forum_path, id: "headerelements"%></li>
+            <li class="<%= 'active' if current_page?(feed_path) %>"><%=link_to "FEED", feed_path, id: "headerelements" %></li>
+            <li class="<%= 'active' if current_page?(profile_path) %>"><%=link_to "PROFILE", profile_path, id: "headerelements" %></li>
           </u1>
         </nav>
       </div>

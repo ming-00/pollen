@@ -76,4 +76,19 @@ p {
 #headerelements {
     font-family: 'Futura';
     color: #2B2D2F;
+    &:hover {
+        border-bottom: 3px solid currentColor;
+        display: inline-block;
+        text-shadow: none;
+        box-shadow: none;
+        background-color: transparent !important;
+    }
+}
+
+.active #headerelements{
+    font-family: 'Futura';
+    color: #8b0000;
+    
+    border-bottom: 3px solid currentColor; 
+    /* box-shadow: inset 1 0px 0 white, inset 0 -3px 0 currentColor; */
 }

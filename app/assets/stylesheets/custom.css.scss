@@ -3,8 +3,9 @@
 
 /* universal */
 body {
-    padding-top: 60px;
+    padding-top: 6em;
     background-color: #f5f4f0;
+    text-align: center;
 }
 
 section {
@@ -16,7 +17,7 @@ textarea {
 }
 
 .centre {
-    text-align: centre;
+    text-align: center;
 }
 
 .centre h1 {
@@ -32,6 +33,7 @@ textarea {
 /* typography */
 h1, h2, h3, h4, h5, h6 {
     line-height: 1;
+    font-family: 'Futura';
 }
 
 h1 {
@@ -54,9 +56,12 @@ h2 {
 p {
     font-size: 1.1em;
     line-height: 1.7em;
+    font-family: 'Futura';
 }
 
 /* header */
+
+
 #logo {
     float: left;
     margin-right: 0px;

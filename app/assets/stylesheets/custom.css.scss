@@ -141,8 +141,23 @@ input {
 }
 
 input:focus {
-    box-shadow: 0 0 6px #D9B5E3;
-    -webkit-box-shadow: 0 0 5px #D9B5E3;
-    -moz-box-shadow: 0 0 5px #D9B5E3;
-    border: 1px solid #D8A4E7;
+    box-shadow: 0 0 7px #EC92BF;
+    -webkit-box-shadow: 0 0 6px #EC92BF;
+    -moz-box-shadow: 0 0 6px #EC92BF;
+    border: 1px solid #D54A65;
+}
+
+/* form submit button */
+input[type=submit] {
+    padding:0.9em 2.5em; 
+    background:#000; 
+    color: #fff;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 2em; 
+    text-transform: uppercase;
+    font-family: 'Futura';
+    font-size: 0.8em;
+    letter-spacing: 0.06em;
 }

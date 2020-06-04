@@ -80,6 +80,7 @@ p {
 
 #headerelements {
     padding-top: 3em;
+    height: 4.5em !important;
     font-family: 'Futura';
     color: #2B2D2F;
 
@@ -160,4 +161,7 @@ input[type=submit] {
     font-family: 'Futura';
     font-size: 0.8em;
     letter-spacing: 0.06em;
+    &:hover {
+        background:#850941; 
+    }
 }

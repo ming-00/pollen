@@ -27,13 +27,13 @@
     </header>
 
   <section>
-    <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-    <% end %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
   </section>
   </body>
 </html>

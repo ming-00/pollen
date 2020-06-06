@@ -1,1 +1,10 @@
-<%= @user.firstname %>, <%= @user.email %>
+<% provide(:title, "Show") %>
+<!DOCTYPE html>
+    <html>
+        <head>
+                <title><%= yield(:title) %></title>
+        </head>
+        <body>
+            <%= @user.firstname %>, <%= @user.email %>
+        </body>
+    </html>

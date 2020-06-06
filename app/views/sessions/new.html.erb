@@ -1,6 +1,16 @@
-<div id="clearance" class="sign-in">
-  <h2><%= t(".title") %></h2>
+<% provide(:title, "Sign in") %>
+<!DOCTYPE html>
+    <html>
+        <head>
+                <title><%= yield(:title) %></title>
+        </head>
+        <body>
+          <div id="clearance" class="sign-in">
+            <h2><%= t(".title") %></h2>
 
-  <%= render partial: '/sessions/form' %>
+            <%= render partial: '/sessions/form' %>
 
-</div>
+          </div>
+        </body>
+    </html>
+

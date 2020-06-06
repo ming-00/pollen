@@ -1,9 +1,19 @@
-<% provide(:title, "Show") %>
+<% provide(:title, @user.firstname) %>
 <!DOCTYPE html>
     <html>
         <head>
-                <title><%= full_title(yield(:title)) %></title>
+            <title><%= full_title(yield(:title)) %></title>
         </head>
+        <div class="row">
+            <aside class="col-md-4">
+                <section class="user_info">
+                    <h1>
+                        <%= @user.firstname %> 
+                        <%= @user.lastname %> 
+                    </h1>
+                </section>
+            </aside>
+        </div>
         <body>
             <%= @user.firstname %>, <%= @user.email %>
         </body>

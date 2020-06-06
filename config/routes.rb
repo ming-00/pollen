@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
-  resource :session, controller: "clearance/sessions", only: [:create]
+  #resource :session, controller: "clearance/sessions", only: [:create]
+  resource :session, only: [:create]
 
   #routes from clearance
   resources :users, only: [:create] do #controller: "clearance/users"
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get 'forum'   => 'welcome#forum'
   get 'feed'    => 'welcome#feed'
   get 'profile' => 'welcome#profile'
+  # need to figure out how to get 'profile' => 'users#show'
 
   root :to      => 'welcome#index'
   resources :users, only: [:show]

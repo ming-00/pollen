@@ -1,11 +1,19 @@
 <% provide(:title, "Home") %>
 <!DOCTYPE html>
-    <html>
+<html>
     <head>
         <title><%= full_title(yield(:title)) %></title>
     </head>
 
-<h1>Welcome back, Lily</h1>
-<!-- Find me in app/views/welcome/index.html.erb -->
-<br>
+    <h1>Welcome back, Lily</h1>
+        <p>
+        <% if signed_in? %>
+            Signed in as: <%= current_user.email %>
+            <%= button_to 'Sign out', sign_out_path, method: :delete %> 
+        <% else %>
+            <%= link_to 'Sign in', sign_in_path %>
+        </p>        
+        <% end %>
+    <!-- Find me in app/views/welcome/index.html.erb -->
+    <br>
 </html>

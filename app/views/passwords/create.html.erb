@@ -1,3 +1,14 @@
-<div id="clearance" class="password-reset">
-  <p><%= t(".description") %></p>
-</div>
+<% provide(:title, "") %>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title><%= full_title(yield(:title)) %></title>
+    </head>
+    <body>
+      <div id="clearance" class="password-reset">
+        <p><%= t(".description") %></p>
+      </div>
+    </body>
+  </html>
+
+

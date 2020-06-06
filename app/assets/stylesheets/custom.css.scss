@@ -185,3 +185,9 @@ $gray-medium-light: #eaeaea;
   margin-top: 45px;
   @include box_sizing;
 }
+
+/* flash message */
+
+.success .error .danger {
+    font-family: 'Futura';
+}

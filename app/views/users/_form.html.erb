@@ -1,19 +1,28 @@
-<div class ="text-field">
-  <%= form.label :firstname, 'First Name' %>
-  <%= form.text_field :firstname %>
-</div>
+<% provide(:title, "") %>
+<!DOCTYPE html>
+    <html>
+        <head>
+                <title><%= full_title(yield(:title)) %>></title>
+        </head>
+        <body>
+          <div class ="text-field">
+            <%= form.label :firstname, 'First Name' %>
+            <%= form.text_field :firstname %>
+          </div>
 
-<div class ="text-field">
-  <%= form.label :lastname, 'Last Name' %>
-  <%= form.text_field :lastname %>
-</div>
+          <div class ="text-field">
+            <%= form.label :lastname, 'Last Name' %>
+            <%= form.text_field :lastname %>
+          </div>
 
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
+          <div class="text-field">
+            <%= form.label :email %>
+            <%= form.text_field :email, type: 'email' %>
+          </div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
+          <div class="password-field">
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+          </div>
+        </body>
+    </html>

@@ -1,0 +1,14 @@
+# may not be the correct formatting, just created this file
+# may need to be corrected/ refined, refere to Listing 9.20.
+
+lily:
+  firstname: Lily
+  lastname: Li
+  email: lily@gmail.com
+  password_digest: <%= User.digest('password') %>
+
+ming: 
+  firstname: Big
+  lastname: Boi
+  email: bboi@gmail.com
+  password_digest: <%= User.digest('password') %>

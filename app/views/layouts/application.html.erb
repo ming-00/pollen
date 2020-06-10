@@ -20,6 +20,7 @@
             <li class="<%= 'active' if current_page?(forum_path) %>"><%=link_to "FORUM", forum_path, id: "headerelements"%></li>
             <li class="<%= 'active' if current_page?(feed_path) %>"><%=link_to "FEED", feed_path, id: "headerelements" %></li>
             <li class="<%= 'active' if current_page?(profile_path) %>"><%=link_to "PROFILE", current_user, class: "btn btn-lg btn-primary" %></li>
+            <li><%= link_to "edit", edit_user_path(current_user) %></li>
           </u1>
         </nav>
       </div>

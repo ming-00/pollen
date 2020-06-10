@@ -1,0 +1,30 @@
+<% provide(:title, "Edit user") %>
+<h1>Update <%= current_user.lastname %>'s profile</h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for @user, url: edit_user_path(@user), method: :get do |f| %>
+             <table summary="Edit user form fields">
+        <tr>
+            <th>First Name</th>
+            <td><%= f.text_field(:firstname) %></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><%= f.text_field(:lastname) %></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><%= f.text_field(:password) %></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><%= f.text_field(:email) %></td>
+        </tr>
+    </table>
+    <% end %>
+
+
+<%= submit_tag("Update User") %>
+    </div>
+</div>

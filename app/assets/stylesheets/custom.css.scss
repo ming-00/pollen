@@ -134,6 +134,7 @@ input, textarea, select, .uneditable-input {
     border-radius: 0.5em;
     /* width: 30%; */
     margin-bottom: 1em;
+    margin-left: 1em;
     @include box_sizing(border-box);
 }
 
@@ -147,10 +148,24 @@ input {
 }
 
 input:focus {
-    box-shadow: 0 0 7px #EC92BF;
-    -webkit-box-shadow: 0 0 6px #EC92BF;
-    -moz-box-shadow: 0 0 6px #EC92BF;
-    border: 1px solid #D54A65;
+    box-shadow: 0 0 7px #7676d6;
+    -webkit-box-shadow: 0 0 6px #7676d6;
+    -moz-box-shadow: 0 0 6px #7676d6;
+    border: 1px solid #563799;
+}
+
+#text-field {
+    display: inline-block;
+    clear: left;
+    text-align: right;
+
+}
+
+label {
+    display: inline-block;
+    clear: left;
+    width: 7em;
+    text-align: right;
 }
 
 /* form submit button */

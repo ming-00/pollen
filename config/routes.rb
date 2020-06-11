@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   get 'forum'   => 'welcome#forum'
   get 'feed'    => 'welcome#feed'
   get 'profile' => 'welcome#profile'
-  # get 'edit' => 'users#edit'
-  # post'edit'   => 'users#update'
   # need to figure out how to get 'profile' => 'users#show'
 
   root :to      => 'welcome#index'

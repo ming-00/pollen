@@ -5,10 +5,11 @@
         <title><%= full_title(yield(:title)) %></title>
     </head>
 
-    <h1>Welcome back, Lily</h1>
+    <h1>Welcome back, <%= current_user.lastname %></h1>
         <p>
         <% if signed_in? %>
             Signed in as: <%= current_user.email %>
+            <%= link_to "edit", edit_user_path(current_user) %>
             <%= button_to 'Sign out', sign_out_path, method: :delete %> 
         <% else %>
             <%= link_to 'Sign in', sign_in_path %>

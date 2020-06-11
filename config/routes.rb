@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # need to figure out how to get 'profile' => 'users#show'
 
   root :to      => 'welcome#index'
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update, :edit]
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

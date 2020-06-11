@@ -11,6 +11,7 @@ class UsersController < Clearance::UsersController
           flash[:success] = "Welcome to Pollen! Please edit your 
             information to get started."
           sign_in @user
+
           #redirect_back_or url_after_create
           #above redirects to home page, modified to direct to user instead
           redirect_to @user
@@ -23,6 +24,22 @@ class UsersController < Clearance::UsersController
         end
       end
 
+      def update
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+          flash[:success] = "Profile updated"
+          #sign_in @user
+          redirect_to @user
+        else 
+          render 'edit'
+        end
+      end
+
+
+      def edit
+        @user = User.find(params[:id])
+      end
+
     private
 
     def user_params
@@ -33,4 +50,7 @@ class UsersController < Clearance::UsersController
           :lastname, 
         )
     end
+
+
+
 end

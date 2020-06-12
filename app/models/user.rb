@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  has_many :fluencies
+  has_many :languages, through: :fluencies
+
   validates :firstname,  
     :presence => {:message => " can't be blank."},
     length: { minimum: 1, maximum: 25, 

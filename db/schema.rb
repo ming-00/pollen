@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_141313) do
+ActiveRecord::Schema.define(version: 2020_06_12_165224) do
+
+  create_table "fluencies", force: :cascade do |t|
+    t.integer "level"
+    t.integer "user_id"
+    t.integer "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_fluencies_on_language_id"
+    t.index ["user_id"], name: "index_fluencies_on_user_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "lang"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false

@@ -5,15 +5,24 @@
         <title><%= full_title(yield(:title)) %></title>
     </head>
     <body>
-        <h1>profile</h1>
-        <!-- Find me in app/views/welcome/profile.html.erb -->
+        <div class="row">
+            <aside class="col-md-4">
+                <section class="user_info">
+                    <h1>
+                        <%= current_user.firstname %> 
+                        <%= current_user.lastname %> 
+                    </h1>
+                </section>
+            </aside>
+        </div>
         <p>
             <% if signed_in? %>
-            Signed in as: <%= current_user.email %>
-            <%= button_to 'Sign out', sign_out_path, method: :delete %>
+                Signed in as: <%= current_user.email %>
+                <%= link_to "edit", edit_user_path(current_user) %>
+                <%= button_to 'Sign out', sign_out_path, method: :delete %> 
             <% else %>
-            <%= link_to 'Sign in', sign_in_path %>
+                <%= link_to 'Sign in', sign_in_path %>
         </p>
-        <% end %>
+            <% end %>
     </body>
 </html>

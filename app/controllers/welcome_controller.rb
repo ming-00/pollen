@@ -7,7 +7,6 @@ class WelcomeController < ApplicationController
   def forum
   end
 
-  # no routes here
   def profile
   end
 

@@ -34,7 +34,7 @@ class UsersController < Clearance::UsersController
           redirect_to @user
         else 
           flash[:danger] = @user.errors.full_messages[0]
-          redirect_to "/sign_up"
+          redirect_to request.referrer
         end
       end
 
@@ -59,7 +59,7 @@ class UsersController < Clearance::UsersController
       unless logged_in?
         store_location
         flash[:danger] = "Please log in."
-        redirect_to login_url
+        redirect_to "/sign_in"
       end
     end
 

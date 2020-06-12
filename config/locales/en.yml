@@ -33,5 +33,10 @@ en:
   hello: "Hello world"
 
 en:
-  errors:
-    format: "%{message}"
+  activerecord:
+    attributes:
+      user:
+        email: "Email address"
+        password: "Password"
+        firstname: "First name"
+        lastname: "Last name"

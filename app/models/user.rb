@@ -19,4 +19,19 @@ class User < ApplicationRecord
   validates_format_of :lastname, :with => /\A[a-z]+\z/i,
     message: "Last name must not contain any numbers."
 
+  module Validations
+    extend ActiveSupport::Concern
+
+    included do
+      validates :email,
+        email: { strict_mode: true },
+        :presence => {:message => "Email can't be blank."},
+        uniqueness: { allow_blank: true },
+        unless: :email_optional?
+
+      validates :password, 
+        :presence => {:message => "Password can't be blank."}, 
+        unless: :skip_password_validation?
+    end
+  end
 end

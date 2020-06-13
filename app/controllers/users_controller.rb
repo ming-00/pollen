@@ -10,13 +10,14 @@ class UsersController < Clearance::UsersController
         @user = user_from_params
     
         if @user.save
-          flash[:success] = "Welcome to Pollen! Please edit your 
+          flash[:success] = "Welcome to Pollen! Please add your 
             information to get started."
           sign_in @user
 
           #redirect_back_or url_after_create
           #above redirects to home page, modified to direct to user instead
-          redirect_to @user
+          # redirect_to @user
+          redirect_to "/profile"
         else
           #flash.now[:error] = @user.errors.full_messages[0]
           #render template: "users/new"

@@ -2,47 +2,52 @@ class UsersController < Clearance::UsersController
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
-    def show
-        @user = User.find(params[:id])
+  def new
+    @user = user_from_params
+    render template: "users/new"
+  end
+
+  def show
+      @user = User.find(params[:id])
+  end
+
+  def create
+    @user = user_from_params
+  
+    if @user.save
+      flash[:success] = "Welcome to Pollen! Please add your 
+        information to get started."
+      sign_in @user
+
+      #redirect_back_or url_after_create
+      #above redirects to home page, modified to direct to user instead
+      # redirect_to @user
+      redirect_to "/profile"
+    else
+      #flash.now[:error] = @user.errors.full_messages[0]
+      #render template: "users/new"
+      #changed to below resolve issue regarding formatting
+      flash[:danger] = @user.errors.full_messages[0]
+      redirect_to "/sign_up"
+    end
+  end
+
+  def update
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+        flash[:success] = "Profile updated"
+        #sign_in @user
+        redirect_to @user
+      else 
+        flash[:danger] = @user.errors.full_messages[0]
+        redirect_to request.referrer
+      end
     end
 
-    def create
-        @user = user_from_params
-    
-        if @user.save
-          flash[:success] = "Welcome to Pollen! Please add your 
-            information to get started."
-          sign_in @user
 
-          #redirect_back_or url_after_create
-          #above redirects to home page, modified to direct to user instead
-          # redirect_to @user
-          redirect_to "/profile"
-        else
-          #flash.now[:error] = @user.errors.full_messages[0]
-          #render template: "users/new"
-          #changed to below resolve issue regarding formatting
-          flash[:danger] = @user.errors.full_messages[0]
-          redirect_to "/sign_up"
-        end
-      end
-
-      def update
-        @user = User.find(params[:id])
-        if @user.update(user_params)
-          flash[:success] = "Profile updated"
-          #sign_in @user
-          redirect_to @user
-        else 
-          flash[:danger] = @user.errors.full_messages[0]
-          redirect_to request.referrer
-        end
-      end
-
-
-      def edit
-        @user = User.find(params[:id])
-      end
+    def edit
+      @user = User.find(params[:id])
+    end
 
     private
 
@@ -52,6 +57,8 @@ class UsersController < Clearance::UsersController
           :password, 
           :firstname, 
           :lastname, 
+          #fluencies_attributes: [:id, :level, language_attributes: [:id]]
+          {:language_ids => []}
         )
     end
 
@@ -69,7 +76,4 @@ class UsersController < Clearance::UsersController
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
-
-
-
 end

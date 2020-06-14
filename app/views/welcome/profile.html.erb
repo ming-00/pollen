@@ -11,7 +11,19 @@
                     <h1>
                         <%= current_user.firstname %> 
                         <%= current_user.lastname %> 
+                        <br>
+                        <br>
                     </h1>
+                    <h2>
+                        Languages:
+                    </h2>
+                    <p>
+                        <ul>
+                            <% current_user.languages.each do |l| %>
+                                <li><%= l.lang %></li>
+                            <% end %>
+                        </ul>
+                    </p>
                 </section>
             </aside>
         </div>

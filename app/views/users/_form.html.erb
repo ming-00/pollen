@@ -5,6 +5,7 @@
                 <title><%= full_title(yield(:title)) %>></title>
         </head>
         <body>
+        <p>
           <div class ="text-field">
             <%= form.label :firstname, 'First Name' %>
             <%= form.text_field :firstname %>
@@ -24,5 +25,15 @@
             <%= form.label :password %>
             <%= form.password_field :password %>
           </div>
+
+          <div class="text-field">
+            <%= form.label :language, 'Languages spoken' %>
+            <%= form.collection_check_boxes(:language_ids, Language.all, :id, :lang) do |b| %>
+              <%= b.label class:"label-checkbox" do%> 
+              <%=b.check_box + "     " + b.text%> 
+              <%end%> 
+            <% end %>
+          </div>
         </body>
+      <br>
     </html>

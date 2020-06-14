@@ -37,6 +37,15 @@
                 <%= f.password_field :password %>
             </div>
 
+            <div>
+                <%= f.label :language, 'Languages spoken' %>
+                <%= f.collection_check_boxes(:language_ids, Language.all, :id, :lang) do |b| %>
+                    <%= b.label class:"label-checkbox" do%> 
+                    <%=b.check_box + "     " + b.text%> 
+                    <%end%> 
+                <% end %>
+            </div>
+
             <br>
             <%= f.submit "Update User" %>
         <% end %>

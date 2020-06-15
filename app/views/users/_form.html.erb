@@ -24,15 +24,12 @@
           <div class="password-field">
             <%= form.label :password %>
             <%= form.password_field :password %>
-          </div>
+          </div> <br />
 
-          <div class="text-field">
+          <div>
             <%= form.label :language, 'Languages spoken' %>
-            <%= form.collection_check_boxes(:language_ids, Language.all, :id, :lang) do |b| %>
-              <%= b.label class:"label-checkbox" do%> 
-              <%=b.check_box + "     " + b.text%> 
-              <%end%> 
-            <% end %>
+            <%= form.collection_select(:language_ids, Language.all, :id, :lang, 
+              {include_blank: true}, {class: 'collection-select-class'}) %>
           </div>
         </body>
       <br>

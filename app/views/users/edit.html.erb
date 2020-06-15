@@ -41,7 +41,8 @@
                 <%= f.label :language, 'Languages spoken' %>
                 <%= f.collection_check_boxes(:language_ids, Language.all, :id, :lang) do |b| %>
                     <%= b.label class:"label-checkbox" do%> 
-                    <%=b.check_box + "     " + b.text%> 
+                    <%= b.check_box + "     " + b.text %> 
+                    <%= b.text_field :fluency %>
                     <%end%> 
                 <% end %>
             </div>

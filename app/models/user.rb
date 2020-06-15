@@ -4,7 +4,9 @@ class User < ApplicationRecord
   has_many :fluencies
   has_many :languages, through: :fluencies
   # new
-  accepts_nested_attributes_for :fluencies
+  accepts_nested_attributes_for :languages
+  accepts_nested_attributes_for :fluencies, allow_destroy: true
+
 
   validates :firstname,  
     :presence => {:message => " can't be blank."},

@@ -22,6 +22,22 @@
                             <% current_user.languages.each do |l| %>
                                 <li><%= l.lang %></li>
                             <% end %>
+
+                            <% current_user.fluencies.each do |l| %>
+                                <% if l.level == 1 %>
+                                    <%= "Beginner" %>
+                                <% elsif l.level == 2 %>
+                                    <%= "Elementary" %>
+                                <% elsif l.level == 3 %>
+                                    <%= "Intermediate" %>
+                                <% elsif l.level == 4 %>
+                                    <%= "Upper Intermediate" %>
+                                <% elsif l.level == 5 %>
+                                    <%= "Advanced" %>
+                                <% else %>
+                                    <%= "Native Speaker/ Full Language Proficiency" %>
+                                <%end%>
+                            <% end %>
                         </ul>
                     </p>
                 </section>

@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_165224) do
+ActiveRecord::Schema.define(version: 2020_06_16_093745) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "fluencies", force: :cascade do |t|
     t.integer "level"
-    t.integer "user_id"
-    t.integer "language_id"
+    t.bigint "user_id"
+    t.bigint "language_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["language_id"], name: "index_fluencies_on_language_id"
@@ -37,8 +40,12 @@ ActiveRecord::Schema.define(version: 2020_06_12_165224) do
     t.string "remember_token", limit: 128, null: false
     t.string "firstname"
     t.string "lastname"
+    t.integer "temp_id"
+    t.integer "f_temp_id"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "fluencies", "languages"
+  add_foreign_key "fluencies", "users"
 end

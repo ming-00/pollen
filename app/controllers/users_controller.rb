@@ -24,7 +24,6 @@ class UsersController < Clearance::UsersController
       # redirect_to @user
       redirect_to "/profile"
     else
-      #flash.now[:error] = @user.errors.full_messages[0]
       #render template: "users/new"
       #changed to below resolve issue regarding formatting
       flash[:danger] = @user.errors.full_messages[0]

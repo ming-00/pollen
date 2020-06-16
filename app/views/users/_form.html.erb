@@ -2,7 +2,7 @@
 <!DOCTYPE html>
     <html>
         <head>
-                <title><%= full_title(yield(:title)) %>></title>
+          <title><%= full_title(yield(:title)) %>></title>
         </head>
         <body>
         <p>
@@ -29,9 +29,9 @@
           <div>
             <%= form.label :language, 'Languages spoken' %>
             <%= form.select :temp_id, [['English', 1], ['French', 2], ['German', 3], 
-              ['Spanish', 4], ['Korean', 5]], {class: 'collection-select-class'} %>
+              ['Spanish', 4], ['Korean', 5]], {}, {class: 'collection-select-class'} %>
             <%= form.select :f_temp_id, [['Beginner', 1], ['Elementary', 2], ['Intermediate', 3],
-              ['Upper Intermediate', 4], ['Advanced', 5], ['Native Speaker', 6]], {class: 'collection-select-class'} %>
+              ['Upper Intermediate', 4], ['Advanced', 5], ['Native Speaker', 6]], {}, {class: 'collection-select-class'} %>
           </div>
         </body>
       <br>

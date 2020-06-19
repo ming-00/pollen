@@ -15,7 +15,7 @@ class UsersController < Clearance::UsersController
     @user = user_from_params
 
     if @user.save
-      Fluency.create(level: @user.f_temp_id, user_id: @user.id, language_id: @user.temp_id)
+      @user.fluencies.create(level: @user.f_temp_id, language_id: @user.temp_id)
       flash[:success] = "Welcome to Pollen! Please add your 
         information to get started."
       sign_in @user
@@ -35,7 +35,7 @@ class UsersController < Clearance::UsersController
       @user = User.find(params[:id])
       if @user.update(user_params)
         User.find(params[:id]).fluencies.destroy_all
-        Fluency.create(level: @user.f_temp_id, user_id: @user.id, language_id: @user.temp_id)
+        @user.fluencies.create(level: @user.f_temp_id, language_id: @user.temp_id)
         flash[:success] = "Profile updated"
         #sign_in @user
         redirect_to @user

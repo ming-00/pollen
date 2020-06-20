@@ -26,6 +26,17 @@ class User < ApplicationRecord
 
   validates_format_of :lastname, :with => /\A[a-z]+\z/i,
     message: " must not contain any numbers."
+  
+  class << self
+  def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                    BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+  end
+
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
 
   module Validations
     extend ActiveSupport::Concern
@@ -40,7 +51,7 @@ class User < ApplicationRecord
       validates :password, 
         :presence => {:message => "Password can't be blank."}, 
         unless: :skip_password_validation?
+      end
     end
   end
-
 end

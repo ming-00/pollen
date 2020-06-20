@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_103902) do
+ActiveRecord::Schema.define(version: 2020_06_20_144938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2020_06_20_103902) do
     t.datetime "updated_at", null: false
     t.index ["language_id"], name: "index_fluencies_on_language_id"
     t.index ["user_id"], name: "index_fluencies_on_user_id"
+  end
+
+  create_table "forumposts", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_forumposts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_forumposts_on_user_id"
   end
 
   create_table "journals", force: :cascade do |t|
@@ -77,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_103902) do
   add_foreign_key "entries", "journals"
   add_foreign_key "fluencies", "languages"
   add_foreign_key "fluencies", "users"
+  add_foreign_key "forumposts", "users"
   add_foreign_key "journals", "users"
   add_foreign_key "posts", "users"
 end

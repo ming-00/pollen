@@ -15,6 +15,10 @@ class JournalsController < ApplicationController
 
     def show
         @journal = Journal.find(params[:id])
+        if current_user != (@journal.user) && @journal.private
+            flash[:danger] = "Journal is private."
+            redirect_to root_url
+        end
     end
 
     def destroy

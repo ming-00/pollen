@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title><%= full_title(yield(:title)) %></title>
+        </head>
+
+    <% provide(:title, @entry.title) %>
+    <div class="row">
+        <aside class="col-md-4">
+            <section class="journal_info">
+                <h1>
+                    <br>
+                    <%= @entry.title %>
+                </h1>
+                <h2>
+                    <%= @entry.content %>
+                </h2>
+            </section>
+        </aside>
+    </div>

@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   get 'profile' => 'welcome#profile'
 
   root :to      => 'welcome#index'
-  resources :users, only: [:show, :update, :edit]
+  resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:create, :destroy, :show]
+  resources :entries, only: [:show, :create, :destroy]
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

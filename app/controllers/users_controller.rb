@@ -1,5 +1,5 @@
 class UsersController < Clearance::UsersController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
   def new
@@ -11,6 +11,10 @@ class UsersController < Clearance::UsersController
       @user = User.find(params[:id])
       @journals = @user.journals.paginate(page: params[:page])
       @forumposts = @user.forumposts.paginate(page: params[:page])
+  end
+
+  def index
+    @users = User.all
   end
 
   def create

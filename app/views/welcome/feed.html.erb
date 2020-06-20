@@ -6,7 +6,10 @@
         </head>
         <body>
             <h1>journal feed</h1>
-            <!-- Find me in app/views/welcome/feed.html.erb -->
+            <% @entries.each do |entry| %>
+                <% if entry.journal.private == false %>
+                    <li> <%= link_to entry.title, entry %> </li>
+                <%end%>
+            <% end %>        
         </body>
     </html>
-

@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :journals, :dependent => :destroy
   has_many :forumposts, :dependent => :destroy
+  has_many :entries, through: :journals
 
   validates :firstname,  
     :presence => {:message => " can't be blank."},

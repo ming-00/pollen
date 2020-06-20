@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
   belongs_to :journal
+  belongs_to :user
   default_scope -> { order(created_at: :desc) }
 
   validates :title,

@@ -1,0 +1,8 @@
+<div>
+  <span class="user"><%= link_to @entry.journal.user.lastname, @entry.journal.user %></span>
+  <span class="journal"><%= link_to @entry.journal.title, @entry.journal %></span>
+  <span class="content"><%= @entry.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(@entry.created_at) %> ago.
+  </span>
+</div>

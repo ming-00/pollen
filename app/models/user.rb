@@ -8,6 +8,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :fluencies, allow_destroy: true
 
   has_many :journals, :dependent => :destroy
+  has_many :entries, through: :journals
 
   validates :firstname,  
     :presence => {:message => " can't be blank."},

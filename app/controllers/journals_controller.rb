@@ -18,6 +18,10 @@ class JournalsController < ApplicationController
         if current_user != (@journal.user) && @journal.private
             flash[:danger] = "Journal is private."
             redirect_to root_url
+        else 
+            # moved away to profile, redundant below
+            @entries = @journal.entries.paginate(page: params[:page])
+            @entry = @journal.entries.build if logged_in?
         end
     end
 

@@ -1,0 +1,16 @@
+<%= form_for(@entry) do |f| %>
+    <div class="field">
+        <div class ="text-field">
+            <%= f.label :title, 'Title' %>
+            <%= f.text_field :title %>
+        </div>
+        <div>
+            <%= f.text_area :content, placeholder: "Start typing..." %>
+        </div>
+        <div>
+            <%= f.label :journal_id, 'Journal' %>
+            <%= f.collection_select(:journal_id, current_user.journals.all, :id, :title) %>
+        </div>
+        <%= f.submit "Post", class: "btn btn-primary" %>
+    </div>
+<% end %>

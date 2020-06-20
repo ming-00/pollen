@@ -1,0 +1,15 @@
+<div id="entry-<%= entry.id %>">
+  <span class="user"><%= link_to entry.journal.user.lastname, entry.journal.user %></span>
+  <span class="journal"><%= link_to entry.journal.title, entry.journal %></span>
+  <span class="entry_title"><%= entry.title %></span>
+  <br>
+  <span class="content"><%= entry.content %></span>
+  <br>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(entry.created_at) %> ago.
+    <% if current_user == entry.journal.user %>
+      <%= link_to "delete", entry, method: :delete,
+        data: { confirm: "This entry will be permanently deleted." } %>
+    <%end%>
+  </span>
+</div>

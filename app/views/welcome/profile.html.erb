@@ -45,11 +45,16 @@
                     <% else %>
                         <%= link_to 'Sign in', sign_in_path %>
                     <% end %>
+                    <section class="entry_form">
+                        <%= render 'shared/entry_form' %>
+                    </section>
+                    <section>
+                        <%= render 'shared/journal_form' %>
+                    </section>
                     </p>
                 </section>
             </aside>
             <div class="col-md-8">
-                <%= render 'shared/journal_form' %>
                 <% if current_user.journals.any? %>
                     <h3>Journals (<%= current_user.journals.count %>)</h3>
                     <ol class="journals">

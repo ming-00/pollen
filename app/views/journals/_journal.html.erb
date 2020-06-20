@@ -14,7 +14,7 @@
     Updated <%= time_ago_in_words(journal.updated_at) %> ago.
     <% if current_user == (journal.user) %>
     <%= link_to "delete", journal, method: :delete,
-            data: { confirm: "Are you sure? All posts in the journal will be permanently deleted." } %>
+            data: { confirm: "All entries in the journal will be permanently deleted." } %>
     <%end%>
   </span>
 </li>

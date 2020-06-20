@@ -4,9 +4,30 @@
         <head>
             <title><%= full_title(yield(:title)) %></title>
         </head>
-        <body>
-            <h1>
-                <%= @journal.title %>
-            </h1>
-        </body>
-    </html>
+
+    <% provide(:title, @journal.title) %>
+    <div class="row">
+        <aside class="col-md-4">
+            <section class="journal_info">
+                <h1>
+                    <br>
+                    <%= @journal.title %>
+                </h1>
+                <h2>
+                    A journal by 
+                    <%= @journal.user.firstname%>
+                    <%= @journal.user.lastname%>
+                </h2>
+            </section>
+        </aside>
+    </div>
+    <div class="col-md-8">
+        <% if @journal.entries.any? %>
+            <h3>Entries (<%= @journal.entries.count %>)</h3>
+            <ol class="entries">
+            <%= render @entries %>
+        </ol>
+        <%= will_paginate @entries %>
+        <% end %>
+    </div>
+</html>

@@ -5,11 +5,11 @@ class JournalsController < ApplicationController
     def create
         @journal = current_user.journals.build(journal_params)
         if @journal.save
-          flash[:success] = "Journal created!"
-          redirect_to "/profile"
+            flash[:success] = "Journal created!"
+            redirect_to "/profile"
         else
-          flash[:danger] = "Error: Journal could not be created."
-          redirect_to "/profile"
+            flash[:danger] = @journal.errors.full_messages[0]
+            redirect_to "/profile"
         end
     end
 

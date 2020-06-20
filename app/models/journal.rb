@@ -1,5 +1,7 @@
 class Journal < ApplicationRecord
   belongs_to :user
+  has_many :entries, :dependent => :destroy
+
   validates :user_id, presence: true
   default_scope -> { order(title: :asc) }
   validates :title,

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_083812) do
+ActiveRecord::Schema.define(version: 2020_06_20_103902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "entries", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "journal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["journal_id"], name: "index_entries_on_journal_id"
+  end
 
   create_table "fluencies", force: :cascade do |t|
     t.integer "level"
@@ -55,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_083812) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "entries", "journals"
   add_foreign_key "fluencies", "languages"
   add_foreign_key "fluencies", "users"
   add_foreign_key "journals", "users"

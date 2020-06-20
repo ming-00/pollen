@@ -14,4 +14,8 @@ class WelcomeController < ApplicationController
     @entry = @journal.entries.build if logged_in?
   end
 
+  def feed
+    @entries = Entry.all
+  end
+
 end

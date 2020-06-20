@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_103902) do
     t.bigint "journal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["journal_id", "created_at"], name: "index_entries_on_journal_id_and_created_at"
     t.index ["journal_id"], name: "index_entries_on_journal_id"
   end
 
@@ -49,6 +50,15 @@ ActiveRecord::Schema.define(version: 2020_06_20_103902) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,4 +78,5 @@ ActiveRecord::Schema.define(version: 2020_06_20_103902) do
   add_foreign_key "fluencies", "languages"
   add_foreign_key "fluencies", "users"
   add_foreign_key "journals", "users"
+  add_foreign_key "posts", "users"
 end

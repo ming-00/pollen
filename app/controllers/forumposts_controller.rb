@@ -4,7 +4,7 @@ class ForumpostsController < ApplicationController
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save
             flash[:success] = "Post created and published in forum!"
-            redirect_to root_url
+            redirect_to @forumpost
         else
             render 'welcome/home'
         end
@@ -13,8 +13,12 @@ class ForumpostsController < ApplicationController
     def destroy
     end
 
+    def show
+        @forumposts = Forumpost.find(params[:id])
+    end
+
     private
-    def micropost_params
+    def forumpost_params
         params.require(:forumpost).permit(:content)
     end
 end

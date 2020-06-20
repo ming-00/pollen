@@ -6,4 +6,11 @@
         <%= render @forumposts %>
       </ol>
   </div>
+  <div class="col-md-8">
+    <%= render 'shared/forum_form' %>
+        <ol class="forumposts">
+            <%= render @forumposts %>
+        </ol>
+        <%= will_paginate @forumposts %>
+</div>
 </div>

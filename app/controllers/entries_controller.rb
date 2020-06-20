@@ -13,6 +13,14 @@ class EntriesController < ApplicationController
             redirect_to request.referrer
         end
     end
+
+    def show
+        @entry = Entry.find(params[:id])
+        if current_user != (@entry.user) && @entry.journal.private
+            flash[:danger] = "Entry is private."
+            redirect_to root_url
+        end
+    end
   
     def destroy
         @entry.destroy

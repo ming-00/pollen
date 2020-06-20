@@ -6,7 +6,8 @@ class ForumpostsController < ApplicationController
             flash[:success] = "Post created and published in forum!"
             redirect_to @forumpost
         else
-            render 'welcome/home'
+            flash[:danger] = @forumpost.errors.full_messages[0]
+            render "welcome/forum"
         end
     end
     

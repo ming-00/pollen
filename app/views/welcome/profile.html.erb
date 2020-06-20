@@ -37,17 +37,28 @@
                             <% end %>
                         </ul>
                     </p>
+                    <p>
+                    <% if signed_in? %>
+                        Signed in as: <%= current_user.email %>
+                        <%= link_to "edit", edit_user_path(current_user) %>
+                        <%= button_to 'Sign out', sign_out_path, method: :delete %> 
+                    <% else %>
+                        <%= link_to 'Sign in', sign_in_path %>
+                    <% end %>
+                    </p>
                 </section>
             </aside>
+            <div class="col-md-8">
+                <%= render 'shared/journal_form' %>
+                <% if current_user.journals.any? %>
+                    <h3>Journals (<%= current_user.journals.count %>)</h3>
+                    <ol class="journals">
+                        <%= render @journals %>
+                    </ol>
+                    <%= will_paginate @journals %>
+                <% end %>
+          </div>
         </div>
-        <p>
-            <% if signed_in? %>
-                Signed in as: <%= current_user.email %>
-                <%= link_to "edit", edit_user_path(current_user) %>
-                <%= button_to 'Sign out', sign_out_path, method: :delete %> 
-            <% else %>
-                <%= link_to 'Sign in', sign_in_path %>
-        </p>
-            <% end %>
+
     </body>
 </html>

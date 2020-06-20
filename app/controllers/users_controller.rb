@@ -9,6 +9,7 @@ class UsersController < Clearance::UsersController
 
   def show
       @user = User.find(params[:id])
+      @journals = @user.journals.paginate(page: params[:page])
   end
 
   def create
@@ -61,15 +62,6 @@ class UsersController < Clearance::UsersController
         :f_temp_id,
         :lastname, 
       )
-  end
-
-   # Confirms a logged-in user.
-   def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to "/sign_in"
-    end
   end
 
   # Confirms the correct user.

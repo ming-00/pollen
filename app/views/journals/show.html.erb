@@ -1,12 +1,12 @@
-<% provide(:title, "Journal Feed") %>
+<% provide(:title, "Journal") %>
 <!DOCTYPE html>
     <html>
         <head>
             <title><%= full_title(yield(:title)) %></title>
         </head>
         <body>
-            <h1>journal feed</h1>
-            <!-- Find me in app/views/welcome/feed.html.erb -->
+            <h1>
+                <%= @journal.title %>
+            </h1>
         </body>
     </html>
-

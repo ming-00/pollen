@@ -1,0 +1,20 @@
+<li id="journal-<%= journal.id %>">
+  <span class="user"><%= link_to journal.user.lastname, journal.user %></span>
+  <div>
+    <% if journal.private %>
+        <%= "Private" %>
+    <% else %>
+        <%= "Public" %>
+    <% end %>
+  </div>
+  <div>
+    <span class="title"><%= link_to journal.title, journal %></span>
+  </div>
+  <span class="timestamp">
+    Updated <%= time_ago_in_words(journal.updated_at) %> ago.
+    <% if current_user == (journal.user) %>
+    <%= link_to "delete", journal, method: :delete,
+            data: { confirm: "Are you sure? All posts in the journal will be permanently deleted." } %>
+    <%end%>
+  </span>
+</li>

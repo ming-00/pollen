@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
-  resources :entries, only: [:index, :show, :create, :destroy]
+  resources :entries, only: [:show, :create, :destroy]
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

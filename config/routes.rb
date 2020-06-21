@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
+  resources :forumposts, only: [:create, :destroy, :show]
   resources :entries, only: [:show, :create, :destroy]
 
   

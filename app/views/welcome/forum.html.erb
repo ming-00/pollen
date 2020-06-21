@@ -6,6 +6,19 @@
         </head>
         <body>
             <h1>forum</h1>
+            <% if logged_in? %>
+                <div class="row">
+                <aside class="col-md-4">
+                    <section class="user_info">
+                        <%= render 'shared/user_info' %>
+                    </section>
+                <section class="forumpost_form">
+            <%= render 'shared/forum_form' %>
+        </section>
+    </aside>
+</div>
+<% else %>
+<% end %>
             <!-- Find me in app/views/welcome/forum.html.erb -->
         </body>
     </html>

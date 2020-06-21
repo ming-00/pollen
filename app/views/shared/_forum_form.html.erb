@@ -1,8 +1,6 @@
-<%= form_for(@forumpost) do |f| %>
+<%= form_with(model: @forumpost, local: true) do |f| %>
     <div class="field">
-        <div>
-            <%= f.text_area :content, placeholder: "Post a new message in forum now..." %>
-        </div>
-        <%= f.submit "Create", class: "btn btn-primary" %>
+        <%= f.text_area :content, placeholder: "Compose new forumpost..." %>
     </div>
+    <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

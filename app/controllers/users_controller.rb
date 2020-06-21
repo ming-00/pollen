@@ -10,6 +10,7 @@ class UsersController < Clearance::UsersController
   def show
       @user = User.find(params[:id])
       @journals = @user.journals.paginate(page: params[:page])
+      @forumposts = @user.forumposts.paginate(page: params[:page])
   end
 
   def index

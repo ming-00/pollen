@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:create, :destroy, :show]
-  resources :entries, only: [:show, :create, :destroy]
+  resources :entries, only: [:show, :create, :update, :edit, :destroy]
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

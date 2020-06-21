@@ -1,7 +1,7 @@
-<!-- this is not implemented currently  -->
 
-<h1><%= current_user.firstname %></h1>
-<h1><%= current_user.lastname %></h1>
-<span><%= link_to "view my profile", current_user %></span>
-<span><%= pluralize(current_user.journals.count, "journal") %></span>
-<span><%= pluralize(current_user.forumposts.count, "micropost") %></span>
+<h1>
+    <%= current_user.firstname %>
+    <%= current_user.lastname %>
+</h1>
+<span><%= pluralize(current_user.entries.count, "journal entries") %></span>
+<span><%= pluralize(current_user.forumposts.count, "forum threads") %></span>

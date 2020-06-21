@@ -2,15 +2,10 @@
 <div class="row">
   <div class="col-md-8">
       <h3>Forum </h3>
-      <ol class="forumposts">
-        <%= render @forumposts %>
-      </ol>
   </div>
   <div class="col-md-8">
-    <%= render 'shared/forum_form' %>
         <ol class="forumposts">
             <%= render @forumposts %>
-        </ol>
-        <%= will_paginate @forumposts %>
-</div>
+        </ol>      
+  </div>
 </div>

@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
   end
 
   def feed
-    @entries = Entry.all
+    @entries = Entry.all.paginate(page: params[:page])
   end
 
 end

@@ -4,7 +4,7 @@ class ForumpostsController < ApplicationController
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save
             flash[:success] = "Post created and published in forum!"
-            redirect_to @forumpost
+            redirect_to "/forum"
         else
             flash[:danger] = @forumpost.errors.full_messages[0]
             render "welcome/forum"

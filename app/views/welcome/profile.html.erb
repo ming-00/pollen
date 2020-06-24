@@ -45,9 +45,7 @@
                     <% else %>
                         <%= link_to 'Sign in', sign_in_path %>
                     <% end %>
-                    <section class="entry_form">
-                        <%= render 'shared/entry_form' %>
-                    </section>
+                    <%= link_to "Create", 'entries/new' %>
                     <section>
                         <%= render 'shared/journal_form' %>
                     </section>

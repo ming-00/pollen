@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'forum'   => 'welcome#forum'
   get 'feed'    => 'welcome#feed'
   get 'profile' => 'welcome#profile'
+  get 'entries/new' => 'entries#new'
 
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]

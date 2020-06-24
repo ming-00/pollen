@@ -2,5 +2,8 @@
     <div class="field">
         <%= f.text_area :content, placeholder: "Compose new forumpost..." %>
     </div>
+    <div>
+        <%= f.text_field :tag_list, value: f.object.tag_list.to_s, placeholder: "Add tag e.g. grammar" %>
+    </div>
     <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

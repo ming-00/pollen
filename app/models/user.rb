@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
 
+
   has_many :fluencies
   has_many :languages, through: :fluencies
   

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:create, :destroy, :show]
+  resources :tags, only: [:index, :show]
   resources :entries, only: [:show, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
 

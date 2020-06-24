@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   resources :forumposts, only: [:create, :destroy, :show]
   resources :entries, only: [:show, :create, :destroy]
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

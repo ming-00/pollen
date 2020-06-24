@@ -158,7 +158,6 @@ input:focus {
     display: inline-block;
     clear: left;
     text-align: right;
-
 }
 
 label {
@@ -269,4 +268,12 @@ aside {
 /* form drop down menu */
 .collection-select-class {
     padding: 0.25em;
+}
+
+/* entry form */
+.entry-text-field {
+    textarea {
+        height: 30em;
+        width: 40em;
+    }
 }

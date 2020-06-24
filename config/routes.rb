@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:create, :destroy, :show]
   resources :entries, only: [:show, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   resources :users do
     member do

@@ -39,12 +39,16 @@
                     </p>
                     <p>
                     <% if signed_in? %>
+                        <section class="stats">
+                            <%= render 'shared/stats' %>
+                        </section>
                         Signed in as: <%= current_user.email %>
                         <%= link_to "edit", edit_user_path(current_user) %>
                         <%= button_to 'Sign out', sign_out_path, method: :delete %> 
                     <% else %>
                         <%= link_to 'Sign in', sign_in_path %>
                     <% end %>
+                    <%= render 'users/follow_form' if logged_in? %>
                     <section class="entry_form">
                         <%= render 'shared/entry_form' %>
                     </section>

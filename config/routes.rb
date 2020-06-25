@@ -23,9 +23,19 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:create, :destroy, :show]
+
+  resources :tags, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
+
   resources :entries, only: [:show, :create, :update, :edit, :destroy]
   resources :corrections, only: [:create, :index, :destroy]
 
+  #added from lihan
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

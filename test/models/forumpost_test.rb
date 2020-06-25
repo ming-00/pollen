@@ -7,7 +7,7 @@ class ForumpostTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:bigboi)
-    @forumpost = @user.microposts.build(content: "Lorem ipsum")
+    @forumpost = @user.forumpost.build(content: "Lorem ipsum")
   end
 
   test "should be valid" do

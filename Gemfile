@@ -69,5 +69,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'clearance', '~> 2.1.0'
 gem 'bootstrap-sass', '~> 3.4.1'
 # gem 'email_spec', '~> 4.2.8'
-gem "will_paginate", "~> 3.1.0" 
+gem 'acts-as-taggable-on', '~> 6.0'
+gem "will_paginate", "~> 3.1.7" 
 gem 'tinymce-rails', "~> 5.3.2"

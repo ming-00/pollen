@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:create, :destroy, :show]
   resources :entries, only: [:show, :create, :update, :edit, :destroy]
+  resources :corrections, only: [:create, :index, :destroy]
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,22 @@
+<%= form_for (@correction) do |f| %>
+    <div class = "text-field" %>
+        <%= f.label :content, "Content" %>
+        <%= f.text_area(:content, :value => @entry.content) %>
+    </div>
+
+    <div class = "text-field" %>
+        <%= f.label :comment, "Comments (Optional)" %>
+        <%= f.text_area :comment %>
+    </div>
+
+    <div>
+        <%= f.label :correct, "This entry is correct"%>
+        <%= f.check_box :correct, {class:"form-check-input", type:"checkbox"}, true, false %>
+    </div>
+
+    <%= f.hidden_field :entry_id %>
+    <%= hidden_field_tag :user_id, current_user.id%>
+
+    <%= f.submit "Create" %>
+
+<% end %>

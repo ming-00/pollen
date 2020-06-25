@@ -20,6 +20,9 @@ class EntriesController < ApplicationController
 
     def show
         @entry = Entry.find(params[:id])
+        @correction = Correction.new
+        @correction.entry = @entry
+        @corrections = @entry.corrections
         if current_user != (@entry.journal.user) && @entry.journal.private
             flash[:danger] = "Entry is private."
             redirect_to root_url

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-    <html>
         <head>
             <title><%= full_title(yield(:title)) %></title>
         </head>
@@ -13,8 +12,31 @@
                     <%= @entry.title %>
                 </h1>
                 <h2>
-                    <%= @entry.content %>
+                    Entry by
+                    <%=  link_to "#{@entry.journal.user.firstname} #{@entry.journal.user.lastname}", @entry.journal.user%>
+                    <br>
                 </h2>
+                <p>
+                    <%= @entry.content %>
+                </p>
             </section>
         </aside>
+        <div class="col-md-8">
+            <% if current_user != @entry.journal.user %>
+                <section>
+                    <%= render 'shared/correction_form' %>
+                </section>
+                <br>
+                <br>
+            <%end%>
+            <% if @entry.corrections.count > 0 %>
+                <h3>Corrections (<%= @entry.corrections.count %>)</h3>
+                <ol class="entries">
+                    <%= render @corrections %>
+                </ol>
+            <% else %>
+                No corrections yet.
+            <% end %>
+        </div>
     </div>
+</html>

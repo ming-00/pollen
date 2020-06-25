@@ -2,13 +2,13 @@ class Entry < ApplicationRecord
   belongs_to :journal
   belongs_to :user, optional: true
   
-  has_many :entries
+  has_many :corrections, :dependent => :destroy
   default_scope -> { order(created_at: :desc) }
 
   validates :title,
     :presence => {:message => " can't be blank."},
-    length: {minimum: 1, maximum: 25, 
-      :message => " must be between 1 and 25 characters."}
+    length: {minimum: 1, maximum: 35, 
+      :message => " must be between 1 and 35 characters."}
 
   validates :content,
     :presence => {:message => " can't be blank."},

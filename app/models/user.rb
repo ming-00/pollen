@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :journals, :dependent => :destroy
   has_many :forumposts, :dependent => :destroy
   has_many :entries, through: :journals
+  has_many :corrections, :dependent => :destroy
 
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",

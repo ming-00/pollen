@@ -7,8 +7,11 @@
         <body>
             <h1>journal feed</h1>
             <% @entries.each do |entry| %>
-                <% if entry.journal.private == false %>
-                    <li> <%= link_to entry.title, entry %> </li>
+                <% if entry.journal.private == false && entry.journal.user.temp_id == current_user.temp_id %>
+                    <li>                          
+                        <%=  "#{entry.journal.user.firstname} #{entry.journal.user.lastname}"%>
+                        <%= link_to entry.title, entry %> 
+                    </li> 
                 <%end%>
             <% end %>        
         </body>

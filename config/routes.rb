@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'forum'   => 'welcome#forum'
   get 'feed'    => 'welcome#feed'
   get 'profile' => 'welcome#profile'
+  get 'entries/new' => 'entries#new'
 
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]
@@ -25,15 +26,17 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :tags, only: [:index, :show]
-  resources :entries, only: [:show, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
+  resources :entries, only: [:show, :create, :update, :edit, :destroy]
+  resources :corrections, only: [:create, :index, :destroy]
+
+  #added from lihan
   resources :users do
     member do
       get :following, :followers
     end
   end
-
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -31,7 +31,7 @@
             <%end%>
             <% if @entry.corrections.count > 0 %>
                 <h3>Corrections (<%= @entry.corrections.count %>)</h3>
-                <ol class="entries">
+                <ol class="corrections">
                     <%= render @corrections %>
                 </ol>
             <% else %>

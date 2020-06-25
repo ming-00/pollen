@@ -70,3 +70,4 @@ gem 'clearance', '~> 2.1.0'
 gem 'bootstrap-sass', '~> 3.4.1'
 # gem 'email_spec', '~> 4.2.8'
 gem "will_paginate", "~> 3.1.0" 
+gem 'tinymce-rails', "~> 5.3.2"

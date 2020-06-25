@@ -1,9 +1,9 @@
 <div id="correction-<%= correction.id %>">
-<li>
-    <span class="content"><%= correction.content %></span>
+<li style="padding-bottom:1em">
+    <span class="content"><%= correction.content.html_safe %></span>
     <span class="comment"><%= correction.comment %></span>
-    <br>
     <% if correction.correct %>
+        <br>
         <%= "This entry is perfect! No correction needed." %>
         <br>
     <%end%>
@@ -12,4 +12,5 @@
         <%=  link_to "#{correction.user.firstname} #{correction.user.lastname}", correction.user%>
         <%= time_ago_in_words(correction.created_at) %> ago.
     </span>
+
 </li>

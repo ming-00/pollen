@@ -1,0 +1,9 @@
+<%= form_for(@forumposts) do |f| %>
+    <div class="field">
+        <div>
+            <%= f.label :body %>
+            <%= f.text_area :content, placeholder: "Write a comment..." %>
+        </div>
+        <%= f.submit "Comment", class: "btn btn-primary" %>
+    </div>
+<% end %>

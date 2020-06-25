@@ -49,9 +49,7 @@
                         <%= link_to 'Sign in', sign_in_path %>
                     <% end %>
                     <%= render 'users/follow_form' if logged_in? %>
-                    <section class="entry_form">
-                        <%= render 'shared/entry_form' %>
-                    </section>
+                    <%= link_to "Create new entry", 'entries/new' %>
                     <section>
                         <%= render 'shared/journal_form' %>
                     </section>

@@ -1,0 +1,4 @@
+toolbar:
+  - bold italic strikethrough underline | undo redo  | forecolor
+
+menubar: false

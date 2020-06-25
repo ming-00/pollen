@@ -86,7 +86,7 @@ p {
 #headerelements {
     padding-top: 3em;
     height: 4.5em !important;
-    font-family: 'Futura';
+    font-family: 'Futura Std';
     color: #2B2D2F;
 
     &:hover {
@@ -158,7 +158,6 @@ input:focus {
     display: inline-block;
     clear: left;
     text-align: right;
-
 }
 
 label {
@@ -271,7 +270,7 @@ aside {
     padding: 0.25em;
 }
 
-/* user followers stats */
+/* user followers stats merge conflict, did not fix */
 .stats {
     overflow: auto;
     margin-top: 0;
@@ -292,5 +291,13 @@ aside {
     }
     strong {
         display: block;
-        }
     }
+}
+
+/* entry form merge conflict, did not fix*/
+.entry-text-field {
+    textarea {
+        height: 30em;
+        width: 40em;
+    }
+}

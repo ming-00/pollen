@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_152509) do
+ActiveRecord::Schema.define(version: 2020_06_25_124341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "corrections", force: :cascade do |t|
+    t.text "content"
+    t.text "comment"
+    t.boolean "correct"
+    t.bigint "entry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["entry_id"], name: "index_corrections_on_entry_id"
+    t.index ["user_id"], name: "index_corrections_on_user_id"
+  end
 
   create_table "entries", force: :cascade do |t|
     t.string "title"
@@ -21,8 +33,9 @@ ActiveRecord::Schema.define(version: 2020_06_24_152509) do
     t.bigint "journal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["journal_id", "created_at"], name: "index_entries_on_journal_id_and_created_at"
+    t.bigint "user_id"
     t.index ["journal_id"], name: "index_entries_on_journal_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "fluencies", force: :cascade do |t|
@@ -59,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_06_24_152509) do
     t.datetime "updated_at", null: false
   end
 
+  #start merge conflict
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -104,7 +118,8 @@ ActiveRecord::Schema.define(version: 2020_06_24_152509) do
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
-
+  #end merge conflict
+  
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -120,7 +135,10 @@ ActiveRecord::Schema.define(version: 2020_06_24_152509) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "corrections", "entries"
+  add_foreign_key "corrections", "users"
   add_foreign_key "entries", "journals"
+  add_foreign_key "entries", "users"
   add_foreign_key "fluencies", "languages"
   add_foreign_key "fluencies", "users"
   add_foreign_key "forumposts", "users"

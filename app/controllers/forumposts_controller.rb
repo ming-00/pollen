@@ -20,6 +20,6 @@ class ForumpostsController < ApplicationController
 
     private
     def forumpost_params
-        params.require(:forumpost).permit(:content, :tag_list)
+        params.require(:forumpost).permit(:content, :title, :tag_list)
     end
 end

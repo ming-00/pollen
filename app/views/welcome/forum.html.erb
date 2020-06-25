@@ -14,6 +14,13 @@
                     </section>
                     <section class="forumpost_form">
                         <%= render 'shared/forum_form' %>
+                        <h3>All tags</h3>
+                        <% @forumposts.tag_counts_on(:tags).each do |tag| %>
+                            <div>
+                                <%= render tag %>
+                                <%= puts tag.count %>
+                            </div>
+                        <% end %>
                     </section>
                 </div>
             <% else %>

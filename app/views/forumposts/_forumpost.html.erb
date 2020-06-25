@@ -1,7 +1,7 @@
 <li id="forumpost-<%= forumpost.id %>">
   <span class="user"><%= link_to forumpost.user.lastname, forumpost.user %></span>
   <h6><span class="user"><%= link_to forumpost.title, forumpost %></span></h6>
-  <h6><%= render forumpost.tags %></h5>
+  <h6><%= render forumpost.tags %></h6>
   <span class="timestamp">
     Posted <%= time_ago_in_words(forumpost.created_at) %> ago.
   </span>

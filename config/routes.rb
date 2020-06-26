@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
 
-  resources :entries, only: [:show, :create, :update, :edit, :destroy]
+  resources :entries, only: [:show, :create, :update, :edit, :destroy, :new]
   resources :corrections, only: [:create, :index, :destroy]
 
   #added from lihan

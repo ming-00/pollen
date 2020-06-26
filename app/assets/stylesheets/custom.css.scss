@@ -281,12 +281,12 @@ aside {
         border-left: 1px solid $gray-lighter;
         color: gray;
         &:first-child {
-            padding-left: 0;
+            padding-left: 4em;
             border: 0;
         }
         &:hover {
             text-decoration: none;
-            color: blue;
+            color: #850941;
         }
     }
     strong {

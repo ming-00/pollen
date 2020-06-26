@@ -22,8 +22,7 @@ class UsersController < Clearance::UsersController
 
     if @user.save
       @user.fluencies.create(level: @user.f_temp_id, language_id: @user.temp_id)
-      flash[:success] = "Welcome to Pollen! Please add your 
-        information to get started."
+      flash[:success] = "Welcome to Pollen!"
       sign_in @user
       #redirect_back_or url_after_create
       #above redirects to home page, modified to direct to user instead

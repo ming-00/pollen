@@ -12,41 +12,36 @@
                         <%= current_user.firstname %> 
                         <%= current_user.lastname %> 
                         <br>
-                        <br>
                     </h1>
                     <h2>
-                        Languages:
+                        Language:
+                        <% current_user.languages.each do |l| %>
+                            <%= l.lang %>, 
+                        <% end %>
+                        <% current_user.fluencies.each do |l| %>
+                            <% if l.level == 1 %>
+                                <%= "Beginner" %>
+                            <% elsif l.level == 2 %>
+                                <%= "Lower Intemediate" %>
+                            <% elsif l.level == 3 %>
+                                <%= "Upper Intermediate" %>
+                            <% elsif l.level == 4 %>
+                                <%= "Advanced" %>
+                            <% else %>
+                                <%= "Native Speaker/ Full Language Proficiency" %>
+                            <%end%>
+                        <% end %>
                     </h2>
-                    <p>
-                        <ul>
-                            <% current_user.languages.each do |l| %>
-                                <li><%= l.lang %></li>
-                            <% end %>
-                            <% current_user.fluencies.each do |l| %>
-                                <% if l.level == 1 %>
-                                    <%= "Beginner" %>
-                                <% elsif l.level == 2 %>
-                                    <%= "Lower Intemediate" %>
-                                <% elsif l.level == 3 %>
-                                    <%= "Upper Intermediate" %>
-                                <% elsif l.level == 4 %>
-                                    <%= "Advanced" %>
-                                <% else %>
-                                    <%= "Native Speaker/ Full Language Proficiency" %>
-                                <%end%>
-                            <% end %>
-                        </ul>
-                    </p>
                     <p>
                     <% if signed_in? %>
                         <section class="stats">
                             <%= render 'shared/stats' %>
                         </section>
                         Signed in as: <%= current_user.email %>
-                        <%= link_to "edit", edit_user_path(current_user) %>
+                        <%= link_to "edit profile", edit_user_path(current_user) %>
                         <%= button_to 'Sign out', sign_out_path, method: :delete %> 
                     <% else %>
-                        <%= link_to 'Sign in', sign_in_path %>
+                        <%= button_to 'Sign in', sign_in_path %>
                     <% end %>
                     <%= render 'users/follow_form' if logged_in? %>
                     <%= link_to "Create new entry", 'entries/new' %>

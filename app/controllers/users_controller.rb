@@ -28,7 +28,7 @@ class UsersController < Clearance::UsersController
       #redirect_back_or url_after_create
       #above redirects to home page, modified to direct to user instead
       # redirect_to @user
-      redirect_to "/profile"
+      redirect_to "/"
     else
       #render template: "users/new"
       #changed to below resolve issue regarding formatting

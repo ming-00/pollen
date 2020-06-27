@@ -11,10 +11,40 @@
                         <%= @user.firstname %> 
                         <%= @user.lastname %> 
                     </h1>
+                    <br>
+                    <span>
+                    <% @user.languages.each do |l| %>
+                        <%= l.lang %>,
+                    <% end %>
+                    <% @user.fluencies.each do |l| %>
+                        <% if l.level == 1 %>
+                            <%= "Beginner" %>
+                        <% elsif l.level == 2 %>
+                            <%= "Lower Intemediate" %>
+                        <% elsif l.level == 3 %>
+                            <%= "Upper Intermediate" %>
+                        <% elsif l.level == 4 %>
+                            <%= "Advanced" %>
+                        <% else %>
+                            <%= "Native Speaker/ Full Language Proficiency" %>
+                        <%end%>
+                    <% end %>
+                    </span>
+                    <span><%= pluralize(@user.entries.count, "journal entries") %></span>
+                    <span><%= pluralize(@user.forumposts.count, "forum threads") %></span>
+
                 </section>
             </aside>
+            <div class="col-md-8">
+                <% if @user.journals.any? %>
+                    <h3>Journals (<%= @user.journals.count %>)</h3>
+                    <ol class="journals">
+                        <%= render @journals %>
+                    </ol>
+                    <%= will_paginate @journals %>
+                <% end %>
+            </div>
         </div>
         <body>
-            <%= @user.firstname %>, <%= @user.email %>
         </body>
     </html>

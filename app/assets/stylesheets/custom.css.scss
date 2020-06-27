@@ -85,6 +85,10 @@ p {
 
 #headerelements {
     padding-top: 3em;
+    padding-left: 0em;
+    padding-right: 0em;
+    margin-left: 2em;
+    margin-right: 1em;
     height: 4.5em !important;
     font-family: 'Futura Std';
     color: #2B2D2F;
@@ -102,8 +106,6 @@ p {
     font-family: 'Futura Std';
     color: #850941; 
     
-    /* border-bottom: 3px solid currentColor; */
-    /* box-shadow: inset 1 0px 0 white, inset 0 -3px 0 currentColor; */
 }
 
 /*buttons*/

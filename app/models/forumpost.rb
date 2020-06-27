@@ -12,6 +12,6 @@ class Forumpost < ApplicationRecord
 
   validates :title,
   :presence => {:message => " can't be blank."},
-  length: {minimum: 1, maximum: 25, 
-    :message => " must be between 1 and 25 characters."}
+  length: {minimum: 1, maximum: 200, 
+    :message => " must be between 1 and 201 characters."}
 end

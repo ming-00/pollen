@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_214559) do
+ActiveRecord::Schema.define(version: 2020_06_27_024919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "forumpost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["forumpost_id"], name: "index_comments_on_forumpost_id"
+  end
 
   create_table "corrections", force: :cascade do |t|
     t.text "content"
@@ -47,6 +55,16 @@ ActiveRecord::Schema.define(version: 2020_06_25_214559) do
     t.datetime "updated_at", null: false
     t.index ["language_id"], name: "index_fluencies_on_language_id"
     t.index ["user_id"], name: "index_fluencies_on_user_id"
+  end
+
+  create_table "forumcomments", force: :cascade do |t|
+    t.text "reply"
+    t.bigint "forumpost_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["forumpost_id"], name: "index_forumcomments_on_forumpost_id"
+    t.index ["user_id"], name: "index_forumcomments_on_user_id"
   end
 
   create_table "forumposts", force: :cascade do |t|
@@ -135,12 +153,15 @@ ActiveRecord::Schema.define(version: 2020_06_25_214559) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "comments", "forumposts"
   add_foreign_key "corrections", "entries"
   add_foreign_key "corrections", "users"
   add_foreign_key "entries", "journals"
   add_foreign_key "entries", "users"
   add_foreign_key "fluencies", "languages"
   add_foreign_key "fluencies", "users"
+  add_foreign_key "forumcomments", "forumposts"
+  add_foreign_key "forumcomments", "users"
   add_foreign_key "forumposts", "users"
   add_foreign_key "journals", "users"
   add_foreign_key "posts", "users"

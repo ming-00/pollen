@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
-  resources :forumposts, only: [:create, :destroy, :show]
+  resources :forumposts, only: [:create, :destroy, :show] do 
+    resources :forumcomments
+  end
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
 
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
   resources :corrections, only: [:create, :index, :destroy]
 
   #added from lihan
+  #why does it need a comment
   resources :users do
     member do
       get :following, :followers

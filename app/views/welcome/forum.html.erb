@@ -27,13 +27,11 @@
             <% end %>
             </aside>
             <div class="col-md-8">
-                <% if current_user.forumposts.any? %>
-                    <h3>Posts (<%= current_user.forumposts.count %>)</h3>
+                    <h3>Posts (<%= @forumposts.count %>)</h3>
                     <ol class="journals">
                         <%= render @forumposts %>
                     </ol>
                     <%= will_paginate @forumposts %>
-                <% end %>
           </div>
             <!-- Find me in app/views/welcome/forum.html.erb -->
         </body>

@@ -1,5 +1,8 @@
 class ForumpostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
+    def index
+        @forumposts = User.forumposts.all
+    end
     def create
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save

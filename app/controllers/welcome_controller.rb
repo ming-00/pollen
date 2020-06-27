@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
   end
 
   def forum
-    @forumposts = current_user.forumposts.paginate(page: params[:page])
+    @forumposts = Forumpost.all.paginate(page: params[:page])
     @forumpost = current_user.forumposts.build if logged_in?
   end
 

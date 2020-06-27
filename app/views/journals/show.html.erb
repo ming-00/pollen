@@ -14,8 +14,7 @@
                 </h1>
                 <h2>
                     A journal by 
-                    <%= @journal.user.firstname%>
-                    <%= @journal.user.lastname%>
+                    <%=  link_to "#{@entry.journal.user.firstname} #{@entry.journal.user.lastname}", @entry.journal.user%>
                 </h2>
             </section>
         </aside>

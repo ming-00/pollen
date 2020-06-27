@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 2020_06_27_024919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "forumpost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["forumpost_id"], name: "index_comments_on_forumpost_id"
+  end
+
   create_table "corrections", force: :cascade do |t|
     t.text "content"
     t.text "comment"
@@ -84,6 +92,15 @@ ActiveRecord::Schema.define(version: 2020_06_27_024919) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -136,6 +153,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_024919) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "comments", "forumposts"
   add_foreign_key "corrections", "entries"
   add_foreign_key "corrections", "users"
   add_foreign_key "entries", "journals"
@@ -146,5 +164,6 @@ ActiveRecord::Schema.define(version: 2020_06_27_024919) do
   add_foreign_key "forumcomments", "users"
   add_foreign_key "forumposts", "users"
   add_foreign_key "journals", "users"
+  add_foreign_key "posts", "users"
   add_foreign_key "taggings", "tags"
 end

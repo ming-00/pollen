@@ -37,6 +37,7 @@
                         <section class="stats">
                             <%= render 'shared/stats' %>
                         </section>
+                        <br>
                         Signed in as: <%= current_user.email %>
                         <%= link_to "edit profile", edit_user_path(current_user) %>
                         <%= button_to 'Sign out', sign_out_path, method: :delete %> 

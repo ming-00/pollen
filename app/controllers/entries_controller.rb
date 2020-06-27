@@ -18,8 +18,8 @@ class EntriesController < ApplicationController
             flash[:success] = "Entry created!"
             redirect_to @entry
         else
-            flash[:danger] = @entry.errors.full_messages[0]
-            redirect_to request.referrer
+            flash.now[:error] = @entry.errors.full_messages[0]
+            render :new
         end
     end
 

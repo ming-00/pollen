@@ -43,7 +43,7 @@ class UsersController < Clearance::UsersController
         @user.fluencies.create(level: @user.f_temp_id, language_id: @user.temp_id)
         flash[:success] = "Profile updated"
         #sign_in @user
-        redirect_to @user
+        redirect_to '/profile'
       else 
         flash[:danger] = @user.errors.full_messages[0]
         redirect_to request.referrer

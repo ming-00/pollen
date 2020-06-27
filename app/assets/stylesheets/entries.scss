@@ -1,3 +1,48 @@
 // Place all the styles related to the Entries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    overflow-x: hidden;
+}
+
+#row-entry {
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    margin-top: -100px;
+    padding-top: 100px;
+    position: relative;
+    width: 100%;
+    backface-visibility: hidden;
+    will-change: overflow;
+}
+
+#left-scroll {
+    height: 100% !important;
+    float: left;
+    overflow-y: scroll !important;
+    width: 65%;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+}
+
+#left-scroll::-webkit-scrollbar,
+#right-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+#right-scroll {
+    #row-entry, html, body {
+        height: 98%;
+    }
+    height: 100% !important;
+    float: left;
+    overflow-y: scroll !important;
+    width: 35%;
+    padding-left: 2em;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+}

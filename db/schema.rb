@@ -164,6 +164,5 @@ ActiveRecord::Schema.define(version: 2020_06_27_024919) do
   add_foreign_key "forumcomments", "users"
   add_foreign_key "forumposts", "users"
   add_foreign_key "journals", "users"
-  add_foreign_key "posts", "users"
   add_foreign_key "taggings", "tags"
 end

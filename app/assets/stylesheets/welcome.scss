@@ -1,3 +1,20 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.home_image {
+    border-radius: 5em;
+    width: 101%;
+    height: auto;
+}
+
+.homecontainer{
+    position: relative;
+    text-align: center;
+    color: #f5f4f0;
+    .left{
+        position: absolute;
+        top: 2em;
+        left: 2em;
+        font-size: 3.5em;
+    }
+}

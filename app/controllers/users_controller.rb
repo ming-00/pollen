@@ -22,13 +22,12 @@ class UsersController < Clearance::UsersController
 
     if @user.save
       @user.fluencies.create(level: @user.f_temp_id, language_id: @user.temp_id)
-      flash[:success] = "Welcome to Pollen! Please add your 
-        information to get started."
+      flash[:success] = "Welcome to Pollen!"
       sign_in @user
       #redirect_back_or url_after_create
       #above redirects to home page, modified to direct to user instead
       # redirect_to @user
-      redirect_to "/profile"
+      redirect_to "/"
     else
       #render template: "users/new"
       #changed to below resolve issue regarding formatting
@@ -44,7 +43,7 @@ class UsersController < Clearance::UsersController
         @user.fluencies.create(level: @user.f_temp_id, language_id: @user.temp_id)
         flash[:success] = "Profile updated"
         #sign_in @user
-        redirect_to @user
+        redirect_to '/profile'
       else 
         flash[:danger] = @user.errors.full_messages[0]
         redirect_to request.referrer

@@ -3,7 +3,12 @@ class EntriesController < ApplicationController
     before_action :correct_user,   only: [:destroy, :update, :edit]
 
     def new
-        @entry = Entry.new
+        if current_user.journals.any?
+            @entry = Entry.new
+        else
+            flash[:danger] = "Please create a journal first."
+            redirect_to '/profile'
+        end
     end 
     
     def create
@@ -13,8 +18,8 @@ class EntriesController < ApplicationController
             flash[:success] = "Entry created!"
             redirect_to @entry
         else
-            flash[:danger] = @entry.errors.full_messages[0]
-            redirect_to request.referrer
+            flash.now[:error] = @entry.errors.full_messages[0]
+            render :new
         end
     end
 

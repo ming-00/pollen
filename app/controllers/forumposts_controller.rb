@@ -1,5 +1,6 @@
 class ForumpostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
+
     def create
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save
@@ -20,6 +21,6 @@ class ForumpostsController < ApplicationController
 
     private
     def forumpost_params
-        params.require(:forumpost).permit(:content, :tag_list)
+        params.require(:forumpost).permit(:content, :title, :tag_list)
     end
 end

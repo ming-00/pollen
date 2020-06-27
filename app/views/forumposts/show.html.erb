@@ -5,7 +5,19 @@
   </div>
   <div class="col-md-8">
         <ou class="forumposts">
-            <%= render @forumposts %>
+        <div>
+            <h3>Title</h3>
+            <span class="title"><%= @forumposts.title %></span>
+        </div>
+        <div>
+            <h3>Content</h3>
+            <span class="content"><%= @forumposts.content %></span>
+        </div>
+        <div>
+            
+            <h3>Reply to thread</h3>
+            <%= render 'shared/forumcomment_form' %>
+        </div>
         </ou>      
   </div>
 </div>

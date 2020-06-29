@@ -27,12 +27,12 @@ textarea {
 /* new fonts */
 @font-face {
     font-family: 'Triomphe Bold';
-    src: url('/assets/Triomphe-Bold.otf');
+    src: font-url('/assets/Triomphe-Bold.otf');
 }
 
 @font-face {
     font-family: 'Futura Std';
-    src: url('/assets/Futura-Medium.ttf');
+    src: font-url('/assets/Futura-Medium.ttf');
 }
 
 /* typography */

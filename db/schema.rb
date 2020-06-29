@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_024919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", null: false
+    t.string "password_digest"
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false

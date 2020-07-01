@@ -3,6 +3,7 @@
   <div class="col-md-8">
       <h3>Forum </h3>
   </div>
+  <aside>
   <div class="col-md-8">
         <ou class="forumposts">
         <div>
@@ -18,14 +19,16 @@
             <span class="content"><%= @forumposts.commentforums.count %></span>
             <h3>Comments</h3>
             <% @forumposts.commentforums.each do |l| %>
-                <%= l.reply %>
+                <div>
+                <h4><%= l.reply %><h4>
+                </div>
                 <span class="timestamp">
-                    Replied at <%= time_ago_in_words(l.created_at) %> ago.
+                <h6>Replied at <%= time_ago_in_words(l.created_at) %> ago.</h6>
                 </span>
             <% end %>
-            <h3>Reply to thread </h3>
-            <%= render 'commentforums/form' %>
         </div>
-        </ou>      
   </div>
+  </aside>
+  <h3>Reply to thread </h3>
+            <%= render 'commentforums/form' %>
 </div>

@@ -12,7 +12,7 @@
 
     <div>
         <%= f.label :correct, "This entry is correct"%>
-        <%= f.check_box :correct, {class:"form-check-input", type:"checkbox"}, true, false %>
+        <%= f.check_box :correct, {}, checked_value = "1",  unchecked_value = "0"%>
     </div>
 
     <%= f.hidden_field :entry_id %>

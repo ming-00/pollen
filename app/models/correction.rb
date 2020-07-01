@@ -5,6 +5,7 @@ class Correction < ApplicationRecord
   belongs_to :user
 
   validates :entry_id, presence: true
+  validates :user_id, presence: true
   validates :content,
   :presence => {:message => " can't be blank."}
 

@@ -27,12 +27,42 @@ class CorrectionsController < ApplicationController
         @corrections = @entry.corrections.paginate(page: params[:page])
     end
 
+    def update
+        @correction = Correction.find(params[:id])
+        @correction.correct = false
+        @correction.user = current_user
+        @entry = @correction.entry
+        if @correction.update(correction_params)
+          flash[:success] = "Correction updated"
+          redirect_to @entry
+        else 
+          flash[:danger] = @correction.errors.full_messages[0]
+          redirect_to @entry
+        end
+    end
+
+    def edit
+        @correction = Correction.find(params[:id])
+        @correction.user = current_user
+        @correction.correct = false
+    end
+
     def destroy
+        @correction.destroy
+        flash[:success] = "Correction deleted"
+        redirect_to request.referrer || root_url
+    end
+
+    def correct_user
+        @correction = current_user.corrections.find_by(id: params[:id])
+        if @correction.nil?
+            flash[:danger] = "Users can only update their own corrections."
+            redirect_to root_url 
+        end
     end
 
     private 
     def correction_params
-        defaults = { user_id: current_user }
-        params.require(:correction).permit(:content, :comment, :correct, :user_id, :entry_id).reverse_merge(defaults)
+        params.require(:correction).permit(:content, :comment, :correct, :user_id, :entry_id)
     end
 end

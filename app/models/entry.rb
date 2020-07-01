@@ -7,8 +7,8 @@ class Entry < ApplicationRecord
 
   validates :title,
     :presence => {:message => " can't be blank."},
-    length: {minimum: 1, maximum: 50, 
-      :message => " must be between 1 and 50 characters."}
+    length: {minimum: 1, maximum: 70, 
+      :message => " must be between 1 and 70 characters."}
 
   validates :content,
     :presence => {:message => " can't be blank."},

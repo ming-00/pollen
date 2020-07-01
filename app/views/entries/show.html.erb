@@ -18,6 +18,13 @@
                 </h2>
                 <p>
                     <%= @entry.content %>
+                    <br>
+                    <br>
+                    <% if current_user == @entry.journal.user %>
+                        <%= link_to "edit", edit_entry_path(@entry) %>
+                        <%= link_to "delete", @entry, method: :delete,
+                        data: { confirm: "This entry will be permanently deleted." } %>
+                    <%end%>
                 </p>
             </section>
         </aside>

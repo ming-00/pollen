@@ -14,9 +14,17 @@
             <span class="content"><%= @forumposts.content %></span>
         </div>
         <div>
-            
-            <h3>Reply to thread</h3>
-            <%= render 'shared/forumcomment_form' %>
+            <h3>Reply count</h3>
+            <span class="content"><%= @forumposts.commentforums.count %></span>
+            <h3>Comments</h3>
+            <% @forumposts.commentforums.each do |l| %>
+                <%= l.reply %>
+                <span class="timestamp">
+                    Replied at <%= time_ago_in_words(l.created_at) %> ago.
+                </span>
+            <% end %>
+            <h3>Reply to thread </h3>
+            <%= render 'commentforums/form' %>
         </div>
         </ou>      
   </div>

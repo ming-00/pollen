@@ -1,7 +1,7 @@
 <html>
     <head>
         <% provide(:title, "edit correction for: ${@correction.entry.title}") %>
-        <h1>edit correction for<%= @correction.entry.title %> </h1>
+        <h1>edit correction for "<%= @correction.entry.title %>" </h1>
     </head>
     <body>
         <%= form_with(model: @correction, local: true) do |f| %>

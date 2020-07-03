@@ -1,5 +1,5 @@
 class ForumpostsController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy, :edit, :update]
+    before_action :logged_in_user, only: [:create, :destroy, :edit, :update, :search]
 
     def create
         @forumpost = current_user.forumposts.build(forumpost_params)
@@ -32,6 +32,14 @@ class ForumpostsController < ApplicationController
 
     def edit
         @forumpost = Forumpost.find(params[:id])
+    end
+
+    def search
+        if params[:search].blank?
+            @forumposts = Forumpost.all
+        else 
+            @forumposts = Forumpost.search(params)
+        end
     end
 
 

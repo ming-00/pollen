@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
-  resources :forumposts, only: [:create, :destroy, :show] do
+  resources :forumposts, only: [:create, :destroy, :show, :edit, :update] do
     resources :commentforums
   end
   resources :tags, only: [:index, :show]

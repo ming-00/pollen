@@ -1,14 +1,20 @@
 # may not be the correct formatting, just created this file
 # may need to be corrected/ refined, refere to Listing 9.20.
 
-michael:
+lily:
   firstname: Lily
   lastname: Li
-  email: lily@gmail.com
-  password_digest: <%= User.digest('password') %>
+  email: lilo@gmail.com
+  temp_id: 1
+  f_temp_id: 1
+  encrypted_password: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  remember_token: <%= Clearance::Token.new %>
 
 ming: 
   firstname: Big
   lastname: Boi
-  email: bboi@gmail.com
-  password_digest: <%= User.digest('password') %>
+  email: be@gmail.com
+  temp_id: 1
+  f_temp_id: 1
+  encrypted_password: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  remember_token: <%= Clearance::Token.new %>

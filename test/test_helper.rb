@@ -5,6 +5,18 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+  require "clearance/test_unit"
 
   # Add more helper methods to be used by all tests here...
+end
+
+class ActionDispatch::IntegrationTest
+  def manual_sign_in_as(user)
+    post session_url, params: {
+      session: {
+        email: user.email,
+        password: user.password
+      }
+    }
+  end
 end

@@ -1,20 +1,11 @@
-<html>
-    <head>
-        <% provide(:title, "edit comment for thread: ${@forumpost.title}") %>
-        <h1>edit comment for "<%= @forumpost.title %>" </h1>
-    </head>
-    <body>
-        <%= form_for ([@forumpost, @commentforum]) do |f| %>
-            <div class = "text-field" %>
-                <%= f.label :reply, "Comment" %>
-                <%= f.text_area(:reply, :class => "tinymce")%>
-            <br>
-            </div>
-            <%= f.hidden_field :id %>
-            <%= hidden_field_tag :user_id, current_user.id%>
-            <%= f.submit "Update Comment", class: "btn btn-primary" %>
-        <% end %>
-    </body>
-</html>
-
-<%= tinymce %>
+<h3>Title</h3>
+    <span class="title"><%= @forumpost.title %></span>
+</div>
+<div>
+    <h3>Content</h3>
+    <span class="content"><%= @forumpost.content %></span>
+</div>
+<%= form_for ([@forumpost, @commentforum]) do |f| %>
+    <%= f.text_area(:reply, :value => @commentforum.reply, :class => "tinymce")%>
+    <%= f.submit "Update comment", class: "btn btn-primary"%>
+<% end %>

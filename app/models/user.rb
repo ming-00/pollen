@@ -38,6 +38,9 @@ class User < ApplicationRecord
 
   validates_format_of :lastname, :with => /\A[a-z]+\z/i,
     message: " must not contain any numbers."
+
+  validates :password, 
+    length: {minimum:4, :message => " must be at least four characters."}
   
   class << self
   def digest(string)
@@ -73,7 +76,7 @@ class User < ApplicationRecord
         unless: :email_optional?
 
       validates :password, 
-        :presence => {:message => "Password can't be blank."}, 
+        :presence => {:message => "Password can't be blank."},
         unless: :skip_password_validation?
       end
     end

@@ -5,7 +5,7 @@
             <title><%= full_title(yield(:title)) %></title>
         </head>
         <body>
-            <h1>journal feed</h1>
+        <h1>journal feed</h1>
             <% @entries.each do |entry| %>
                 <% if entry.journal.private == false && entry.journal.user.temp_id == current_user.temp_id %>
                     <li>                          
@@ -13,6 +13,6 @@
                         <%= link_to entry.title, entry %> 
                     </li> 
                 <%end%>
-            <% end %>        
+            <% end %> 
         </body>
     </html>

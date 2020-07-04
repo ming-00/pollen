@@ -22,12 +22,14 @@ Rails.application.routes.draw do
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
-  resources :forumposts, only: [:create, :destroy, :show] do 
-    resources :forumcomments
+  resources :forumposts, only: [:create, :destroy, :show, :edit, :update, :search] do
+    resources :commentforums
+    collection do
+      get :search
+    end
   end
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
-
   resources :entries, only: [:show, :create, :update, :edit, :destroy, :new]
   resources :corrections, only: [:create, :index, :destroy, :edit, :update]
 

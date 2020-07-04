@@ -1,0 +1,2 @@
+module CommentforumsHelper
+end

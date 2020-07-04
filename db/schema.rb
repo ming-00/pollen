@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_024919) do
+ActiveRecord::Schema.define(version: 2020_07_01_122325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commentforums", force: :cascade do |t|
+    t.text "reply"
+    t.bigint "forumpost_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["forumpost_id"], name: "index_commentforums_on_forumpost_id"
+    t.index ["user_id"], name: "index_commentforums_on_user_id"
+  end
 
   create_table "corrections", force: :cascade do |t|
     t.text "content"
@@ -137,6 +147,8 @@ ActiveRecord::Schema.define(version: 2020_06_27_024919) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "commentforums", "forumposts"
+  add_foreign_key "commentforums", "users"
   add_foreign_key "corrections", "entries"
   add_foreign_key "corrections", "users"
   add_foreign_key "entries", "journals"

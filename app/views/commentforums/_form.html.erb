@@ -1,0 +1,6 @@
+<%= form_for([@forumposts, @forumposts.commentforums.build]) do |f| %>
+    <div class="field">
+    <%= f.text_area :reply, placeholder: "Compose new forumpost..." %>
+    </div>
+    <%= f.submit "Reply", class: "btn btn-primary" %>
+<% end %>

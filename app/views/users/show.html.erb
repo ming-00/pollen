@@ -15,19 +15,19 @@
                     <span>
                     <h2>
                         <% @user.languages.each do |l| %>
-                            <%= l.lang %>,
+                            <%= l.lang %>
                         <% end %>
                         <% @user.fluencies.each do |l| %>
                             <% if l.level == 1 %>
-                                <%= "Beginner" %>
+                                <%= "(Beginner)" %>
                             <% elsif l.level == 2 %>
-                                <%= "Lower Intemediate" %>
+                                <%= "(Lower Intemediate)" %>
                             <% elsif l.level == 3 %>
-                                <%= "Upper Intermediate" %>
+                                <%= "(Upper Intermediate)" %>
                             <% elsif l.level == 4 %>
-                                <%= "Advanced" %>
+                                <%= "(Advanced)" %>
                             <% else %>
-                                <%= "Native Speaker/ Full Language Proficiency" %>
+                                <%= "(Full Proficiency)" %>
                             <%end%>
                         <% end %>
                     </h2>

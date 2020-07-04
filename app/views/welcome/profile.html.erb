@@ -8,35 +8,9 @@
         <div class="row">
             <aside class="col-md-4">
                 <section class="user_info">
-                    <h1>
-                        <%= avatar_for(current_user) %>
-                        <%= current_user.firstname %> 
-                        <%= current_user.lastname %> 
-                        <br>
-                    </h1>
-                    <h2>
-                        Language:
-                        <% current_user.languages.each do |l| %>
-                            <%= l.lang %>, 
-                        <% end %>
-                        <% current_user.fluencies.each do |l| %>
-                            <% if l.level == 1 %>
-                                <%= "Beginner" %>
-                            <% elsif l.level == 2 %>
-                                <%= "Lower Intemediate" %>
-                            <% elsif l.level == 3 %>
-                                <%= "Upper Intermediate" %>
-                            <% elsif l.level == 4 %>
-                                <%= "Advanced" %>
-                            <% else %>
-                                <%= "Native Speaker/ Full Language Proficiency" %>
-                            <%end%>
-                        <% end %>
-                    </h2>
-                    <p>
-                        <span><%= pluralize(current_user.entries.count, "journal entries") %></span>
-                        <span><%= pluralize(current_user.forumposts.count, "forum threads") %></span>
-                    </p>
+                    <section class="user_info">
+                        <%= render 'shared/user_info' %>
+                    </section>
                     <br>
                     <p>
                     <% if signed_in? %>

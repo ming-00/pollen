@@ -7,12 +7,12 @@
         <%= form_with(model: @forumpost, local: true) do |f| %>
             <div class = "text-field" %>
                 <%= f.label :title, "Title" %>
-                <%= f.text_area(:title, :class => "tinymce")%>
+                <%= f.text_area(:title)%>
             <br>
             </div>
             <div class = "text-field" %>
                 <%= f.label :content %>
-                <%= f.text_area(:content, :class => "tinymce")%>
+                <%= f.text_area(:content)%>
             </div>
             <%= f.hidden_field :id %>
             <%= hidden_field_tag :user_id, current_user.id%>
@@ -20,5 +20,3 @@
         <% end %>
     </body>
 </html>
-
-<%= tinymce %>

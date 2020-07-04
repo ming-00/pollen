@@ -18,14 +18,14 @@ class CommentforumsController < ApplicationController
 
     def destroy
         @commentforum.destroy
-        flash[:success] = "Comment destroyed"
+        flash[:success] = "Comment deleted!"
         redirect_to forumpost_path(@forumpost)
     end
 
     def update
         @commentforum = Commentforum.find(params[:id])
         if @commentforum.update(commentforum_params)
-          flash[:success] = "Comment updated"
+          flash[:success] = "Comment updated!"
           redirect_to @forumpost
         else 
           flash[:danger] = @commentforum.errors.full_messages[0]

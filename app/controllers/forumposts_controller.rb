@@ -15,14 +15,14 @@ class ForumpostsController < ApplicationController
     def destroy
         @forumpost = Forumpost.find(params[:id])
         @forumpost.destroy
-        flash[:success] = "Thread destroyed"
+        flash[:success] = "Thread deleted!"
         redirect_to request.referrer
     end
 
     def update
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.update(forumpost_params)
-          flash[:success] = "Thread updated"
+          flash[:success] = "Thread updated!"
           redirect_to "Welcome/forum"
         else 
           flash[:danger] = @forumpost.errors.full_messages[0]

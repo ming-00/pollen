@@ -258,7 +258,7 @@ DEPENDENCIES
   rails_12factor (= 0.0.2)
   sass-rails (~> 5.0)
   selenium-webdriver
-  simple_form
+  simple_form (~> 5.0.2)
   spring
   spring-watcher-listen (~> 2.0.0)
   tinymce-rails (~> 5.3.2)

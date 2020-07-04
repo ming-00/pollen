@@ -23,7 +23,7 @@
                 <%=  link_to "#{l.user.firstname} #{l.user.lastname}", l.user%>
                 <h4><%= l.reply %><h4>
                 <span class="timestamp">
-                <h6>Replied at <%= time_ago_in_words(l.created_at) %> ago</h6>
+                <h6>Replied <%= time_ago_in_words(l.created_at) %> ago</h6>
                 <% if current_user == l.user %>
                 <%= link_to "edit", edit_forumpost_commentforum_path(l.forumpost, l) %>
                 <%= link_to "delete", [l.forumpost, l], method: :delete,

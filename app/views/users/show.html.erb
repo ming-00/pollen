@@ -8,36 +8,39 @@
             <aside class="col-md-4">
                 <section class="user_info">
                     <h1>
+                        <%= avatar_for(@user)%>
                         <%= @user.firstname %> 
                         <%= @user.lastname %> 
                     </h1>
-                    <br>
                     <span>
-                    <% @user.languages.each do |l| %>
-                        <%= l.lang %>,
-                    <% end %>
-                    <% @user.fluencies.each do |l| %>
-                        <% if l.level == 1 %>
-                            <%= "Beginner" %>
-                        <% elsif l.level == 2 %>
-                            <%= "Lower Intemediate" %>
-                        <% elsif l.level == 3 %>
-                            <%= "Upper Intermediate" %>
-                        <% elsif l.level == 4 %>
-                            <%= "Advanced" %>
-                        <% else %>
-                            <%= "Native Speaker/ Full Language Proficiency" %>
-                        <%end%>
-                    <% end %>
+                    <h2>
+                        <% @user.languages.each do |l| %>
+                            <%= l.lang %>,
+                        <% end %>
+                        <% @user.fluencies.each do |l| %>
+                            <% if l.level == 1 %>
+                                <%= "Beginner" %>
+                            <% elsif l.level == 2 %>
+                                <%= "Lower Intemediate" %>
+                            <% elsif l.level == 3 %>
+                                <%= "Upper Intermediate" %>
+                            <% elsif l.level == 4 %>
+                                <%= "Advanced" %>
+                            <% else %>
+                                <%= "Native Speaker/ Full Language Proficiency" %>
+                            <%end%>
+                        <% end %>
+                    </h2>
                     </span>
-                    <span><%= pluralize(@user.entries.count, "journal entries") %></span>
-                    <span><%= pluralize(@user.forumposts.count, "forum threads") %></span>
-
+                    <p>
+                        <span><%= pluralize(@user.entries.count, "journal entries") %></span>
+                        <span><%= pluralize(@user.forumposts.count, "forum threads") %></span>
+                    </p>
                 </section>
             </aside>
             <div class="col-md-8">
+                <h3>Journals (<%= @user.journals.count %>)</h3>
                 <% if @user.journals.any? %>
-                    <h3>Journals (<%= @user.journals.count %>)</h3>
                     <ol class="journals">
                         <%= render @journals %>
                     </ol>

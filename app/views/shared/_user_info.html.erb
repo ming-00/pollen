@@ -1,26 +1,30 @@
 <h1>
+    <%= avatar_for(current_user) %>
     <%= current_user.firstname %>
     <%= current_user.lastname %>
 </h1>
-<br>
 <span>
-<% current_user.languages.each do |l| %>
-    <%= l.lang %>,
-<% end %>
-<% current_user.fluencies.each do |l| %>
-    <% if l.level == 1 %>
-        <%= "Beginner" %>
-    <% elsif l.level == 2 %>
-        <%= "Lower Intemediate" %>
-    <% elsif l.level == 3 %>
-        <%= "Upper Intermediate" %>
-    <% elsif l.level == 4 %>
-        <%= "Advanced" %>
-    <% else %>
-        <%= "Native Speaker/ Full Language Proficiency" %>
-    <%end%>
-<% end %>
-</span>
-<span><%= pluralize(current_user.entries.count, "journal entries") %></span>
-<span><%= pluralize(current_user.forumposts.count, "forum threads") %></span>
-
+<h2>
+    Language: 
+    <% current_user.languages.each do |l| %>
+        <%= l.lang %>,
+    <% end %>
+    <% current_user.fluencies.each do |l| %>
+        <% if l.level == 1 %>
+            <%= "Beginner" %>
+        <% elsif l.level == 2 %>
+            <%= "Lower Intemediate" %>
+        <% elsif l.level == 3 %>
+            <%= "Upper Intermediate" %>
+        <% elsif l.level == 4 %>
+            <%= "Advanced" %>
+        <% else %>
+            <%= "Native Speaker/ Full Language Proficiency" %>
+        <%end%>
+    <% end %>
+    </span>
+</h2>
+<p>
+    <span><%= pluralize(current_user.entries.count, "journal entries") %></span>
+    <span><%= pluralize(current_user.forumposts.count, "forum threads") %></span>
+</p>

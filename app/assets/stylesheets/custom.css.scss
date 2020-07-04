@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 3em;
     letter-spacing: -2px;
-    margin-bottom: 30px;
+    margin-bottom: 1em;
     text-align: center;
     font-family: 'Triomphe Bold';
 }
@@ -52,7 +52,8 @@ h1 {
 h2 {
     font-size: 1.2em;
     letter-spacing: -1px;
-    margin-bottom: 30px;
+    margin-bottom: 1em;
+    margin-top: 0em;
     text-align: left;
     font-weight: normal;
     color: #777;
@@ -62,6 +63,7 @@ p {
     font-size: 1.1em;
     line-height: 1.7em;
     font-family: 'Futura Std';
+    text-align: left;
 }
 
 /* header */
@@ -302,4 +304,13 @@ aside {
         height: 30em;
         width: 40em;
     }
+}
+
+/* avatar */
+.avatar {
+  float: left;
+  margin-right: 10px;
+  width: 5em;
+  height: 5em;
+  border-radius: 1em;
 }

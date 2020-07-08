@@ -29,7 +29,9 @@
     <div class="container">
       <% flash.each do |key, value| %>
         <div class="<%= flash_class(key) %>">
-          <%= value %>
+          <div class="nice-flash">
+            <%= value %>
+          </div>
         </div>
       <% end %>
       <%= yield %>

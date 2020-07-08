@@ -50,9 +50,10 @@ class EntriesController < ApplicationController
     end
   
     def destroy
+        @journal = @entry.journal
         @entry.destroy
         flash[:success] = "Entry deleted"
-        redirect_to '/profile'
+        redirect_to @journal
     end
 
     def correct_user

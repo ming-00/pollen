@@ -237,12 +237,6 @@ aside {
     }
   }
 
-/* flash message */
-
-.success .error .danger {
-    font-family: 'Futura Std';
-}
-
 /* checkbox for form */
 .hideme {
   display: none;
@@ -324,10 +318,40 @@ aside {
 textarea {
     font-family: 'Futura Std';
     font-size: 1.05em;
+    padding: 1em;
+    border-radius: 1em;
 }
 
-label {
-    display: inline-block;
+input[type = "text"] {
+    font-family: 'Futura Std';
+    font-size: 1em;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 7px #ac89a5;
+    -webkit-box-shadow: 0 0 6px #ac89a5;
+    -moz-box-shadow: 0 0 6px #ac89a5;
+    border: 1px solid #ac89a5;
+}
+
+.tinymce {
+    font-family: 'Futura Std';
+}
+
+input[type = "email"] {
+    font-family: 'Futura Std';
+    font-size: 1em;
+}
+
+.other-links {
     text-align: center;
-    width: 50%;
+    font-family: 'Futura Std';
+    font-size: 1.05em;
+    color: #850941;
+}
+
+.nice-flash {
+    font-family: 'Futura Std';
+    font-size: 1.05em;
 }

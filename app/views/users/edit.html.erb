@@ -9,35 +9,35 @@
         <%= form_with(model: @user, local: true) do |f| %>
             <table summary="Edit user form fields">
     
-            <div class ="text-field">
+            <div class ="user-edit-field">
                 <label>
                     <%= f.label :firstname, 'First Name' %>
                 </label>
                 <%= f.text_field :firstname %></td>
             </div>
 
-            <div class ="text-field">
+            <div class ="user-edit-field">
                 <label>
                     <%= f.label :lastname, 'Last Name' %>
                 </label>
                 <%= f.text_field :lastname %>
             </div>
 
-            <div class ="text-field">
+            <div class ="user-edit-field">
                 <label>
                     <%= f.label :email, 'Email' %>
                 </label>
                 <%= f.email_field :email %>
             </div>
 
-            <div class ="text-field">
+            <div class ="user-edit-field">
                 <label>
                     <%= f.label :password, 'Password' %>
                 </label>
                 <%= f.password_field :password %>
             </div>
 
-            <div>
+            <div class ="user-edit-field">
                 <%= f.label :language, 'Language to Learn' %>
                 <%= f.select :temp_id, [['Japanese', 1], ['French', 2], ['German', 3], 
                     ['Spanish', 4], ['Korean', 5]], {}, {class: 'collection-select-class'} %>

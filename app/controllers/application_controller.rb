@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     user == current_user
   end
 
+  def following?(other_user)
+    current_user.following.include?(other_user)
+  end
+
   # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?

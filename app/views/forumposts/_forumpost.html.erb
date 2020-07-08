@@ -1,15 +1,38 @@
-</ul>
-<li id="forumpost-<%= forumpost.id %>">
-  <span class="user"><%= link_to forumpost.user.lastname, forumpost.user %></span>
-  <h6><span class="user"><%= link_to forumpost.title, forumpost %></span></h6>
-  <h6><%= render forumpost.tags %></h6>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(forumpost.created_at) %> ago.
-  </span>
-  <span class="content">Reply count: <%= forumpost.commentforums.count %></span>
-  <% if current_user == forumpost.user %>
-      <%= link_to "edit", edit_forumpost_path(forumpost) %>
-      <%= link_to "delete", forumpost, method: :delete,
-      data: { confirm: "This thread will be permanently deleted." } %>
-  <%end%>
-</li>
+
+
+
+
+    <ol class= "entries"> 
+        <li> 
+            <div class="tiny-avatar">
+                <%= avatar_for(forumpost.user) %>
+            </div>
+            <div id="entry-<%= forumpost.id %>">
+                <div class="entry-title"><%= forumpost.title %></div>
+                <div class="entry-particulars">
+                    entry by
+                    <%= link_to forumpost.user.lastname, forumpost.user %>
+                    ·   
+                    posted <%= time_ago_in_words(forumpost.created_at) %> ago
+                </div>
+                <br>
+                <div class="entry-content">
+                    <%= truncate(forumpost.content, :length => 150, :separator => ' ') %>
+                </div>
+                <div class="entry-particulars">
+                    <%= link_to "view", forumpost %>
+                    <% if current_user == forumpost.user %>
+                        /
+                        <%= link_to "edit", edit_forumpost_path(forumpost) %>
+                        /
+                        <%= link_to "delete", forumpost, method: :delete,
+                        data: { confirm: "This thread will be permanently deleted." } %>
+                    <%end%>
+                </div>
+            </div>
+        </li> 
+    </ol>
+
+
+
+

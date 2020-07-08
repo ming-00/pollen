@@ -15,11 +15,12 @@
     <div class="col-md-8">
         <h3><%= @title %></h3>
             <% if @users.any? %>
-                <ul class="users follow">
+                <ul class="user_info">
+                <section class="user_info">
                 <% @users.each do |user| %>
-                    <%= link_to "#{user.firstname} #{user.lastname}", user %> 
-                    <br>
+                    <%= render 'shared/user_info_relationship' %>
                 <% end %>
+                </section>
                 </ul>
                 <%= will_paginate %>
             <% end %>

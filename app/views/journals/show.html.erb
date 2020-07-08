@@ -18,25 +18,25 @@
                             @journal.user%>
                     </h1>
                     <span>
-                    <h2>
-                        Language: 
-                        <% @journal.user.languages.each do |l| %>
-                            <%= l.lang %>
-                        <% end %>
-                        <% @journal.user.fluencies.each do |l| %>
-                            <% if l.level == 1 %>
-                                <%= "(Beginner)" %>
-                            <% elsif l.level == 2 %>
-                                <%= "(Lower Intemediate)" %>
-                            <% elsif l.level == 3 %>
-                                <%= "(Upper Intermediate)" %>
-                            <% elsif l.level == 4 %>
-                                <%= "(Advanced)" %>
-                            <% else %>
-                                <%= "(Full Proficiency)" %>
-                            <%end%>
-                        <% end %>
-                    </h2>
+                        <h2>
+                            Language: 
+                            <% @journal.user.languages.each do |l| %>
+                                <%= l.lang %>
+                            <% end %>
+                            <% @journal.user.fluencies.each do |l| %>
+                                <% if l.level == 1 %>
+                                    <%= "(Beginner)" %>
+                                <% elsif l.level == 2 %>
+                                    <%= "(Lower Intemediate)" %>
+                                <% elsif l.level == 3 %>
+                                    <%= "(Upper Intermediate)" %>
+                                <% elsif l.level == 4 %>
+                                    <%= "(Advanced)" %>
+                                <% else %>
+                                    <%= "(Full Proficiency)" %>
+                                <%end%>
+                            <% end %>
+                        </h2>
                     </span>
                     <p>
                         <span><%= pluralize(@journal.user.entries.count, "journal entries") %></span>
@@ -44,6 +44,9 @@
                     </p>
                 </section>
             </section>
+            <% if @journal.user == current_user %>
+                <%= button_to "Create new entry", entries_path, :method => :get %>
+            <%end%>
         </aside>
     <div class="col-md-8">
     <br>

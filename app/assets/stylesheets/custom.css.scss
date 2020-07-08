@@ -355,3 +355,11 @@ input[type = "email"] {
     font-family: 'Futura Std';
     font-size: 1.05em;
 }
+
+.select-field {
+    font-family: 'Futura Std';
+}
+
+select:focus {
+    outline: none;
+}

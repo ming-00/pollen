@@ -1,27 +1,29 @@
 <div id="correction-<%= correction.id %>">
 <li style="padding-bottom:1em">
     <% if correction.correct %>
-            <br>
+        <br>
+        <div class="correction-content">
             <%= "This entry is perfect! No correction needed." %>
-            <br>
+        </div>
+        <br>
     <% else %>
         <span class="content"><%= correction.content.html_safe %></span>
     <%end%>
     <% if !correction.comment.blank? %>
-        <span class="comment">
+        <div class="correction-content">
             Comments: 
-            <%= correction.comment %></span>
-        </span>
+            <%= correction.comment %>
+        </div>
     <% end %>
-    <span class="timestamp">
-        Correction posted by
+    <div class="correction-particulars">
+        Correction by
         <%=  link_to "#{correction.user.firstname} #{correction.user.lastname}", correction.user%>
         <%= time_ago_in_words(correction.created_at) %> ago.
-    </span>
-    <% if current_user == correction.user %>
-        <%= link_to "edit", edit_correction_path(correction) %>
-        <%= link_to "delete", correction, method: :delete,
-        data: { confirm: "This correction will be permanently deleted." } %>
-    <%end%>
-
+        <br>
+        <% if current_user == correction.user %>
+            <%= link_to "edit", edit_correction_path(correction) %> /
+            <%= link_to "delete", correction, method: :delete,
+            data: { confirm: "This correction will be permanently deleted." } %>
+        <%end%>
+    </div>
 </li>

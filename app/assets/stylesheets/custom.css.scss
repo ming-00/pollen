@@ -60,7 +60,7 @@ h2 {
 }
 
 p {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1.7em;
     font-family: 'Futura Std';
     text-align: left;
@@ -313,4 +313,21 @@ aside {
   width: 5em;
   height: 5em;
   border-radius: 1em;
+}
+
+.tiny-avatar {
+    height: 1em;
+    width: 1em;
+}
+
+/* form text area */
+textarea {
+    font-family: 'Futura Std';
+    font-size: 1.05em;
+}
+
+label {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
 }

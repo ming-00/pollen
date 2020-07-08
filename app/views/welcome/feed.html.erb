@@ -5,14 +5,55 @@
             <title><%= full_title(yield(:title)) %></title>
         </head>
         <body>
-        <h1>journal feed</h1>
-            <% @entries.each do |entry| %>
-                <% if entry.journal.private == false && entry.journal.user.temp_id == current_user.temp_id %>
-                    <li>                          
-                        <%=  "#{entry.journal.user.firstname} #{entry.journal.user.lastname}"%>
-                        <%= link_to entry.title, entry %> 
-                    </li> 
-                <%end%>
-            <% end %> 
-        </body>
-    </html>
+            <div class="row">
+                <aside class="col-md-4">
+                    <section class="user_info">
+                        <br>
+                        <br>
+                        <%= render 'shared/user_info' %>
+                    </section>
+                </aside>
+            <div class="col-md-8">
+                <h3>Journal Feed</h3>
+                <% @entries.each do |entry| %>
+                    <% if entry.journal.private == false && entry.journal.user.temp_id == current_user.temp_id %>
+                        <ol class= "entries"> 
+                            <li> 
+                                <div class="tiny-avatar">
+                                    <%= avatar_for(entry.journal.user) %>
+                                </div>
+                                <div id="entry-<%= entry.id %>">
+                                    <div class="entry-title"><%= entry.title %></div>
+                                    <div class="entry-particulars">
+                                        entry by
+                                        <%= link_to entry.journal.user.lastname, entry.journal.user %>
+                                        ·   
+                                        posted <%= time_ago_in_words(entry.created_at) %> ago
+                                    </div>
+                                    <br>
+                                    <div class="entry-content">
+                                        <%= truncate(entry.content, :length => 150, :separator => ' ') %>
+                                    </div>
+                                    <div class="entry-particulars">
+                                        <%= link_to "view", entry %>
+                                        <% if current_user == entry.journal.user %>
+                                            /
+                                            <%= link_to "edit", edit_entry_path(entry) %>
+                                            /
+                                            <%= link_to "delete", entry, method: :delete,
+                                            data: { confirm: "This entry will be permanently deleted." } %>
+                                        <%end%>
+                                    </div>
+                                </div>
+                            </li> 
+                        </ol>
+                    <%end%>
+                <% end %> 
+        </div>
+    </div>
+    </body>
+</html>
+
+
+
+

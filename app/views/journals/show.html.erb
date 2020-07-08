@@ -12,20 +12,51 @@
                     <br>
                     <%= @journal.title %>
                 </h1>
-                <h2>
-                    A journal by 
-                    <%=  link_to "#{@entry.journal.user.firstname} #{@entry.journal.user.lastname}", @entry.journal.user%>
-                </h2>
+                <section class="user_info">
+                    <h1>
+                        <%= avatar_for(@journal.user)%>
+                        <%=  link_to "#{@journal.user.firstname} #{@journal.user.lastname}", 
+                            @journal.user%>
+                    </h1>
+                    <span>
+                    <h2>
+                        Language: 
+                        <% @journal.user.languages.each do |l| %>
+                            <%= l.lang %>
+                        <% end %>
+                        <% @journal.user.fluencies.each do |l| %>
+                            <% if l.level == 1 %>
+                                <%= "(Beginner)" %>
+                            <% elsif l.level == 2 %>
+                                <%= "(Lower Intemediate)" %>
+                            <% elsif l.level == 3 %>
+                                <%= "(Upper Intermediate)" %>
+                            <% elsif l.level == 4 %>
+                                <%= "(Advanced)" %>
+                            <% else %>
+                                <%= "(Full Proficiency)" %>
+                            <%end%>
+                        <% end %>
+                    </h2>
+                    </span>
+                    <p>
+                        <span><%= pluralize(@journal.user.entries.count, "journal entries") %></span>
+                        <span><%= pluralize(@journal.user.forumposts.count, "forum threads") %></span>
+                    </p>
+                </section>
             </section>
         </aside>
-    </div>
     <div class="col-md-8">
+    <br>
         <% if @journal.entries.any? %>
             <h3>Entries (<%= @journal.entries.count %>)</h3>
             <ol class="entries">
-            <%= render @entries %>
-        </ol>
+                <%= render @entries %>
+            </ol>
         <%= will_paginate @entries %>
         <% end %>
     </div>
+    </div>
 </html>
+
+

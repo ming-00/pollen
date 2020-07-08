@@ -46,3 +46,54 @@ body {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
 }
+
+.entry-title {
+    color: #191919;
+    font-family: 'Futura Std';
+    font-size: 1.5em;
+    text-align: left !important;
+}
+
+.entry-particulars {
+    text-align: left;
+    font-family: 'Futura Std';
+    font-size: 1.05em;
+    color: #850941;
+}
+
+.entry-content {
+    text-align: left;
+    font-size: 1.05em;
+    font-family: 'Futura Std';
+    color: #262626;
+    line-height: 1.6em;
+}
+
+.entries {
+    list-style: none;
+    padding: 0;
+    li {
+        margin-top: 3em;
+        margin-bottom: 3em;
+        padding: 20px 30px;
+        background-color:white;
+        border-radius: 2.5em;
+        box-shadow: 12px 12px 25px 0px #ac89a5;
+    }
+}
+
+.w3-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 20px 30px;
+    width: 95%;
+    background-color:white;
+    border-radius: 2.5em;
+    box-shadow: 12px 12px 25px 0px #ac89a5;
+}
+
+.no-corrections {
+    text-align: center;
+    font-size: 1.05em;
+    font-family: 'Futura Std';
+}

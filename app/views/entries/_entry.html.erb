@@ -1,17 +1,23 @@
-<div id="entry-<%= entry.id %>">
-  <span class="user"><%= link_to entry.journal.user.lastname, entry.journal.user %></span>
-  <span class="journal"><%= link_to entry.journal.title, entry.journal %></span>
-  <span class="entry_title"><%= entry.title %></span>
-  <br>
-  <span class="content"><%= entry.content %></span>
-  <br>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(entry.created_at) %> ago.
-    <%= link_to "view", entry %>
-    <% if current_user == entry.journal.user %>
-      <%= link_to "edit", edit_entry_path(entry) %>
-      <%= link_to "delete", entry, method: :delete,
-        data: { confirm: "This entry will be permanently deleted." } %>
-    <%end%>
-  </span>
-</div>
+<li>
+  <div id="entry-<%= entry.id %>">
+    <div class="entry-title"><%= entry.title %></div>
+    <div class="entry-particulars">
+      entry by
+      <%= link_to entry.journal.user.lastname, entry.journal.user %>
+      ·   
+      posted <%= time_ago_in_words(entry.created_at) %> ago
+    </div>
+    <br>
+    <div class="entry-content">
+      <%= truncate(entry.content, :length => 150, :separator => ' ') %>
+    </div>
+    <div class="entry-particulars">
+      <%= link_to "view", entry %>/
+      <% if current_user == entry.journal.user %>
+        <%= link_to "edit", edit_entry_path(entry) %>/
+        <%= link_to "delete", entry, method: :delete,
+          data: { confirm: "This entry will be permanently deleted." } %>
+      <%end%>
+    </div>
+  </div>
+</li>

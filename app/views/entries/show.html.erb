@@ -6,30 +6,38 @@
     <% provide(:title, @entry.title) %>
     <div id="row-entry">
         <aside id="left-scroll">
-            <section class="journal_info">
-                <h1>
-                    <br>
+            <section class="w3-container">
+                <br>
+                <br>
+                <div class="tiny-avatar">
+                    <%= avatar_for(@entry.journal.user) %>
+                </div>
+                <div class="entry-title">
                     <%= @entry.title %>
-                </h1>
-                <h2>
-                    Entry by
+                </div>
+                <div class="entry-particulars">
+                    entry by
                     <%=  link_to "#{@entry.journal.user.firstname} #{@entry.journal.user.lastname}", @entry.journal.user%>
+                    ·   
+                    posted <%= time_ago_in_words(@entry.created_at) %> ago
                     <br>
-                </h2>
-                <p>
+                    <br>
+                </div>
+                <div class="entry-content">
                     <%= @entry.content %>
                     <br>
                     <br>
+                </div>
+                <div class="entry-particulars">
                     <% if current_user == @entry.journal.user %>
-                        <%= link_to "edit", edit_entry_path(@entry) %>
+                        <%= link_to "edit", edit_entry_path(@entry) %> /
                         <%= link_to "delete", @entry, method: :delete,
                         data: { confirm: "This entry will be permanently deleted." } %>
                     <%end%>
-                </p>
+                </div>
             </section>
         </aside>
         <div id="right-scroll">
-        <br>
         <br>
             <% if current_user != @entry.journal.user %>
                 <section>
@@ -44,7 +52,10 @@
                     <%= render @corrections %>
                 </ol>
             <% else %>
-                No corrections yet.
+                <div class = "no-corrections">
+                    <br>
+                    No corrections yet.
+                </div>
             <% end %>
         </div>
     </div>

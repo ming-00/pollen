@@ -18,7 +18,12 @@
                 <ul class="user_info">
                 <section class="user_info">
                 <% @users.each do |user| %>
-                    <%= render 'shared/user_info_relationship' %>
+                    <section class="user_info">
+                        <%= render 'shared/user_info_relationship' %>
+                    </section>
+                </section>
+            </section>
+
                 <% end %>
                 </section>
                 </ul>

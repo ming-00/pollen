@@ -17,8 +17,10 @@
                         <h3>Filter by</h3>
                         <% @forumpost.tag_counts_on(:tags).each do |tag| %>
                             <div>
-                                <%= render tag %>
-                                <%= puts tag.count %>
+                                <button class="tag">
+                                    <%= render tag %>
+                                    <%= tag.count %>
+                                </button>
                             </div>
                         <% end %>
                     </section>

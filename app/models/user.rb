@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :journals, :dependent => :destroy
   has_many :forumposts, :dependent => :destroy
+  has_many :forumpostlikes, dependent: :destroy
   has_many :entries, through: :journals
   has_many :corrections, :dependent => :destroy
 

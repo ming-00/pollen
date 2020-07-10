@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:create, :destroy, :show, :edit, :update, :search] do
+    resources :forumpostlikes, only: [:create, :destroy]
     resources :commentforums
     collection do
       get :search

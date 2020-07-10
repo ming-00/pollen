@@ -5,6 +5,7 @@
   <h6><%= render forumpost.tags %></h6>
   <span class="timestamp">
     Posted <%= time_ago_in_words(forumpost.created_at) %> ago.
+    
   </span>
   <span class="content">Reply count: <%= forumpost.commentforums.count %></span>
   <% if current_user == forumpost.user %>

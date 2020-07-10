@@ -45,8 +45,9 @@ class ForumpostsController < ApplicationController
 
     def show
         @forumposts = Forumpost.find(params[:id])
-        
+        @forumposts.punch(request)
     end
+
 
     private
     def forumpost_params

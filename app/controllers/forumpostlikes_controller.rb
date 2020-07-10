@@ -1,0 +1,2 @@
+class ForumpostlikesController < ApplicationController
+end

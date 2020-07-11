@@ -1,6 +1,7 @@
 <li id="journal-<%= journal.id %>">
   <span class="user"><%= link_to journal.user.lastname, journal.user %></span>
   <div>
+      <%= cover_for(journal) %>
     <% if journal.private %>
         <%= "Private" %>
     <% else %>

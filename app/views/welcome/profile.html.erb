@@ -44,7 +44,7 @@
                     <span><%= pluralize(current_user.entries.count, "journal entries") %></span>
                     <span><%= pluralize(current_user.forumposts.count, "forum threads") %></span>
                 </p>
-                                    <br>
+                    <br>
                     <p>
                     <% if signed_in? %>
                         <section class="stats">
@@ -55,15 +55,16 @@
                     <% end %>
                     <%= render 'users/follow_form' if logged_in? %>
                     <%= link_to "Create new entry", 'entries/new' %>
-                    <section>
-                        <%= render 'shared/journal_form' %>
-                    </section>
                     </p>
                 </section>
             </aside>
             <div class="col-md-8">
                 <% if current_user.journals.any? %>
                     <h3>Journals (<%= current_user.journals.count %>)</h3>
+                    <button type="button1" id="journal-button">+</button>
+                    <div id="journal-form">
+                        <%= render 'shared/journal_form' %>
+                    </div>
                     <ol class="journals">
                         <%= render @journals %>
                     </ol>

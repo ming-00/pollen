@@ -314,6 +314,21 @@ aside {
     width: 1em;
 }
 
+/* journal cover */
+.journal-cover {
+    width: 10em;
+    height: relative;
+}
+
+.dropshadow{
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    width: 45.5%;
+    height: 770px;
+    background: linear-gradient(rgba(112, 112, 112, 0.15) 0%,   rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 100%);
+    transform: translateX(-58px) translateY(-731px) rotateZ(-45deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
+}
 /* form text area */
 textarea {
     font-family: 'Futura Std';
@@ -362,4 +377,8 @@ input[type = "email"] {
 
 select:focus {
     outline: none;
+}
+
+#journal-form {
+    display:none;
 }

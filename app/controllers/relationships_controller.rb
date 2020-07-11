@@ -3,13 +3,23 @@ class RelationshipsController < ApplicationController
 
     def create
         user = User.find(params[:followed_id])
-        current_user.follow(user)
+        current_user.following << user
+        flash[:success] = "Followed successfully!"
         redirect_to user
     end
 
     def destroy
         user = Relationship.find(params[:id]).followed
-        current_user.unfollow(user)
+        current_user.following.delete(user)
+        flash[:success] = "Unfollowed successfully!"
         redirect_to user
+    end
+
+    def follow(other_user)
+        following << other_user
+    end
+    
+    def unfollow(other_user)
+        following.delete(other_user)
     end
 end

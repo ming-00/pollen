@@ -25,15 +25,22 @@
                 <span class="timestamp">
                     <h6>Replied <%= time_ago_in_words(l.created_at) %> ago</h6>
                     <% if current_user == l.user %>
-                    <%= link_to "edit", edit_forumpost_commentforum_path(l.forumpost, l) %>
-                        <%= link_to "delete", [l.forumpost, l], method: :delete,
-                        data: { confirm: "This comment will be permanently deleted." } %>
+                        <%= link_to "edit", edit_forumpost_commentforum_path(l.forumpost, l) %>
+                            <%= link_to "delete", [l.forumpost, l], method: :delete,
+                            data: { confirm: "This comment will be permanently deleted." } %>
                     <%end%>
                 </span>
             <% end %>
+            <% pre_like = @forumposts.forumpostlikes.find { |like| like.user_id == current_user.id} %>
+            <% if pre_like %>
+              <%= button_to 'Unlike', forumpost_forumpostlike_path(@forumposts, pre_like), method: :delete %>
+            <% else %>
+              <%= button_to 'Like', forumpost_forumpostlikes_path(@forumposts), method: :forumpost %>
+            <% end %>
+            <p><%= @forumposts.forumpostlikes.count %> <%= (@forumposts.forumpostlikes.count) == 1 ? 'Like' : 'Likes'%></p>
         </div>
   </div>
   </aside>
   <h3>Reply to thread </h3>
-            <%= render 'commentforums/form' %>
+        <%= render 'commentforums/form' %>
 </div>

@@ -23,7 +23,7 @@ class ForumpostsController < ApplicationController
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.update(forumpost_params)
           flash[:success] = "Thread updated!"
-          redirect_to "Welcome/forum"
+          redirect_to @forumpost
         else 
           flash[:danger] = @forumpost.errors.full_messages[0]
           redirect_to request.referrer
@@ -45,7 +45,9 @@ class ForumpostsController < ApplicationController
 
     def show
         @forumposts = Forumpost.find(params[:id])
+        @forumposts.punch(request)
     end
+
 
     private
     def forumpost_params

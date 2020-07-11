@@ -75,4 +75,5 @@ gem "will_paginate", "~> 3.1.7"
 gem 'tinymce-rails', "~> 5.3.2"
 gem 'simple_form', "~> 5.0.2"
 gem 'rails-controller-testing', "~> 1.0.1"
+gem "punching_bag"
 gem 'jquery-rails'

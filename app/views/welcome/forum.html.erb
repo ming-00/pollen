@@ -15,10 +15,12 @@
                     <section class="forumpost_form">
                         <%= render 'shared/forum_form' %>
                         <h3>Filter by</h3>
-                        <% @forumposts.tag_counts_on(:tags).each do |tag| %>
+                        <% @forumpost.tag_counts_on(:tags).each do |tag| %>
                             <div>
-                                <%= render tag %>
-                                <%= puts tag.count %>
+                                <button class="tag">
+                                    <%= render tag %>
+                                    <%= tag.count %>
+                                </button>
                             </div>
                         <% end %>
                     </section>

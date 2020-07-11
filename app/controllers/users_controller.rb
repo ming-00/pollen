@@ -69,7 +69,6 @@ class UsersController < Clearance::UsersController
     render 'show_follow'
   end
 
-
   private
 
   def user_params

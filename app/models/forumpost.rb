@@ -1,7 +1,9 @@
 class Forumpost < ApplicationRecord
   belongs_to :user
   has_many :commentforums
+  has_many :forumpostlikes, dependent: :destroy
   acts_as_taggable_on :tags
+  acts_as_punchable
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
 

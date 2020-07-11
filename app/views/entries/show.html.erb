@@ -29,8 +29,11 @@
                     <br>
                 </div>
                 <div class="entry-particulars">
+                    <%= link_to "go to journal", @entry.journal %> 
                     <% if current_user == @entry.journal.user %>
-                        <%= link_to "edit", edit_entry_path(@entry) %> /
+                        / 
+                        <%= link_to "edit", edit_entry_path(@entry) %> 
+                        /
                         <%= link_to "delete", @entry, method: :delete,
                         data: { confirm: "This entry will be permanently deleted." } %>
                     <%end%>

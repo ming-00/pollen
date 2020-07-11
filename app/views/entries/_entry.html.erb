@@ -12,8 +12,9 @@
       <%= truncate(entry.content, :length => 150, :separator => ' ') %>
     </div>
     <div class="entry-particulars">
-      <%= link_to "view", entry %>/
+      <%= link_to "view", entry %>
       <% if current_user == entry.journal.user %>
+        /
         <%= link_to "edit", edit_entry_path(entry) %>/
         <%= link_to "delete", entry, method: :delete,
           data: { confirm: "This entry will be permanently deleted." } %>

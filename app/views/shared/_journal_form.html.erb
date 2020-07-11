@@ -1,12 +1,12 @@
-<%= form_for(@journal) do |f| %>
-    <div class="field">
-        <div>
-            <%= f.text_area :title, placeholder: "New Journal" %>
-        </div>
-        <div>
-            <%= f.label :private, 'Privacy mode' %>
-            <%= f.select :private, [['Private', true], ['Public', false]] %>
-        </div>
-        <%= f.submit "Create", class: "btn btn-primary" %>
+<%= form_for @journal do |f| %>
+    <br>
+    <div>
+        <%= f.text_area :title, placeholder: "New Journal Title",  :rows => 1, style: 'width:60%'%>
     </div>
+    <div class="select-field">
+        <%= f.label :private, 'Privacy mode' %>
+        <%= f.select :private, [['Private', true], ['Public', false]] %>
+    </div>
+    <%= f.submit "Create", class: "btn btn-primary" %>
 <% end %>
+<br>

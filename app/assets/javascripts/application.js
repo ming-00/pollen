@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require tinymce
 //= require_tree .
+//= require jquery
+//= require rails-ujs
+
+$(document).on('turbolinks:load', function() {
+    $("#journal-button").click(function(){
+        $("#journal-form").toggle();
+    });
+});

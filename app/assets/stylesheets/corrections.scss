@@ -44,4 +44,9 @@
   text-align: center;
   font-family: 'Futura Std';
   font-size: 1.05em;
+  label {
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+  }
 }

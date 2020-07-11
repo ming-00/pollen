@@ -10,8 +10,11 @@
                     <section class="user_info">
                         <br>
                         <br>
+                        <br>
                         <%= render 'shared/user_info' %>
                     </section>
+                    <br>
+                    <%= button_to "Create new entry", 'entries/new', :method => :get %>
                 </aside>
             <div class="col-md-8">
                 <h3>Journal Feed</h3>
@@ -26,7 +29,7 @@
                                     <div class="entry-title"><%= entry.title %></div>
                                     <div class="entry-particulars">
                                         entry by
-                                        <%= link_to entry.journal.user.lastname, entry.journal.user %>
+                                        <%=  link_to "#{entry.journal.user.firstname} #{entry.journal.user.lastname}", entry.journal.user%>
                                         ·   
                                         posted <%= time_ago_in_words(entry.created_at) %> ago
                                     </div>

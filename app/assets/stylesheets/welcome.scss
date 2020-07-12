@@ -30,12 +30,14 @@
 
 #journal-button {
     font-family: 'Futura Std';
-    font-size: 1em;
-    border-radius: 1.5em;
-    padding: 0.4em 0.7em;
-    border-color: #850941;
+    border: none;
     background-color: transparent;
     color: black;
+    vertical-align: middle;
+    &:hover {
+        color: #850941;
+        text-decoration: none;
+    }
 }
 
 #journal-button:focus {

@@ -17,9 +17,11 @@
 //= require_tree .
 //= require jquery
 //= require rails-ujs
+//= require bootstrap
 
 $(document).on('turbolinks:load', function() {
     $("#journal-button").click(function(){
         $("#journal-form").toggle();
     });
+    $('[data-toggle="tooltip"]').tooltip(); 
 });

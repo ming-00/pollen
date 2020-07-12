@@ -5,16 +5,16 @@
                 <title><%= full_title(yield(:title)) %></title>
         </head>
         <body>
+            <%= image_tag("homepic.png", :class => "home_image") %>
             <h1>forum</h1>
             <aside class="col-md-4">
             <% if logged_in? %>
                 <div class="row">
                     <section class="user_info">
-                        <%= render 'shared/user_info' %>
+                        <%= render 'shared/user_info_forumpost' %>
                     </section>
                     <section class="forumpost_form">
-                        <%= render 'shared/forum_form' %>
-                        <h3>Filter by</h3>
+                    <h3>Filter by</h3>
                         <% @forumpost.tag_counts_on(:tags).each do |tag| %>
                             <div>
                                 <button class="tag">
@@ -39,6 +39,8 @@
                     </ol>
                     <%= will_paginate @forumposts %>
           </div>
+
+          
             <!-- Find me in app/views/welcome/forum.html.erb -->
         </body>
     </html>

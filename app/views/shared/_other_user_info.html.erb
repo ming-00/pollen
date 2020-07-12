@@ -1,0 +1,32 @@
+<li>
+    <h1>
+        <%= avatar_for(user) %>
+        <%=  link_to "#{user.firstname} #{user.lastname}", 
+            user%>
+    </h1>
+    <span>
+    <h2>
+        Language: 
+        <% user.languages.each do |l| %>
+            <%= l.lang %>
+        <% end %>
+        <% user.fluencies.each do |l| %>
+            <% if l.level == 1 %>
+                <%= "(Beginner)" %>
+            <% elsif l.level == 2 %>
+                <%= "(Lower Intemediate)" %>
+            <% elsif l.level == 3 %>
+                <%= "(Upper Intermediate)" %>
+            <% elsif l.level == 4 %>
+                <%= "(Advanced)" %>
+            <% else %>
+                <%= "(Full Proficiency)" %>
+            <%end%>
+        <% end %>
+        </span>
+    </h2>
+    <p>
+        <span><%= pluralize(user.entries.count, "journal entries") %></span>
+        <span><%= pluralize(user.forumposts.count, "forum threads") %></span>
+    </p>
+</li>

@@ -14,44 +14,17 @@
                 <%= render 'shared/user_info' %>
             </section>
         </aside>
-        <div class="col-md-8">
+        <aside class="col-md-8">
             <h3><%= @title %></h3>
             <% if @users.any? %>
-                <ul class="user_info">
                 <section class="user_info">
                 <% @users.each do |user| %>
-                    <section class="user_info">
-                    <h2>
-                        <%= avatar_for(user) %>
-                        <%=  link_to "#{user.firstname} #{user.lastname}", user%>
-                    </h2>
-                    <span>
-                    <h2>
-                        Language: 
-                        <% user.languages.each do |l| %>
-                            <%= l.lang %>
-                        <% end %>
-                        <% user.fluencies.each do |l| %>
-                            <% if l.level == 1 %>
-                                <%= "(Beginner)" %>
-                            <% elsif l.level == 2 %>
-                                <%= "(Lower Intemediate)" %>
-                            <% elsif l.level == 3 %>
-                                <%= "(Upper Intermediate)" %>
-                            <% elsif l.level == 4 %>
-                                <%= "(Advanced)" %>
-                            <% else %>
-                                <%= "(Full Proficiency)" %>
-                            <%end%>
-                        <% end %>
-                        </span>
-                    </h2>
-                    <p>
-                        <span><%= pluralize(user.entries.count, "journal entries") %></span>
-                        <span><%= pluralize(user.forumposts.count, "forum threads") %></span>
-                    </p>
+                    <ol class="followers-and-following">
+                        <%= render partial: 'shared/other_user_info', locals: {user: user} %>
+                    </ol>
                 <% end %>
-                <%= will_paginate %>
+                <%= will_paginate @users %>
             <% end %>
         </div>
     </div>
+</html>

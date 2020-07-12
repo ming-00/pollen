@@ -23,36 +23,7 @@
                     <% end %>
                 </div>
                 <section class="user_info">
-                    <h1>
-                        <%= avatar_for(@journal.user)%>
-                        <%=  link_to "#{@journal.user.firstname} #{@journal.user.lastname}", 
-                            @journal.user%>
-                    </h1>
-                    <span>
-                        <h2>
-                            Language: 
-                            <% @journal.user.languages.each do |l| %>
-                                <%= l.lang %>
-                            <% end %>
-                            <% @journal.user.fluencies.each do |l| %>
-                                <% if l.level == 1 %>
-                                    <%= "(Beginner)" %>
-                                <% elsif l.level == 2 %>
-                                    <%= "(Lower Intemediate)" %>
-                                <% elsif l.level == 3 %>
-                                    <%= "(Upper Intermediate)" %>
-                                <% elsif l.level == 4 %>
-                                    <%= "(Advanced)" %>
-                                <% else %>
-                                    <%= "(Full Proficiency)" %>
-                                <%end%>
-                            <% end %>
-                        </h2>
-                    </span>
-                    <p>
-                        <span><%= pluralize(@journal.user.entries.count, "journal entries") %></span>
-                        <span><%= pluralize(@journal.user.forumposts.count, "forum threads") %></span>
-                    </p>
+                    <%= render partial: 'shared/other_user_info', locals: {user: @journal.user} %>
                 </section>
             </section>
             <% if @journal.user == current_user %>

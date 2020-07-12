@@ -234,6 +234,11 @@ $gray-medium-light: #eaeaea;
 aside {
     section.user_info {
       margin-top: 20px;
+      list-style: none;
+        a:hover {
+            color: #850941;
+            text-decoration: none;
+        }
     }
     section {
       padding: 10px 0;

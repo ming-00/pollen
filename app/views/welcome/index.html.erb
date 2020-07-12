@@ -5,13 +5,15 @@
         <title><%= full_title(yield(:title)) %></title>
     </head>
     <br>
-    <div class = "homecontainer">
-        <%= image_tag("homepic.png", :class => "home_image") %>
-        <h1 class = "left">
-            Welcome back, 
-            <%= current_user.lastname %>
-        </h1>
-    </div>
+    <main class="wrapper">
+        <div class = "homecontainer parallex">
+            <%= image_tag("homepic.png", :class => "home_image") %>
+            <h1 class = "left">
+                Welcome back, 
+                <%= current_user.lastname %>
+            </h1>
+        </div>
+    </main>
     <br>
 
     <aside class="col-md-4">

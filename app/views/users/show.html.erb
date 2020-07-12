@@ -12,6 +12,7 @@
                     <br>
                     <%= render partial: 'shared/other_user_info', locals: {user: @user} %>
                 </section>
+                <%= render 'users/follow_form' if logged_in? %>
             </aside>
             <div class="col-md-8">
                 <h3>Journals (<%= @user.journals.count %>)</h3>

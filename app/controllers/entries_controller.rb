@@ -6,7 +6,7 @@ class EntriesController < ApplicationController
         if current_user.journals.any?
             @entry = Entry.new
         else
-            flash[:danger] = "Please create a journal first."
+            flash[:danger] = "Please create a journal first!"
             redirect_to '/profile'
         end
     end 

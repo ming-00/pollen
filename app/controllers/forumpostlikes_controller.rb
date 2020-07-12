@@ -1,4 +1,6 @@
 class ForumpostlikesController < ApplicationController
+    protect_from_forgery with: :exception
+    before_action :authenticate_model!
     before_action :find_forumpost
     before_action :find_forumpostlike, only: [:destroy]
 

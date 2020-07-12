@@ -2,6 +2,7 @@
 <!DOCTYPE html>
     <html>
         <head>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
                 <title><%= full_title(yield(:title)) %></title>
         </head>
         <body>
@@ -28,7 +29,7 @@
             <% end %>
             </aside>
             <div class="col-md-8">
-            <h1><%= @tag.name %></h1>
+            <h3><%= @tag.name %></h3>
             <% @forumposts.each do |forumpost| %>
                 <ol class= "entries"> 
                     <li> 
@@ -45,6 +46,17 @@
                             <br>
                             <div class="entry-content">
                                 <%= truncate(forumpost.content, :length => 150, :separator => ' ') %>
+                                <div>
+                                    <%= render forumpost.tags %>
+                                    <div class="forumpost-stats">
+                                        <i class="material-icons md-18">favorite</i>
+                                        <%= forumpost.forumpostlikes.count %>
+                                        <i class="material-icons md-18">sms</i>
+                                        <span class="content"><%= forumpost.commentforums.count %></span>
+                                        <i class="material-icons md-18">visibility</i>
+                                        <span><%= forumpost.hits %></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="entry-particulars">
                                 <%= link_to "view", forumpost %>

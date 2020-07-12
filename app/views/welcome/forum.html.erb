@@ -56,13 +56,15 @@
                             <div class="entry-content">
                                 <%= truncate(forumpost.content, :length => 150, :separator => ' ') %>
                                 <div>
-                                <%= render forumpost.tags %>
-                                <i class="material-icons">favorite</i>
-                                <%= forumpost.forumpostlikes.count %>
-                                <i class="material-icons">sms</i>
-                                <span class="content"><%= forumpost.commentforums.count %></span>
-                                <i class="material-icons">visibility</i>
-                                <span><%= forumpost.hits %></span>
+                                    <%= render forumpost.tags %>
+                                    <div class="forumpost-stats">
+                                        <i class="material-icons md-18">favorite</i>
+                                        <%= forumpost.forumpostlikes.count %>
+                                        <i class="material-icons md-18">sms</i>
+                                        <span class="content"><%= forumpost.commentforums.count %></span>
+                                        <i class="material-icons md-18">visibility</i>
+                                        <span><%= forumpost.hits %></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="entry-particulars">

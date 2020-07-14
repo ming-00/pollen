@@ -1,10 +1,7 @@
 <li id="journal-<%= journal.id %>">
-  <span class="user"><%= link_to journal.user.lastname, journal.user %></span>
   <div>
     <%= cover_for(journal) %>
-  </div>
-  <div>
-    <span class="title">
+    <span class="journal-title">
       <% if journal.private %>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
@@ -18,13 +15,15 @@
       <% end %>
       <%= link_to journal.title, journal %>
     </span>
-    <%= pluralize(journal.entries.count, "entry") %>
+    <div>
+      <%= pluralize(journal.entries.count, "entry") %>
+    </div>
+    <span class="timestamp">
+      Updated <%= time_ago_in_words(journal.updated_at) %> ago.
+      <% if current_user == (journal.user) %>
+      <%= link_to "delete", journal, method: :delete,
+              data: { confirm: "All entries in the journal will be permanently deleted." } %>
+      <%end%>
+    </span>
   </div>
-  <span class="timestamp">
-    Updated <%= time_ago_in_words(journal.updated_at) %> ago.
-    <% if current_user == (journal.user) %>
-    <%= link_to "delete", journal, method: :delete,
-            data: { confirm: "All entries in the journal will be permanently deleted." } %>
-    <%end%>
-  </span>
 </li>

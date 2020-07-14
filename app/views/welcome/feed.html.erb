@@ -19,8 +19,7 @@
             <div class="col-md-8">
                 <h3>Journal Feed</h3>
                 <% @entries.each do |entry| %>
-                    <% if entry.journal.private == false && entry.journal.user.temp_id == current_user.temp_id 
-                        && entry.resolved == false %>
+                    <% if (entry.journal.private == false) && (entry.journal.user.temp_id == current_user.temp_id) && (entry.resolved == false) %>
                         <ol class= "entries"> 
                             <li> 
                                 <div class="tiny-avatar">

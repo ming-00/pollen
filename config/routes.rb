@@ -38,7 +38,9 @@ Rails.application.routes.draw do
   resources :entries, only: [:show, :create, :update, :edit, :destroy, :new] do
     resources :entrylikes, only: [:create, :destroy]
   end
-  resources :corrections, only: [:create, :index, :destroy, :edit, :update]
+  resources :corrections, only: [:create, :index, :destroy, :edit, :update] do
+    resources :correctionlikes, only: [:create, :destroy]
+  end
 
   resources :users do
     member do

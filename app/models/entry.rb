@@ -1,4 +1,6 @@
 class Entry < ApplicationRecord
+  after_initialize :set_defaults, unless: :persisted?
+
   belongs_to :journal
   belongs_to :user, optional: true
   
@@ -14,4 +16,8 @@ class Entry < ApplicationRecord
     :presence => {:message => " can't be blank."},
     length: {minimum: 20, maximum: 2000, 
       :message => " must be between 20 and 2000 characters."}
+
+  def set_defaults
+    self.resolved = false if self.resolved.nil?
+  end
 end

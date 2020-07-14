@@ -4,4 +4,5 @@ class Fluency < ApplicationRecord
   
   validates :user, presence: true
   validates :language, presence: true
+
 end

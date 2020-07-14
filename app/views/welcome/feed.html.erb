@@ -19,14 +19,15 @@
             <div class="col-md-8">
                 <h3>Journal Feed</h3>
                 <% @entries.each do |entry| %>
-                    <% if entry.journal.private == false && entry.journal.user.temp_id == current_user.temp_id %>
+                    <% if entry.journal.private == false && entry.journal.user.temp_id == current_user.temp_id 
+                        && entry.resolved == false %>
                         <ol class= "entries"> 
                             <li> 
                                 <div class="tiny-avatar">
                                     <%= avatar_for(entry.journal.user) %>
                                 </div>
                                 <div id="entry-<%= entry.id %>">
-                                    <div class="entry-title"><%= entry.title %></div>
+                                    <div class="entry-title"><%=link_to entry.title, entry, class: "link-colour"%></div>
                                     <div class="entry-particulars">
                                         entry by
                                         <%=  link_to "#{entry.journal.user.firstname} #{entry.journal.user.lastname}", entry.journal.user%>

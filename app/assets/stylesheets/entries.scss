@@ -52,6 +52,15 @@ body {
     font-family: 'Futura Std';
     font-size: 1.5em;
     text-align: left !important;
+
+    .link-colour {
+        color: black;
+    }
+
+    a:hover {
+        color: #850941;
+        text-decoration: none;
+    }
 }
 
 .entry-particulars {
@@ -82,6 +91,12 @@ body {
     }
 }
 
+.entries:hover {
+    li {
+        box-shadow: 12px 12px 25px 0px #a3759a;
+    }
+}
+
 .w3-container {
     margin-top: 3em;
     margin-bottom: 3em;
@@ -101,4 +116,12 @@ body {
 .entry-edit-particulars {
     font-family: 'Futura Std';
     font-size: 1.05em;
+}
+
+#resolved-icon {
+    font-family: 'Futura Std';
+    border: none;
+    background-color: transparent;
+    color: rgb(115, 165, 100);
+    vertical-align: -0.2em;
 }

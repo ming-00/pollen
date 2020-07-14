@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :entries, only: [:show, :create, :update, :edit, :destroy, :new]
@@ -43,5 +44,7 @@ Rails.application.routes.draw do
     end
   end
   
+  match "entries/:id/markresolved" => "entries#markresolved", :as => "markresolved_entry", via: [:get, :post]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

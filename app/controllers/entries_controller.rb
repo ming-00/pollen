@@ -56,6 +56,16 @@ class EntriesController < ApplicationController
         redirect_to @journal
     end
 
+    def markresolved
+        @entry = Entry.find(params[:id])
+        if @entry.resolved == false
+            @entry.update_attributes(resolved: true)
+        else 
+            @entry.update_attributes(resolved: false)
+        end
+        redirect_to request.referrer
+    end
+
     def correct_user
         @entry = current_user.entries.find_by(id: params[:id])
         if @entry.nil?

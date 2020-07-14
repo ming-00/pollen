@@ -56,9 +56,11 @@ class CorrectionsController < ApplicationController
     def markaccepted
         @correction = Correction.find(params[:id])
         if @correction.accepted == false
+            @correction.user.increment!(:points, by = 5)
             @correction.update_attributes(accepted: true)
             flash[:success] = "Correction accepted!"
         else 
+            @correction.user.decrement!(:points, by = 5)
             @correction.update_attributes(accepted: false)
             flash[:success] = "Correction unaccepted!"
         end

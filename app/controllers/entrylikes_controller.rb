@@ -9,6 +9,8 @@ class EntrylikesController < ApplicationController
           flash[:notice] = "You can't like more than once"
         else
           @entry.entrylikes.create(user_id: current_user.id)
+          @entry_user = @entry.journal.user
+          @entry_user.increment!(:points)
         end
         redirect_to @entry
     end
@@ -23,6 +25,7 @@ class EntrylikesController < ApplicationController
           flash[:notice] = "Cannot unlike"
         else
           @entrylike.destroy
+          @entry.journal.user.decrement!(:points)
         end
         redirect_to @entry
     end

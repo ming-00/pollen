@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
+
+  after_initialize :set_defaults, unless: :persisted?
+
   has_many :commentforums
   has_many :fluencies
   has_many :languages, through: :fluencies
@@ -43,6 +46,10 @@ class User < ApplicationRecord
 
   validates :password, 
     length: {minimum:4, :message => " must be at least four characters."}
+
+  def set_defaults
+    self.points = 0 if self.points.nil?
+  end
   
   class << self
   def digest(string)

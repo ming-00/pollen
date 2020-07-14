@@ -37,7 +37,7 @@
                 <% if pre_like %>
                   <%= button_to 'Unlike', entry_entrylike_path(@entry, pre_like), method: :delete %>
                 <% else %>
-                  <%= button_to 'Like', entry_entrylike_path(@entry), method: :entry %>
+                  <%= button_to 'Like', entry_entrylikes_path(@entry), method: :entry %>
                 <% end %>
                 <div class="entry-particulars">
                     <%= link_to "go to journal", @entry.journal %> 

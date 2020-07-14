@@ -24,15 +24,16 @@ class EntrylikesController < ApplicationController
         else
           @entrylike.destroy
         end
-        redirect_to entry_path(@entry)
+        redirect_to @entry
     end
 
     private
+
     def find_entry
         @entry = Entry.find(params[:entry_id])
     end
 
     def find_entrylike
-        @entrylike = @entry.entrylike.find(params[:id])
+        @entrylike = @entry.entrylikes.find(params[:id])
     end
 end

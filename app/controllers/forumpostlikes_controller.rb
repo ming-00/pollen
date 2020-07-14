@@ -4,7 +4,6 @@ class ForumpostlikesController < ApplicationController
     before_action :find_forumpost
     before_action :find_forumpostlike, only: [:destroy]
 
-
     def create
         if already_liked?
           flash[:notice] = "You can't like more than once"
@@ -36,6 +35,5 @@ class ForumpostlikesController < ApplicationController
 
     def find_forumpostlike
         @forumpostlike = @forumpost.forumpostlikes.find(params[:id])
-     end
-
+    end
 end

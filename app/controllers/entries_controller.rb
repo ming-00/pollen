@@ -28,6 +28,7 @@ class EntriesController < ApplicationController
         @correction = Correction.new
         @correction.entry = @entry
         @corrections = @entry.corrections
+        @entry.punch(request)
         if current_user != (@entry.journal.user) && @entry.journal.private
             flash[:danger] = "Entry is private."
             redirect_to root_url

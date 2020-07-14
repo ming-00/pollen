@@ -1,0 +1,2 @@
+module EntrylikesHelper
+end

@@ -1,11 +1,14 @@
 class Entry < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
+  acts_as_punchable
 
   belongs_to :journal
   belongs_to :user, optional: true
   
   has_many :corrections, :dependent => :destroy
   default_scope -> { order(created_at: :desc) }
+
+  has_many :entrylikes, :dependent => :destroy
 
   validates :title,
     :presence => {:message => " can't be blank."},

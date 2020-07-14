@@ -33,6 +33,12 @@
                     <br>
                     <br>
                 </div>
+                <% pre_like = @entry.entrylikes.find { |like| like.user_id == current_user.id} %>
+                <% if pre_like %>
+                  <%= button_to 'Unlike', entry_entrylike_path(@entry, pre_like), method: :delete %>
+                <% else %>
+                  <%= button_to 'Like', entry_entrylike_path(@entry), method: :entry %>
+                <% end %>
                 <div class="entry-particulars">
                     <%= link_to "go to journal", @entry.journal %> 
                     <% if current_user == @entry.journal.user %>

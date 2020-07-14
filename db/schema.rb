@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_063527) do
+ActiveRecord::Schema.define(version: 2020_07_14_085052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2020_07_14_063527) do
     t.index ["journal_id", "created_at"], name: "index_entries_on_journal_id_and_created_at"
     t.index ["journal_id"], name: "index_entries_on_journal_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "entrylikes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "entry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_entrylikes_on_entry_id"
+    t.index ["user_id"], name: "index_entrylikes_on_user_id"
   end
 
   create_table "fluencies", force: :cascade do |t|
@@ -175,6 +184,8 @@ ActiveRecord::Schema.define(version: 2020_07_14_063527) do
   add_foreign_key "corrections", "users"
   add_foreign_key "entries", "journals"
   add_foreign_key "entries", "users"
+  add_foreign_key "entrylikes", "entries"
+  add_foreign_key "entrylikes", "users"
   add_foreign_key "fluencies", "languages"
   add_foreign_key "fluencies", "users"
   add_foreign_key "forumcomments", "forumposts"

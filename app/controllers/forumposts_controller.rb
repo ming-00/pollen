@@ -1,6 +1,10 @@
 class ForumpostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy, :edit, :update, :search]
 
+    def new
+        @forumpost = Forumpost.new
+    end 
+    
     def create
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save

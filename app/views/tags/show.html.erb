@@ -1,2 +1,80 @@
-<h1><%= @tag.name %></h1>
-<div><%= render @forumposts %></div>
+<% provide(:title, "Forum") %>
+<!DOCTYPE html>
+    <html>
+        <head>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+                <title><%= full_title(yield(:title)) %></title>
+        </head>
+        <body>
+            <aside class="col-md-4">
+            <% if logged_in? %>
+                <div class="row">
+                    <section class="user_info">
+                        <br>
+                        <br>
+                        <br>
+                        <%= render 'shared/user_info' %>
+                    </section>
+                    <br>
+                    <%= button_to "CREATE NEW THREAD", 'forumposts/new', :method => :get %>
+                    <section class="forumpost_form">
+                    <%= form_tag search_forumposts_path, method: :get do %>
+                        <%= text_field_tag :search, nil, palceholder: "Search" %>
+                        <br>
+                        <%= submit_tag "Search", class: "btn btn-primary"%>
+                    <% end %>
+                    </section>
+                </div>
+            <% else %>
+            <% end %>
+            </aside>
+            <div class="col-md-8">
+            <h3><%= @tag.name %></h3>
+            <% @forumposts.each do |forumpost| %>
+                <ol class= "entries"> 
+                    <li> 
+                        <div class="tiny-avatar">
+                            <%= avatar_for(forumpost.user) %>
+                        </div>
+                        <div id="entry-<%= forumpost.id %>">
+                            <div class="entry-title"><%= forumpost.title %></div>
+                            <div class="entry-particulars">
+                                <%=  link_to "#{forumpost.user.firstname} #{forumpost.user.lastname}", forumpost.user%>
+                                ·   
+                                posted <%= time_ago_in_words(forumpost.created_at) %> ago
+                            </div>
+                            <br>
+                            <div class="entry-content">
+                                <%= truncate(forumpost.content, :length => 150, :separator => ' ') %>
+                                <div>
+                                    <%= render forumpost.tags %>
+                                    <div class="forumpost-stats">
+                                        <i class="material-icons md-18">favorite</i>
+                                        <%= forumpost.forumpostlikes.count %>
+                                        <i class="material-icons md-18">sms</i>
+                                        <span class="content"><%= forumpost.commentforums.count %></span>
+                                        <i class="material-icons md-18">visibility</i>
+                                        <span><%= forumpost.hits %></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="entry-particulars">
+                                <%= link_to "view", forumpost %>
+                                <% if current_user == forumpost.user %>
+                                    /
+                                    <%= link_to "edit", edit_forumpost_path(forumpost) %>
+                                    /
+                                    <%= link_to "delete", forumpost, method: :delete,
+                                    data: { confirm: "This thread entry will be permanently deleted." } %>
+                                <%end%>
+                            </div>
+                        </div>
+                    </li> 
+                </ol>
+            <% end %> 
+            </div>
+            <%= link_to "Back to Forum", forum_path, class: "btn btn-primary" %>
+            <%-# will_paginate @forumposts -%>
+            <!-- Find me in app/views/welcome/forum.html.erb -->
+        </body>
+    </html>

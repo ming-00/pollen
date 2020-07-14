@@ -1,3 +1,17 @@
 // Place all the styles related to the Forumposts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.forumposts {
+    list-style: none;
+    padding: 0;
+    li {
+        margin-top: 3em;
+        margin-bottom: 3em;
+        padding: 20px 30px;
+        background-color:white;
+        border-radius: 2.5em;
+        box-shadow: 12px 12px 25px 0px #ac89a5;
+    }
+}
+
+.material-icons{ font-size: 48px; }

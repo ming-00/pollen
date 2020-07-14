@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   root :to      => 'welcome#index'
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
-  resources :forumposts, only: [:create, :destroy, :show, :edit, :update, :search] do
+  resources :forumposts, only: [:new, :create, :destroy, :show, :edit, :update, :search] do
     resources :forumpostlikes, only: [:create, :destroy]
     resources :commentforums
     collection do

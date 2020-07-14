@@ -13,5 +13,6 @@ class Correction < ApplicationRecord
 
   def set_defaults
     self.correct = false if self.correct.nil?
+    self.accepted = false if self.accepted.nil?
   end
 end

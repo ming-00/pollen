@@ -53,6 +53,18 @@ class CorrectionsController < ApplicationController
         redirect_to request.referrer || root_url
     end
 
+    def markaccepted
+        @correction = Correction.find(params[:id])
+        if @correction.accepted == false
+            @correction.update_attributes(accepted: true)
+            flash[:success] = "Correction accepted!"
+        else 
+            @correction.update_attributes(accepted: false)
+            flash[:success] = "Correction unaccepted!"
+        end
+        redirect_to request.referrer
+    end
+
     def correct_user
         @correction = current_user.corrections.find_by(id: params[:id])
         if @correction.nil?

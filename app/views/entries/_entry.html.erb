@@ -22,7 +22,12 @@
       <%= link_to "view", entry %>
       <% if current_user == entry.journal.user %>
         /
-        <%= link_to "edit", edit_entry_path(entry) %>/
+        <%= link_to "edit", edit_entry_path(entry) %> /
+        <% if @entry.resolved == false %>
+          <%= link_to "mark as resolved", markresolved_entry_path %>
+        <% else %>
+          <%= link_to "mark as unresolved", markresolved_entry_path %>
+        <% end %> /
         <%= link_to "delete", entry, method: :delete,
           data: { confirm: "This entry will be permanently deleted." } %>
       <%end%>

@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   end
   
   match "entries/:id/markresolved" => "entries#markresolved", :as => "markresolved_entry", via: [:get, :post]
+  match "corrections/:id/markaccepted" => "corrections#markaccepted", :as => "markaccepted_correction", via: [:get, :post]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

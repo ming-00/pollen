@@ -60,8 +60,10 @@ class EntriesController < ApplicationController
         @entry = Entry.find(params[:id])
         if @entry.resolved == false
             @entry.update_attributes(resolved: true)
+            flash[:success] = "Entry marked resolved and removed from journal feed!"
         else 
             @entry.update_attributes(resolved: false)
+            flash[:success] = "Entry marked unresolved and added back to journal feed!"
         end
         redirect_to request.referrer
     end

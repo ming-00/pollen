@@ -436,3 +436,12 @@ select:focus {
         -webkit-font-smoothing: antialiased;
       }
 }
+
+#likes {
+    vertical-align: -0.15em;
+    margin-left: 0.7em;
+    margin-right: 0em;
+    &:hover {
+        color: #850941;
+    }
+}

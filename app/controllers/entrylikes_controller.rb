@@ -33,6 +33,6 @@ class EntrylikesController < ApplicationController
     end
 
     def find_entrylike
-        @entrylike = @entry.entrylike.find(params[:id])
+        @entrylike = @entry.entrylikes.find(params[:id])
     end
 end

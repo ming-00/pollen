@@ -11,10 +11,11 @@ class ForumpostsController < ApplicationController
             flash[:success] = "Post created and published in forum!"
             redirect_to "/forum"
         else
-            flash[:danger] = @forumpost.errors.full_messages[0]
-            render "welcome/forum"
+            flash[:danger] = "Please fill in title and content."
+            redirect_to '/forum'
         end
     end
+
     
     def destroy
         @forumpost = Forumpost.find(params[:id])

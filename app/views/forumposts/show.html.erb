@@ -1,46 +1,72 @@
 <% provide(:title, "Forum") %>
 <div class="row">
-  <div class="col-md-8">
-      <h3>Forum </h3>
-  </div>
-  <aside>
-  <div class="col-md-8">
-        <ou class="forumposts">
-        <div>
-            <h3>Title</h3>
-            <span class="title"><%= @forumposts.title %></span>
-        </div>
-        <div>
-            <h3>Content</h3>
-            <span class="content"><%= @forumposts.content %></span>
-        </div>
-        <div>
-            <h3>Reply count</h3>
-            <span class="content"><%= @forumposts.commentforums.count %></span>
-            <h3>Comments</h3>
-            <% @forumposts.commentforums.each do |l| %>
-                <div>
-                <%=  link_to "#{l.user.firstname} #{l.user.lastname}", l.user%>
-                <h4><%= l.reply %><h4>
-                <span class="timestamp">
-                    <h6>Replied <%= time_ago_in_words(l.created_at) %> ago</h6>
-                    <% if current_user == l.user %>
-                        <%= link_to "edit", edit_forumpost_commentforum_path(l.forumpost, l) %>
-                            <%= link_to "delete", [l.forumpost, l], method: :delete,
-                            data: { confirm: "This comment will be permanently deleted." } %>
-                    <%end%>
-                </span>
-            <% end %>
-            <% pre_like = @forumposts.forumpostlikes.find { |like| like.user_id == current_user.id} %>
-            <% if pre_like %>
-              <%= button_to 'Unlike', forumpost_forumpostlike_path(@forumposts, pre_like), method: :delete %>
-            <% else %>
-              <%= button_to 'Like', forumpost_forumpostlikes_path(@forumposts), method: :forumpost %>
-            <% end %>
-            <p><%= @forumposts.forumpostlikes.count %> <%= (@forumposts.forumpostlikes.count) == 1 ? 'Like' : 'Likes'%></p>
-        </div>
-  </div>
-  </aside>
-  <h3>Reply to thread </h3>
-        <%= render 'commentforums/form' %>
+    <div class="col-md-8">
+        <h3>Forum </h3>
+    </div>
+    <aside>
+    <div class="col-md-8">
+            <ou class="forumposts">
+            <div>
+                <h3>Title</h3>
+                <span class="title"><%= @forumposts.title %></span>
+            </div>
+            <div>
+                <h3>Content</h3>
+                <span class="content"><%= @forumposts.content %></span>
+            </div>
+            <div>
+                <h3>Reply count</h3>
+                <span class="content"><%= @forumposts.commentforums.count %></span>
+                <h3>Comments</h3>
+                <% @forumposts.commentforums.each do |l| %>
+                    <div>
+                    <%=  link_to "#{l.user.firstname} #{l.user.lastname}", l.user%>
+                    <h4><%= l.reply %><h4>
+                    <span class="timestamp">
+                        <h6>Replied <%= time_ago_in_words(l.created_at) %> ago</h6>
+                        <% if current_user == l.user %>
+                            <%= link_to "edit", edit_forumpost_commentforum_path(l.forumpost, l) %>
+                                <%= link_to "delete", [l.forumpost, l], method: :delete,
+                                data: { confirm: "This comment will be permanently deleted." } %>
+                        <%end%>
+                    </span>
+                <% end %>
+                <% pre_like = @forumposts.forumpostlikes.find { |like| like.user_id == current_user.id} %>
+                <% if pre_like %>
+                    <%= button_to 'Unlike', forumpost_forumpostlike_path(@forumposts, pre_like), method: :delete %>
+                <% else %>
+                    <%= button_to 'Like', forumpost_forumpostlikes_path(@forumposts), method: :forumpost %>
+                <% end %>
+                <p><%= @forumposts.forumpostlikes.count %> <%= (@forumposts.forumpostlikes.count) == 1 ? 'Like' : 'Likes'%></p>
+            </div>
+    </div>
+    </aside>
+    <h3>Reply to thread </h3>
+            <%= render 'commentforums/form' %>
 </div>
+
+<aside id="left-scroll">
+            <section class="w3-container">
+                <br>
+                <br>
+                <div class="tiny-avatar">
+                    <%= avatar_for(@forumposts.user) %>
+                </div>
+                <div class="entry-title">
+                    <%= @forumposts.title %>
+                </div>
+                <div class="entry-particulars">
+                    entry by
+                    <%=  link_to "#{@forumposts.user.firstname} #{@forumposts.user.lastname}", @forumposts.user%>
+                    ·   
+                    posted <%= time_ago_in_words(@forumposts.created_at) %> ago
+                    <br>
+                    <br>
+                </div>
+                <div class="entry-content">
+                    <%= @forumposts.content %>
+                    <br>
+                    <br>
+                </div>
+            </section>
+        </aside>

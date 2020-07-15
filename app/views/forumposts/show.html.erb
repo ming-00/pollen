@@ -1,72 +1,64 @@
 <% provide(:title, "Forum") %>
 <div class="row">
-    <div class="col-md-8">
-        <h3>Forum </h3>
-    </div>
-    <aside>
-    <div class="col-md-8">
-            <ou class="forumposts">
-            <div>
-                <h3>Title</h3>
-                <span class="title"><%= @forumposts.title %></span>
+    <aside id="left-scroll">
+        <section class="w3-container">
+            <br>
+            <br>
+            <div class="tiny-avatar">
+                <%= avatar_for(@forumposts.user) %>
             </div>
-            <div>
-                <h3>Content</h3>
-                <span class="content"><%= @forumposts.content %></span>
+            <div class="entry-title">
+                <%= @forumposts.title %>
             </div>
-            <div>
-                <h3>Reply count</h3>
-                <span class="content"><%= @forumposts.commentforums.count %></span>
-                <h3>Comments</h3>
-                <% @forumposts.commentforums.each do |l| %>
-                    <div>
-                    <%=  link_to "#{l.user.firstname} #{l.user.lastname}", l.user%>
-                    <h4><%= l.reply %><h4>
-                    <span class="timestamp">
-                        <h6>Replied <%= time_ago_in_words(l.created_at) %> ago</h6>
-                        <% if current_user == l.user %>
-                            <%= link_to "edit", edit_forumpost_commentforum_path(l.forumpost, l) %>
-                                <%= link_to "delete", [l.forumpost, l], method: :delete,
-                                data: { confirm: "This comment will be permanently deleted." } %>
-                        <%end%>
-                    </span>
-                <% end %>
-                <% pre_like = @forumposts.forumpostlikes.find { |like| like.user_id == current_user.id} %>
+            <div class="entry-particulars">
+                entry by
+                <%=  link_to "#{@forumposts.user.firstname} #{@forumposts.user.lastname}", @forumposts.user%>
+                ·   
+                posted <%= time_ago_in_words(@forumposts.created_at) %> ago
+                <br>
+                <br>
+            </div>
+            <div class="entry-content">
+                <%= @forumposts.content %>
+                <br>
+                <br>
+            </div>
+            <% pre_like = @forumposts.forumpostlikes.find { |like| like.user_id == current_user.id} %>
+            <div class="entry-stats">
                 <% if pre_like %>
-                    <%= button_to 'Unlike', forumpost_forumpostlike_path(@forumposts, pre_like), method: :delete %>
+                    <%= link_to forumpost_forumpostlike_path(@forumposts, pre_like), method: :delete do %>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" id = "unlike-heart" data-toggle="tooltip" title="unlike" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                    <% end %>
                 <% else %>
-                    <%= button_to 'Like', forumpost_forumpostlikes_path(@forumposts), method: :forumpost %>
+                    <%= link_to forumpost_forumpostlikes_path(@forumposts), method: :forumpost do %>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" id = "like-heart" data-toggle="tooltip" title="like" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                    <% end %>
                 <% end %>
-                <p><%= @forumposts.forumpostlikes.count %> <%= (@forumposts.forumpostlikes.count) == 1 ? 'Like' : 'Likes'%></p>
+                <%= @forumposts.forumpostlikes.count %>  
+                <svg width="1em" height="1em" id = "likes" data-toggle="tooltip" title="comments" data-container="body" viewBox="0 0 16 16" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+                <%= @forumposts.commentforums.count %>
+                <svg width="1em" height="1em" id = "likes" data-toggle="tooltip" title="views" data-container="body" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                    <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                </svg>
+                <%= @forumposts.hits %>
             </div>
-    </div>
+            <div class="entry-particulars">
+                <% if current_user == @forumposts.user %>
+                    <%= link_to "edit", edit_forumpost_path(@forumposts) %> 
+                    /
+                    <%= link_to "delete", @forumposts, method: :delete,
+                    data: { confirm: "This thread will be permanently deleted." } %>
+                <%end%>
+            </div>
+        </section>     
     </aside>
     <h3>Reply to thread </h3>
             <%= render 'commentforums/form' %>
 </div>
-
-<aside id="left-scroll">
-            <section class="w3-container">
-                <br>
-                <br>
-                <div class="tiny-avatar">
-                    <%= avatar_for(@forumposts.user) %>
-                </div>
-                <div class="entry-title">
-                    <%= @forumposts.title %>
-                </div>
-                <div class="entry-particulars">
-                    entry by
-                    <%=  link_to "#{@forumposts.user.firstname} #{@forumposts.user.lastname}", @forumposts.user%>
-                    ·   
-                    posted <%= time_ago_in_words(@forumposts.created_at) %> ago
-                    <br>
-                    <br>
-                </div>
-                <div class="entry-content">
-                    <%= @forumposts.content %>
-                    <br>
-                    <br>
-                </div>
-            </section>
-        </aside>

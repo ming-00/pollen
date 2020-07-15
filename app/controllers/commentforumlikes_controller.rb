@@ -16,7 +16,7 @@ class CommentforumlikesController < ApplicationController
 
     def already_liked?
         Commentforumlike.where(user_id: current_user.id, commentforum_id:
-        params[:id]).exists?
+        params[:commentforum_id]).exists?
     end
 
     def destroy

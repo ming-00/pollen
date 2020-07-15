@@ -11,7 +11,7 @@
                 <%= @forumposts.title %>
             </div>
             <div class="entry-particulars">
-                entry by
+                thread by
                 <%=  link_to "#{@forumposts.user.firstname} #{@forumposts.user.lastname}", @forumposts.user%>
                 ·   
                 posted <%= time_ago_in_words(@forumposts.created_at) %> ago
@@ -57,7 +57,58 @@
                     data: { confirm: "This thread will be permanently deleted." } %>
                 <%end%>
             </div>
-        </section>     
+        </section> 
+        <div>
+            <% @forumposts.commentforums.each do |l| %>
+                <section class="w3-container">
+                    <br>
+                    <br>
+                    <div class="tiny-avatar">
+                        <%= avatar_for(l.user) %>
+                    </div>
+                    <div class="entry-particulars">
+                        <br>
+                        comment by
+                        <%=  link_to "#{l.user.firstname} #{l.user.lastname}", l.user%>
+                        ·   
+                        posted <%= time_ago_in_words(l.created_at) %> ago
+                        <br>
+                        <br>
+                    </div>
+                    <br>
+                    <div class="entry-content">
+                        <%= l.reply %>
+                        <br>
+                        <br>
+                    </div>
+                    <% pre_like = l.commentforumlikes.find { |like| like.user_id == current_user.id} %>
+                    <div class="entry-stats">
+                        <% if pre_like %>
+                            <%= link_to forumpost_commentforum_commentforumlike_path(l.forumpost, l, pre_like), method: :delete do %>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" id = "unlike-heart" data-toggle="tooltip" title="unlike" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                </svg>
+                            <% end %>
+                        <% else %>
+                        <%= link_to forumpost_commentforum_commentforumlikes_path(l.forumpost, l), method: :post do %>
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" id = "like-heart" data-toggle="tooltip" title="like" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            </svg>
+                        <% end %>
+                        <% end %>
+                        <%= l.commentforumlikes.count %>  
+                    </div>
+                    <div class="entry-particulars">
+                        <% if current_user == l.user %>
+                            <%= link_to "edit", edit_forumpost_commentforum_path(l.forumpost, l) %>
+                            /
+                            <%= link_to "delete", [l.forumpost, l], method: :delete,
+                                data: { confirm: "This comment will be permanently deleted." } %>
+                        <%end%>
+                    </div>
+                    </section> 
+                <% end %>
+        </div>    
     </aside>
     <h3>Reply to thread </h3>
             <%= render 'commentforums/form' %>

@@ -9,7 +9,7 @@ class CommentforumlikesController < ApplicationController
         if already_liked?
             flash[:notice] = "You can't like more than once"
         else
-            @commentfourm.commentforumlikes.create(user_id: current_user.id)
+            @commentforum.commentforumlikes.create(user_id: current_user.id)
         end
         redirect_to forumpost_path(@forumpost)
     end
@@ -32,7 +32,7 @@ class CommentforumlikesController < ApplicationController
     private
 
     def find_commentforum
-        @commentforum = Commentforum.find(params[:id])
+        @commentforum = Commentforum.find(params[:commentforum_id])
     end
 
     def find_commentforumlike

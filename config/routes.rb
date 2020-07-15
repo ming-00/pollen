@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:new, :create, :destroy, :show, :edit, :update, :search] do
     resources :forumpostlikes, only: [:create, :destroy]
-    resources :commentforums
+    resources :commentforums do 
+      resources :commentforumlikes, only: [:create, :destroy]
+    end 
     collection do
       get :search
     end

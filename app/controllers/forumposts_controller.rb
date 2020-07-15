@@ -53,6 +53,16 @@ class ForumpostsController < ApplicationController
         @forumposts.punch(request)
     end
 
+    def markaccepted
+        @forumpost = Forumpost.find(params[:id])
+        if @forumpost.accepted == false
+            @forumpost.update_attributes(accepted: true)
+        else 
+            @forumpost.update_attributes(accepted: false)
+        end
+        redirect_to request.referrer
+    end
+
 
     private
     def forumpost_params

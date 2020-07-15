@@ -6,6 +6,7 @@ class Forumpost < ApplicationRecord
   acts_as_punchable
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
+  after_initialize :set_defaults, unless: :persisted?
 
   def self.search(params)
     forumposts = Forumpost.where("title LIKE ? or content LIKE ?", "%#{params[:search]}%",
@@ -22,4 +23,8 @@ class Forumpost < ApplicationRecord
   :presence => {:message => " can't be blank."},
   length: {minimum: 1, maximum: 200, 
     :message => " must be between 1 and 201 characters."}
+
+    def set_defaults
+      self.accepted = false if self.accepted.nil?
+    end
 end

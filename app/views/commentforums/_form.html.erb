@@ -1,6 +1,13 @@
-<%= form_for([@forumposts, @forumposts.commentforums.build]) do |f| %>
-    <div class="field">
-    <%= f.text_area :reply, placeholder: "Compose new reply..." %>
-    </div>
-    <%= f.submit "Reply", class: "btn btn-primary" %>
-<% end %>
+<div class="commentforum-form">
+<br>
+<br>
+<br>  
+    <%= form_for([@forumposts, @forumposts.commentforums.build]) do |f| %>
+        <div class="text-field">
+        <%= f.text_area :reply, placeholder: "Compose new reply...", style: 'width: 200%' %>
+        </div>
+        <div>
+        <div id="commentforum-button">
+            <%= f.submit "Reply", class: "btn btn-primary"%>
+        </div>
+    <% end %>

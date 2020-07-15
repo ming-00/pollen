@@ -7,12 +7,11 @@
         <%= form_with(model: @forumpost, local: true) do |f| %>
             <div class = "text-field" %>
                 <%= f.label :title, "Title" %>
-                <%= f.text_area(:title)%>
-            <br>
+                <%= f.text_field :title, style: 'width: 60%' %>
+                <br>
             </div>
             <div class = "text-field" %>
-                <%= f.label :content %>
-                <%= f.text_area(:content)%>
+                <%= f.text_area :content, placeholder: "Start typing...", :rows => 20, style: 'width:70%' %>
             </div>
             <%= f.hidden_field :id %>
             <%= hidden_field_tag :user_id, current_user.id%>

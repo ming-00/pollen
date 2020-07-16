@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, only: [:create]
 
+  resource  :session,
+    :controller => 'sessions',
+    :only => [:new, :create, :destroy]
+
+  match '/sign_out' => 'sessions#destroy', :via => :delete 
+
   #routes from clearance
   resources :users, only: [:create] do
     resource :password,
@@ -11,7 +17,6 @@ Rails.application.routes.draw do
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   post "/sign_in" => "clearance/sessions#create"
-  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   
   get 'forum'   => 'welcome#forum'
@@ -22,7 +27,17 @@ Rails.application.routes.draw do
   get "/session", to: redirect("/sign_in")
   get "/entries", to: redirect("/entries/new")
 
-  root :to      => 'welcome#index'
+  Rails.application.routes.draw do
+  
+    constraints Clearance::Constraints::SignedIn.new do
+      root to: "welcome#index", as: :signed_in_root
+    end
+  
+    constraints Clearance::Constraints::SignedOut.new do
+      root to: "welcome#landing"
+    end
+  end
+
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:new, :create, :destroy, :show, :edit, :update, :search] do
@@ -40,7 +55,9 @@ Rails.application.routes.draw do
   resources :entries, only: [:show, :create, :update, :edit, :destroy, :new] do
     resources :entrylikes, only: [:create, :destroy]
   end
-  resources :corrections, only: [:create, :index, :destroy, :edit, :update]
+  resources :corrections, only: [:create, :index, :destroy, :edit, :update] do
+    resources :correctionlikes, only: [:create, :destroy]
+  end
 
   resources :users do
     member do

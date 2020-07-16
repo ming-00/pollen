@@ -43,3 +43,83 @@
 #journal-button:focus {
     outline: none;
 }
+
+.landing {
+    width: relative;
+    height: 96%;
+    vertical-align: middle;
+    padding-top: 2.5em;
+    padding-right: 1.5em;
+    padding-left: 0em;
+    float: right;
+}
+
+.no-padding-header {
+    padding-top: 0em !important;
+}
+
+.welcome-landing {
+    font-family: Futura Std;
+    font-size: 1.9em;
+    padding-left: 5.7em;
+    padding-right: 0em;
+    text-align: left;
+}
+
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 19px 22px;
+    transition: all .2s ease;
+    color: black;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 28px;
+        background: rgba(133, 9, 65, 0.3);
+        width: 56px;
+        height: 56px;
+        transition: all .3s ease;
+    }
+    span {
+        position: relative;
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 900;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        vertical-align: middle;
+        top:-8px;
+    }
+    svg {
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: black;
+        stroke-width: 2;
+        transform: translateX(-6px) translateY(-10px);
+        transition: all .3s ease;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: white;
+        &:before {
+            width: 100%;
+            background: #850941;
+        }
+        svg {
+            transform: translateX(0) translateY(-10px);
+            stroke: white;
+        }
+        &:active {
+            transform: scale(.96);
+        }
+    }
+}

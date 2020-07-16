@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_15_143629) do
+ActiveRecord::Schema.define(version: 2020_07_14_134828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_07_15_143629) do
     t.datetime "updated_at", null: false
     t.index ["forumpost_id"], name: "index_commentforums_on_forumpost_id"
     t.index ["user_id"], name: "index_commentforums_on_user_id"
+  end
+
+  create_table "correctionlikes", force: :cascade do |t|
+    t.bigint "correction_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["correction_id"], name: "index_correctionlikes_on_correction_id"
+    t.index ["user_id"], name: "index_correctionlikes_on_user_id"
   end
 
   create_table "corrections", force: :cascade do |t|
@@ -184,6 +193,7 @@ ActiveRecord::Schema.define(version: 2020_07_15_143629) do
     t.string "lastname"
     t.integer "temp_id"
     t.integer "f_temp_id"
+    t.integer "points"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
@@ -192,6 +202,8 @@ ActiveRecord::Schema.define(version: 2020_07_15_143629) do
   add_foreign_key "commentforumlikes", "users"
   add_foreign_key "commentforums", "forumposts"
   add_foreign_key "commentforums", "users"
+  add_foreign_key "correctionlikes", "corrections"
+  add_foreign_key "correctionlikes", "users"
   add_foreign_key "corrections", "entries"
   add_foreign_key "corrections", "users"
   add_foreign_key "entries", "journals"

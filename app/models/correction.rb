@@ -1,6 +1,9 @@
 class Correction < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
 
+  validates :user_id, :uniqueness => { :scope => :entry_id,
+    :message => "may only provide one correction per post." }
+
   belongs_to :entry
   belongs_to :user
 
@@ -10,6 +13,8 @@ class Correction < ApplicationRecord
   :presence => {:message => " can't be blank."}
 
   default_scope -> { order(created_at: :desc) }
+
+  has_many :correctionlikes, :dependent => :destroy
 
   def set_defaults
     self.correct = false if self.correct.nil?

@@ -15,6 +15,7 @@ class EntriesController < ApplicationController
         @journal = Journal.find(params[:entry][:journal_id])
         @entry = @journal.entries.build(entry_params)
         if @entry.save
+            @entry.journal.user.increment!(:points)
             flash[:success] = "Entry created!"
             redirect_to @entry
         else

@@ -5,29 +5,29 @@
 /* journal */
 
 .journals {
-    list-style: none;
-    padding: 0;
-    li {
-      padding: 10px 0;
-      border-top: 1px solid #e8e8e8;
-    }
-    .user {
-      margin-top: 5em;
-      padding-top: 0;
-    }
-    .title {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .title {
+    display: block;
+    margin-left: 60px;
+    img {
       display: block;
-      margin-left: 60px;
-      img {
-        display: block;
-        padding: 5px 0;
-      }
+      padding: 5px 0;
     }
-    .timestamp {
-      color: grey;
-      display: block;
-      margin-left: 60px;
-    }
+  }
+  .timestamp {
+    color: grey;
+    display: block;
+    margin-left: 60px;
+  }
 }
 
 .journal-title {

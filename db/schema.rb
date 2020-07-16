@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2020_07_14_134828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "commentforumlikes", force: :cascade do |t|
+    t.bigint "commentforum_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentforum_id"], name: "index_commentforumlikes_on_commentforum_id"
+    t.index ["user_id"], name: "index_commentforumlikes_on_user_id"
+  end
+
   create_table "commentforums", force: :cascade do |t|
     t.text "reply"
     t.bigint "forumpost_id"
@@ -104,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_07_14_134828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.boolean "accepted"
     t.index ["user_id", "created_at"], name: "index_forumposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_forumposts_on_user_id"
   end
@@ -188,6 +198,8 @@ ActiveRecord::Schema.define(version: 2020_07_14_134828) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "commentforumlikes", "commentforums"
+  add_foreign_key "commentforumlikes", "users"
   add_foreign_key "commentforums", "forumposts"
   add_foreign_key "commentforums", "users"
   add_foreign_key "correctionlikes", "corrections"

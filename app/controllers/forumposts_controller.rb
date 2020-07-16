@@ -12,10 +12,11 @@ class ForumpostsController < ApplicationController
             flash[:success] = "Post created and published in forum!"
             redirect_to "/forum"
         else
-            flash[:danger] = @forumpost.errors.full_messages[0]
-            render "welcome/forum"
+            flash[:danger] = "Please fill in title and content."
+            redirect_to '/forum'
         end
     end
+
     
     def destroy
         @forumpost = Forumpost.find(params[:id])
@@ -51,6 +52,16 @@ class ForumpostsController < ApplicationController
     def show
         @forumposts = Forumpost.find(params[:id])
         @forumposts.punch(request)
+    end
+
+    def markaccepted
+        @forumpost = Forumpost.find(params[:id])
+        if @forumpost.accepted == false
+            @forumpost.update_attributes(accepted: true)
+        else 
+            @forumpost.update_attributes(accepted: false)
+        end
+        redirect_to request.referrer
     end
 
 

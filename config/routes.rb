@@ -42,7 +42,9 @@ Rails.application.routes.draw do
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:new, :create, :destroy, :show, :edit, :update, :search] do
     resources :forumpostlikes, only: [:create, :destroy]
-    resources :commentforums
+    resources :commentforums do 
+      resources :commentforumlikes, only: [:create, :destroy]
+    end 
     collection do
       get :search
     end
@@ -65,6 +67,7 @@ Rails.application.routes.draw do
   
   match "entries/:id/markresolved" => "entries#markresolved", :as => "markresolved_entry", via: [:get, :post]
   match "corrections/:id/markaccepted" => "corrections#markaccepted", :as => "markaccepted_correction", via: [:get, :post]
+  match "forumposts/:id/markaccepted" => "forumposts#markaccepted", :as => "markaccepted_forumpost", via: [:get, :post]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

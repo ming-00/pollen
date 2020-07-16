@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, only: [:create]
 
+  resource  :session,
+    :controller => 'sessions',
+    :only => [:new, :create, :destroy]
+
+  match '/sign_out' => 'sessions#destroy', :via => :delete 
+
   #routes from clearance
   resources :users, only: [:create] do
     resource :password,
@@ -11,7 +17,6 @@ Rails.application.routes.draw do
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   post "/sign_in" => "clearance/sessions#create"
-  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   
   get 'forum'   => 'welcome#forum'

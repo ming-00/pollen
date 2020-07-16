@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <header class="navbar navbar-fixed-top navbar">
+        <div class="container">
+            <%=link_to "Pollen.", root_path, id: "logo" %>
+        </div>
+    </header>
+    <body class="no-padding-header">
+            <aside class="col-sm-3 welcome-landing">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                Welcome to Pollen.
+                <br>
+                <br>
+
+                <a href="/sign_in" class="cta">
+                    <span>Sign in</span>
+                    <svg width="13px" height="10px" viewBox="0 0 13 10">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </a>
+            </aside>
+            <div class="col-sm-9">
+                <%= image_tag 'landing.png', :class => "landing"%>
+            </div>
+    </body>

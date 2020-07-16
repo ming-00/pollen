@@ -22,7 +22,17 @@ Rails.application.routes.draw do
   get "/session", to: redirect("/sign_in")
   get "/entries", to: redirect("/entries/new")
 
-  root :to      => 'welcome#index'
+  Rails.application.routes.draw do
+  
+    constraints Clearance::Constraints::SignedIn.new do
+      root to: "welcome#index", as: :signed_in_root
+    end
+  
+    constraints Clearance::Constraints::SignedOut.new do
+      root to: "welcome#landing"
+    end
+  end
+
   resources :users, only: [:index, :show, :update, :edit]
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:new, :create, :destroy, :show, :edit, :update, :search] do

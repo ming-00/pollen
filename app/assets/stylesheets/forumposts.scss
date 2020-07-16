@@ -15,3 +15,24 @@
 }
 
 .material-icons{ font-size: 48px; }
+
+.tiny-aligned-avatar {
+    height: 0em;
+    width: 0em;
+    vertical-align: middle !important;
+}
+
+.listing-replies {
+    list-style: none;
+    padding: 0;
+}
+
+.forumpost-content {
+    text-align: left;
+    font-size: 1.05em;
+    font-family: 'Futura Std';
+    color: #262626;
+    line-height: 1.6em;
+    overflow: hidden;
+    text-align: middle;
+}

@@ -528,3 +528,27 @@ select:focus {
     font-family: 'Futura Std';
     text-align: left
 }
+
+.search-button {
+    font-family: 'Futura Std';
+    font-size: 1em;
+    background-color: transparent;
+    border-radius: 2em;
+    margin-top: 1em;
+    border-color: transparent;
+    color: black;
+    font-size: 1.5em;
+
+    &:hover {
+        background-color: transparent !important;
+        text-decoration: none;
+        border-color: transparent;
+    }
+}
+
+#search-icon {
+    vertical-align: -3.5px;
+    &:hover {
+        color: #850941;
+    }
+}

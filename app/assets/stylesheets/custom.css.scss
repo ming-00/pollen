@@ -134,19 +134,8 @@ p {
 
 /* tags */ 
 .tag {
-    font-family: 'Futura Std';
-    font-size: 1em;
-    background-color: transparent;
-    border-radius: 2em;
-    padding: 9px 45px !important;
-    margin-top: 2.2em;
-    margin-left: 1.8em;
-    border-color: transparent;
-
-    &:hover {
-        text-decoration: none;
-        border-color: transparent;
-    }
+    font-family: "Futura Std";
+    margin: 1em;
 }
 
 .active .btn {
@@ -524,4 +513,9 @@ select:focus {
 #point-gem {
     color: #c7874b;
     vertical-align: -0.1em;
+}
+
+.thread-tag {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }

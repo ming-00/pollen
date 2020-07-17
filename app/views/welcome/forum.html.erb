@@ -19,17 +19,15 @@
                     <%= button_to "CREATE NEW THREAD", 'forumposts/new', :method => :get %>
                     <section class="forumpost_form">
                     <%= form_tag search_forumposts_path, method: :get do %>
-                        <%= text_field_tag :search, nil, palceholder: "Search" %>
+                        <%= text_field_tag :search, nil, class: "search-bar", placeholder: "Search" %>
                         <br>
                         <%= submit_tag "Search", class: "btn btn-primary"%>
                     <% end %>
                         <h3>Filter by</h3>
                         <% @forumpost.tag_counts_on(:tags).each do |tag| %>
-                        <div>
-                            <button class="tag">
-                                <%= render tag %>
-                                <%= tag.count %>
-                            </button>
+                        <div class="tag">
+                            <%= render tag %>
+                            <%= tag.count %>
                         </div>
                         <% end %>
                     </section>
@@ -65,7 +63,9 @@
                             <div class="entry-content">
                                 <%= truncate(forumpost.content, :length => 150, :separator => ' ') %>
                                 <div>
-                                    <%= render forumpost.tags %>
+                                    <div class="thread-tag">
+                                        <%= render forumpost.tags %>
+                                    </div>
                                     <div class="forumpost-stats">
                                         <% pre_like = forumpost.forumpostlikes.find { |like| like.user_id == current_user.id} %>
                                         <% if pre_like %>

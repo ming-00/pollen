@@ -548,7 +548,9 @@ select:focus {
 
 #search-icon {
     vertical-align: -3.5px;
+    transition: all .3s ease;
     &:hover {
         color: #850941;
+        transform: translateX(8px) translateY(0);
     }
 }

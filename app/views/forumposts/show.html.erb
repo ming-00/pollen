@@ -28,6 +28,9 @@
                 <br>
                 <br>
             </div>
+            <div class="thread-page-tag">
+                <%= render @forumposts.tags %>
+            </div>
             <% pre_like = @forumposts.forumpostlikes.find { |like| like.user_id == current_user.id} %>
             <div class="entry-stats">
                 <% if pre_like %>
@@ -129,6 +132,5 @@
             <% end %>
         </div>    
     </aside>
-        <%= render 'commentforums/form' %>
-    
+        <%= render 'commentforums/form' %>  
 </div>

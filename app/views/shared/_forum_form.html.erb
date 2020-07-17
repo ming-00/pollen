@@ -1,12 +1,16 @@
 <%= form_with(model: @forumpost, local: true) do |f| %>
     <div class="field">
-    <section>
-    <%= f.text_area :title, placeholder: "Add a title to post..." %>
-    </section>
-    <%= f.text_area :content, placeholder: "Compose new reply..." %>
+        <section>
+            <%= f.text_area :title, placeholder: "Add a title to post..." %>
+        </section>
+        <%= f.text_area :content, placeholder: "Compose new reply..." %>
     </div>
     <div>
-        <%= f.text_field :tag_list, value: f.object.tag_list.to_s, placeholder: "Add tag e.g. grammar" %>
+        <%= f.collection_check_boxes(:tag_list, valid_tags, :first, :first) do |b| %>
+            <div class="form-check">
+           <label class="form-check-label"> <span class="tag-name"><%= b.check_box class: 'form-check-input' %> <%= b.value %></span></label>
+            </div>
+          <% end %>
     </div>
     <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

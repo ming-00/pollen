@@ -10,3 +10,8 @@ Language.create(lang: 'French')
 Language.create(lang: 'German')
 Language.create(lang: 'Spanish')
 Language.create(lang: 'Korean')
+
+list = ['English', 'French', 'Japanese', 'German', 'Spanish', 'Korean']
+list.each do |tag|
+  ActsAsTaggableOn::Tag.new(:name => tag).save
+end

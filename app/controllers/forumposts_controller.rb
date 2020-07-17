@@ -54,6 +54,10 @@ class ForumpostsController < ApplicationController
         @forumposts.punch(request)
     end
 
+    def tag_cloud
+        @tags = Forumpost.tag_counts_on(:tags)
+      end
+
     def markaccepted
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.accepted == false
@@ -67,6 +71,6 @@ class ForumpostsController < ApplicationController
 
     private
     def forumpost_params
-        params.require(:forumpost).permit(:content, :title, :tag_list)
+        params.require(:forumpost).permit(:content, :title, :tag_list => [])
     end
 end

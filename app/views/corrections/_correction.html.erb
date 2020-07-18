@@ -1,13 +1,14 @@
 <div id="correction-<%= correction.id %>">
 <li style="padding-bottom:1em">
     <% if correction.correct %>
-        <br>
         <div class="correction-content">
             <%= "This entry is perfect! No correction needed." %>
         </div>
         <br>
     <% else %>
-        <span class="content"><%= correction.content.html_safe %></span>
+        <span class="correction-content">
+            <%= correction.content.html_safe %>
+        </span>
     <%end%>
     <% if !correction.comment.blank? %>
         <div class="correction-content">
@@ -16,13 +17,32 @@
         </div>
     <% end %>
     <div class="correction-particulars">
+        <% if current_user == correction.entry.journal.user %>
+            <% if correction.accepted == true %>
+                <%= link_to "unaccept correction", markaccepted_correction_path(correction.id) %>
+            <% else %>
+                <%= link_to "accept correction", markaccepted_correction_path(correction.id) %>
+            <% end %>      
+        <% end %>
+        <div>
+            <% if current_user == correction.user %>
+                <%= link_to "edit", edit_correction_path(correction) %> /
+                <%= link_to "delete", correction, method: :delete,
+                data: { confirm: "This correction will be permanently deleted." } %>
+            <%end%>
+        </div>
+        <br>
+        <div class="tiny-avatar">
+            <%= avatar_for(correction.user) %>
+        </div>
         <% if correction.accepted %>
             <svg width="1em" height="1em" id="resolved-icon-2" data-toggle="tooltip" title="Correction is accepted by author" data-container="body" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
         <%end%>
-        Correction by
-        <%=  link_to "#{correction.user.firstname} #{correction.user.lastname}", correction.user%>
+        correction by
+        <%=  link_to "#{correction.user.firstname} #{correction.user.lastname}", correction.user%> 
+        ·
         <%= time_ago_in_words(correction.created_at) %> ago.
         <% pre_like = correction.correctionlikes.find { |like| like.user_id == current_user.id} %>
         <% if pre_like %>
@@ -39,18 +59,5 @@
             <% end %>
         <% end %>
         <%= correction.correctionlikes.count %> 
-        <br>
-        <% if current_user == correction.entry.journal.user %>
-            <% if correction.accepted == true %>
-                <%= link_to "unaccept correction", markaccepted_correction_path(correction.id) %>
-            <% else %>
-                <%= link_to "accept correction", markaccepted_correction_path(correction.id) %>
-            <% end %>      
-        <% end %>
-        <% if current_user == correction.user %>
-            <%= link_to "edit", edit_correction_path(correction) %> /
-            <%= link_to "delete", correction, method: :delete,
-            data: { confirm: "This correction will be permanently deleted." } %>
-        <%end%>
     </div>
 </li>

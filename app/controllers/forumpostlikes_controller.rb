@@ -9,7 +9,7 @@ class ForumpostlikesController < ApplicationController
           flash[:notice] = "You can't like more than once"
         else
           @forumpost.forumpostlikes.create(user_id: current_user.id)
-          @entry_user.increment!(:points)
+          @entry_user.increment!(:points) unless current_user == @forumpost.user
         end
         redirect_to forumpost_path(@forumpost)
     end
@@ -24,7 +24,7 @@ class ForumpostlikesController < ApplicationController
           flash[:notice] = "Cannot unlike"
         else
           @forumpostlike.destroy
-          @entry.journal.user.decrement!(:points)
+          @entry.journal.user.decrement!(:points) unless current_user == @forumpost.user
         end
         redirect_to forumpost_path(@forumpost)
     end

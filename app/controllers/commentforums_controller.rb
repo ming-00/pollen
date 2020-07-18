@@ -9,6 +9,7 @@ class CommentforumsController < ApplicationController
 
         if @commentforum.save
             flash[:success] = "Comment created!"
+            @commentforum.user.increment!(:points)
             redirect_to forumpost_path(@forumpost)
         else
             flash[:danger] = "Comment creation failed."
@@ -20,6 +21,7 @@ class CommentforumsController < ApplicationController
         @forumpost = Forumpost.find(params[:forumpost_id])
         @commentforum = @forumpost.commentforums.find(params[:id])
         @commentforum.destroy
+        @commentforum.user.decrement!(:points)
         flash[:success] = "Comment deleted!"
         redirect_to forumpost_path(@forumpost)
     end
@@ -45,15 +47,23 @@ class CommentforumsController < ApplicationController
         @commentforum = Commentforum.find(params[:id])
         @forumpost = @commentforum.forumpost
         if @commentforum.accepted == false
-            @commentforum.user.increment!(:points, by = 5)
+            @commentforum.user.increment!(:points, by = 5) unless @commentforum.user == @forumpost.user
             @commentforum.update_attributes(accepted: true)
             flash[:success] = "Comment accepted as best answer!"
         else 
             @commentforum.update_attributes(accepted: false)
-            @commentforum.user.decrement!(:points, by = 5)
+            @commentforum.user.decrement!(:points, by = 5) unless @commentforum.user == @forumpost.user
             flash[:success] = "Correction unaccepted!"
         end
         redirect_to forumpost_path(@forumpost)
+    end
+
+    def correct_user
+        @commentforum = current_user.commentforums.find_by(id: params[:id])
+        if @commentforum.nil?
+            flash[:danger] = "Users can only update their own threads."
+            redirect_to root_url 
+        end
     end
 
     private

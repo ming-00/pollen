@@ -22,6 +22,7 @@ class ForumpostsController < ApplicationController
     def destroy
         @forumpost = Forumpost.find(params[:id])
         @forumpost.destroy
+        @forumpost.user.decrement!(:points)
         flash[:success] = "Thread deleted!"
         redirect_to request.referrer
     end

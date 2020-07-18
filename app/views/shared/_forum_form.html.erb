@@ -1,12 +1,16 @@
 <%= form_with(model: @forumpost, local: true) do |f| %>
-    <div class="field">
     <section>
-    <%= f.text_area :title, placeholder: "Add a title to post..." %>
-    </section>
-    <%= f.text_area :content, placeholder: "Compose new reply..." %>
+    <br>
+    <div class = "futura-this" %>
+        <%= f.label :title, "Title" %>
+        <%= f.text_field :title, class: "entry-title-field", style: 'width: 30%' %>
+        <br>
+    </div>
+    <div class = "entry-text-field" %>
+        <%= f.text_area :content, placeholder: "Start typing..."%>
     </div>
     <div>
-        <%= f.text_field :tag_list, value: f.object.tag_list.to_s, placeholder: "Add tag e.g. grammar" %>
+        <%= f.text_field :tag_list, value: f.object.tag_list.to_s, placeholder: "Add tag e.g. grammar", class: "entry-title-field"%>
     </div>
     <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

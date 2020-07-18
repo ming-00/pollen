@@ -1,17 +1,18 @@
 <html>
     <head>
-        <% provide(:title, "edit thread for: ${@forumpost.title}") %>
-        <h1>edit thread for "<%= @forumpost.title %>" </h1>
+        <% provide(:title, "Edit thread for: ${@forumpost.title}") %>
+        <h3>Edit thread: <%= @forumpost.title %> </h3>
     </head>
+    <br>
     <body>
         <%= form_with(model: @forumpost, local: true) do |f| %>
-            <div class = "text-field" %>
+            <div class = "futura-this" %>
                 <%= f.label :title, "Title" %>
-                <%= f.text_field :title, style: 'width: 60%' %>
+                <%= f.text_field :title, class: "entry-title-field", style: 'width: 30%' %>
                 <br>
             </div>
-            <div class = "text-field" %>
-                <%= f.text_area :content, placeholder: "Start typing...", :rows => 20, style: 'width:70%' %>
+            <div class = "entry-text-field" %>
+                <%= f.text_area :content, placeholder: "Start typing..." %>
             </div>
             <%= f.hidden_field :id %>
             <%= hidden_field_tag :user_id, current_user.id%>

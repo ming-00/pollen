@@ -1,11 +1,11 @@
 <html>
     <head>
-        <% provide(:title, "edit user") %>
-        <h1>update <%= current_user.lastname %>'s profile</h1>
+        <% provide(:title, "Edit user") %>
+        <h3>Update <%= current_user.lastname %>'s profile</h3>
     </head>
 
     <body>
-
+        <br>
         <%= form_with(model: @user, local: true) do |f| %>
             <table summary="Edit user form fields">
     

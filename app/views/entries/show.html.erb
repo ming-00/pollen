@@ -58,7 +58,24 @@
         <br>
             <% if current_user != @entry.journal.user %>
                 <section>
-                    <%= render 'shared/correction_form' %>
+                    <h3>Provide Feedback</h3>
+                    <br>
+                    <button type="button" id="perfection-button">
+                        mark as perfect
+                    </button>
+                
+                    <button type="button" id="correction-button">
+                        provide correction
+                    </button>
+                    <br>
+                    <br>
+                    <br>
+                    <section id="load-correction">
+                        <%= render 'shared/correction_form' %>
+                    </section>
+                    <section id="no-correction">
+                    <%= render 'shared/perfection_form' %>
+                    </section>
                 </section>
                 <br>
                 <br>

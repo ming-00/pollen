@@ -386,6 +386,12 @@ textarea:focus {
 
 .tinymce {
     font-family: 'Futura Std';
+    width: 100%;
+}
+
+.tinymce-edit {
+    padding-left: 28%;
+    font-family: 'Futura Std';
 }
 
 input[type = "email"] {
@@ -413,15 +419,36 @@ select:focus {
     outline: none;
 }
 
-#journal-form {
+#journal-form, #load-correction, #no-correction {
     display:none;
 }
+
+#correction-button, #perfection-button {
+    border-radius: 2em;
+    border: none;
+    color: #f5f4f0;
+    font-family: 'Futura Std'
+}
+
+#correction-button {
+    background-color: #8f566f;
+    float: right;
+    padding: 0.5em 2em;
+}
+
+#perfection-button {
+    background-color: #4e8064;
+    float: left;
+    padding: 0.5em 2.5em;
+}
+
 
 .tooltip {
     font-family: 'Futura Std';
     font-size: 1em;
     padding: 1em;
 }
+
 .forumpost-stats{
     float: right;
     color: grey;
@@ -571,8 +598,4 @@ select:focus {
         color: #850941;
         transform: translateX(8px) translateY(0);
     }
-}
-
-.collection-field {
-    font-family: 'Futura Std';
 }

@@ -23,5 +23,13 @@ $(document).on('turbolinks:load', function() {
     $("#journal-button").click(function(){
         $("#journal-form").toggle();
     });
+    $("#correction-button").click(function(){
+        $("#load-correction").toggle();
+        $("#no-correction").hide();
+    });
+    $("#perfection-button").click(function(){
+        $("#no-correction").toggle();
+        $("#load-correction").hide();
+    });
     $('[data-toggle="tooltip"]').tooltip(); 
 });

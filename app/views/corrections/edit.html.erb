@@ -1,22 +1,24 @@
 <html>
     <head>
-        <% provide(:title, "edit correction for: ${@correction.entry.title}") %>
-        <h1>edit correction for "<%= @correction.entry.title %>" </h1>
+        <% provide(:title, "Edit correction for: #{@correction.entry.title}") %>
+        <h3>Edit correction for "<%= @correction.entry.title %>" </h3>
+        <br>
     </head>
     <body>
         <%= form_with(model: @correction, local: true) do |f| %>
-            <div class = "text-field" %>
-                <%= f.label :content, "Content" %>
-                <%= f.text_area(:content, :class => "tinymce")%>
+            <div class="tinymce-edit">
+                <%= f.text_area(:content, :class => "tinymce", style: 'width:60%')%>
             <br>
             </div>
+            <br>
             <div class = "text-field" %>
-                <%= f.label :comment, "Comments (Optional)" %>
+                <%= f.label :comment, "Comments (Optional)", class:"label-corrections"%>
+                <br>
                 <%= f.text_area :comment %>
             </div>
-            <div>
-                <%= f.label :correct, "This entry is correct"%>
+            <div class="futura-this">
                 <%= f.check_box :correct, {class:"form-check-input", type:"checkbox"}, true, false %>
+                <%= f.label :correct, "#{@correction.entry.journal.user.lastname}'s entry is perfect", class:"label-corrections"%>
             </div>
             <%= f.hidden_field :entry_id %>
             <%= hidden_field_tag :user_id, current_user.id%>

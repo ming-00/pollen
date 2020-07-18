@@ -48,10 +48,13 @@ class CommentforumsController < ApplicationController
         @forumpost = @commentforum.forumpost
         if @commentforum.accepted == false
             @commentforum.user.increment!(:points, by = 5) unless @commentforum.user == @forumpost.user
+            @commentforum.update_attributes(acceptedscore: true)
             @commentforum.update_attributes(accepted: true)
+            @commentforum.increment!(:acceptedscore, by = 10)
             flash[:success] = "Comment accepted as best answer!"
         else 
             @commentforum.update_attributes(accepted: false)
+            @commentforum.decrement!(:acceptedscore, by = 10)
             @commentforum.user.decrement!(:points, by = 5) unless @commentforum.user == @forumpost.user
             flash[:success] = "Correction unaccepted!"
         end

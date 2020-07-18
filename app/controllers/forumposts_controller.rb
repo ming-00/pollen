@@ -70,7 +70,6 @@ class ForumpostsController < ApplicationController
         redirect_to request.referrer
     end
 
-
     private
     def forumpost_params
         params.require(:forumpost).permit(:content, :title, :tag_list => [])

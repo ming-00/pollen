@@ -2,7 +2,8 @@ class Commentforum < ApplicationRecord
   belongs_to :forumpost
   belongs_to :user
   has_many :commentforumlikes, dependent: :destroy
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(acceptedscore: :desc, created_at: :desc) }
+  after_initialize :set_defaults, unless: :persisted?
   
   validates :reply,
   :presence => {:message => " can't be blank."},
@@ -11,5 +12,6 @@ class Commentforum < ApplicationRecord
 
     def set_defaults
       self.accepted = false if self.accepted.nil?
+      self.acceptedscore = 0 if self.acceptedscore.nil?
     end
 end

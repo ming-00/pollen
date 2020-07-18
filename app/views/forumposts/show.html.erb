@@ -121,7 +121,7 @@
                                 <% if l.accepted == true %>
                                     <%= link_to "unaccept comment", markaccepted_commentforum_path(l.forumpost.id, l.id) %>
                                 <% else %>
-                                    <%= link_to "accept comment", markaccepted_commentforum_path(l.id) %>
+                                    <%= link_to "accept comment", markaccepted_commentforum_path(l.forumpost.id, l.id) %>
                                 <% end %>      
                             <% end %>
                             <% if current_user == l.user %>

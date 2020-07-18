@@ -8,7 +8,12 @@
     <div>
         <%= f.collection_check_boxes(:tag_list, valid_tags, :first, :first) do |b| %>
             <div class="form-check">
-           <label class="form-check-label"> <span class="tag-name"><%= b.check_box class: 'form-check-input' %> <%= b.value %></span></label>
+            <label class="tag-deco"> 
+                <span class="tag-name">
+                    <%= b.check_box class: 'form-check-input' %>
+                    <%= b.value %>
+                </span>  
+            </label>
             </div>
           <% end %>
     </div>

@@ -18,6 +18,7 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap
+//= require bootstrap-sprockets
 
 $(document).ready(function() {
 
@@ -37,6 +38,7 @@ $(document).ready(function() {
 });
 
 $(document).on('turbolinks:load', function() {
+    
     $("#journal-button").click(function(){
         $("#journal-form").toggle();
     });

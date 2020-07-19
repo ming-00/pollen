@@ -75,7 +75,6 @@ p {
     font-size: 2em;
     color: #000;
     font-family: 'Triomphe Bold';
-    /* text-transform: uppercase; */
     letter-spacing: -1 px;
     padding-top: 1em;
     font-weight:bold;
@@ -627,3 +626,11 @@ ins {
 #no-choice {
     text-align: center !important;
 }
+
+.custom-nav {
+    background-image: linear-gradient(to bottom, rgba(245, 244, 240, 1), rgba(245, 244, 240, 0));
+}
+
+.navbar{
+    border:none;
+ }

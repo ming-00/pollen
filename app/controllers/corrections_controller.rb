@@ -13,6 +13,7 @@ class CorrectionsController < ApplicationController
         @correction = @entry.corrections.build(correction_params)
         @correction.user = current_user
         if @correction.save
+            @correction.user.increment!(:points)
             flash[:success] = "Correction created!"
             redirect_to @entry
         else
@@ -55,6 +56,7 @@ class CorrectionsController < ApplicationController
 
     def destroy
         @correction.destroy
+        @correction.user.decrement!(:points)
         flash[:success] = "Correction deleted"
         redirect_to request.referrer || root_url
     end

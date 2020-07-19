@@ -53,6 +53,25 @@
                     <%end%>
                 </div>
             </section>
+            <% if @entry.corrections.any? %>
+                <section class="w3-container">
+                    <div class="entry-particulars">
+                        Entry edited by collaborators
+                    </div>
+                    <br>
+                    <div class="entry-content">
+                        <%= raw getDiff(@entry.corrections.order("created_at").first.content, @entry.content, @entry.journal.user.temp_id) %>
+                    </div>
+                    <br>
+                    <div class="entry-particulars">
+                        Contributors:
+                        <br>
+                        <% @entry.corrections.each do |correction| %>
+                            <%= tiny_avatar_for(correction.user) %>
+                        <% end %>
+                    </div>
+                </section>
+            <%end%>
         </aside>
         <div id="right-scroll">
         <br>
@@ -61,7 +80,11 @@
                     <h3>Provide Feedback</h3>
                     <br>
                     <button type="button" id="perfection-button">
-                        mark as perfect
+                        <% if @entry.corrections.any? %>
+                            edits are perfect
+                        <% else %>
+                            mark as perfect
+                        <% end %>
                     </button>
                 
                     <button type="button" id="correction-button">
@@ -81,7 +104,7 @@
                 <br>
             <%end%>
             <% if @entry.corrections.count > 0 %>
-                <h3>Corrections (<%= @entry.corrections.count %>)</h3>
+                <h3>Correction History (<%= @entry.corrections.count %>)</h3>
                 <ol class="corrections">
                     <%= render @corrections %>
                 </ol>

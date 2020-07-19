@@ -1,7 +1,7 @@
 <div id="correction-<%= correction.id %>">
 <li style="padding-bottom:1em">
     <% if correction.correct %>
-        <div class="correction-content">
+        <div class="correction-content" id="no-choice">
             <%= "This entry is perfect! No correction needed." %>
         </div>
         <br>
@@ -11,7 +11,8 @@
         </span>
     <%end%>
     <% if !correction.comment.blank? %>
-        <div class="correction-content">
+        <div class="correction-content" id="no-choice">
+            <br>
             Comments: 
             <%= correction.comment %>
         </div>
@@ -35,31 +36,35 @@
         </div>
         <br>
         <div class="tiny-avatar">
-            <%= avatar_for(correction.user) %>
+            <%= tiny_avatar_for(correction.user) %>
         </div>
-        <% if correction.accepted %>
-            <svg width="1em" height="1em" id="resolved-icon-2" data-toggle="tooltip" title="Correction is accepted by author" data-container="body" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-            </svg>
-        <%end%>
-        correction by
-        <%=  link_to "#{correction.user.firstname} #{correction.user.lastname}", correction.user%> 
-        ·
-        <%= time_ago_in_words(correction.created_at) %> ago.
-        <% pre_like = correction.correctionlikes.find { |like| like.user_id == current_user.id} %>
-        <% if pre_like %>
-            <%= link_to correction_correctionlike_path(correction, pre_like), method: :delete do %>
-                <svg width="1em" height="1em" viewBox="0 0 16 16" id = "unlike-heart" data-toggle="tooltip" title="unlike" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        <div class="beside-avatar">
+            <% if correction.accepted %>
+                <svg width="1em" height="1em" id="resolved-icon-2" data-toggle="tooltip" title="Correction is accepted by author" data-container="body" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                 </svg>
-            <% end %>
-        <% else %>
-            <%= link_to correction_correctionlikes_path(correction), method: :entry do %>
-                <svg width="1em" height="1em" viewBox="0 0 16 16" id = "like-heart" data-toggle="tooltip" title="like" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                </svg>
-            <% end %>
-        <% end %>
-        <%= correction.correctionlikes.count %> 
+            <%end%>
+            <%=  link_to "#{correction.user.firstname} #{correction.user.lastname}", correction.user%> 
+             ·
+            <%= time_ago_in_words(correction.created_at) %> ago.
+            <% pre_like = correction.correctionlikes.find { |like| like.user_id == current_user.id} %>
+            <div>
+                <% if pre_like %>
+                    <%= link_to correction_correctionlike_path(correction, pre_like), method: :delete do %>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" id = "unlike-heart" data-toggle="tooltip" title="unlike" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                    <% end %>
+                <% else %>
+                    <%= link_to correction_correctionlikes_path(correction), method: :entry do %>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" id = "like-heart" data-toggle="tooltip" title="like" data-container="body" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                    <% end %>
+                <% end %>
+                <%= correction.correctionlikes.count %> 
+            </div>
+        </div>
     </div>
+    <br>
 </li>

@@ -1,6 +1,10 @@
 <%= form_for (@correction) do |f| %>
     <div class = "text-field"%>
-        <%= f.text_area(:content, :value => @entry.content, :rows => 8, style: 'width:90%')%>
+        <% if @entry.corrections.any? %>
+            <%= f.text_area(:content, :value => @entry.corrections.order("created_at").first.content, :rows => 8, style: 'width:90%')%>
+        <% else %>
+            <%= f.text_area(:content, :value => @entry.content, :rows => 8, style: 'width:90%')%>
+        <% end %>
         <br>
         <br>
         <div class = "correction-form">

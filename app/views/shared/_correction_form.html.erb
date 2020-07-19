@@ -1,11 +1,11 @@
 <%= form_for (@correction) do |f| %>
     <div class = "text-field"%>
-        <%= f.text_area(:content, :value => @entry.content, :class => "tinymce")%>
+        <%= f.text_area(:content, :value => @entry.content, :rows => 8, style: 'width:90%')%>
         <br>
         <br>
         <div class = "correction-form">
             <%= f.label :comment, "Comments (Optional)"%>
-            <%= f.text_area :comment, :rows => 3, style: 'width:80%' %>
+            <%= f.text_area :comment, :rows => 3, style: 'width:90%' %>
         </div>
         <%= f.submit "Submit" %>
     </div>

@@ -607,3 +607,23 @@ select:focus {
         transform: translateX(8px) translateY(0);
     }
 }
+
+del {
+    color: #f5f4f0;
+    background-color: #8f566f;
+    margin-right: 0.3em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+ins {
+    text-decoration: none;
+    color: #f5f4f0;
+    background-color: #4e8064;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+#no-choice {
+    text-align: center !important;
+}

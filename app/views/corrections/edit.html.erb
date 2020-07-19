@@ -6,8 +6,8 @@
     </head>
     <body>
         <%= form_with(model: @correction, local: true) do |f| %>
-            <div class="tinymce-edit">
-                <%= f.text_area(:content, :class => "tinymce", style: 'width:60%')%>
+            <div>
+                <%= f.text_area(:content, :rows => "10", style: 'width:50%')%>
             <br>
             </div>
             <br>

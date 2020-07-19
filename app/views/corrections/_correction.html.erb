@@ -7,7 +7,7 @@
         <br>
     <% else %>
         <span class="correction-content">
-            <%= correction.content.html_safe %>
+            <%= raw getDiff(correction.content, correction.entry.content, correction.user.temp_id) %>
         </span>
     <%end%>
     <% if !correction.comment.blank? %>
@@ -17,14 +17,16 @@
         </div>
     <% end %>
     <div class="correction-particulars">
-        <% if current_user == correction.entry.journal.user %>
-            <% if correction.accepted == true %>
-                <%= link_to "unaccept correction", markaccepted_correction_path(correction.id) %>
-            <% else %>
-                <%= link_to "accept correction", markaccepted_correction_path(correction.id) %>
-            <% end %>      
-        <% end %>
-        <div>
+        <div id="no-choice">
+            <% if current_user == correction.entry.journal.user %>
+                <% if correction.accepted == true %>
+                    <%= link_to "unaccept correction", markaccepted_correction_path(correction.id) %>
+                <% else %>
+                    <%= link_to "accept correction", markaccepted_correction_path(correction.id) %>
+                <% end %>      
+            <% end %>
+        </div>
+        <div id="no-choice">
             <% if current_user == correction.user %>
                 <%= link_to "edit", edit_correction_path(correction) %> /
                 <%= link_to "delete", correction, method: :delete,

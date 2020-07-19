@@ -9,7 +9,6 @@ class CorrectionsController < ApplicationController
     def create
         @entry = Entry.find(params[:correction][:entry_id])
         @title = @entry.title
-        @content = @entry.content.split(/\?|\.|!/)
         @user = current_user
         @correction = @entry.corrections.build(correction_params)
         @correction.user = current_user
@@ -24,7 +23,14 @@ class CorrectionsController < ApplicationController
 
     def show
         @entry = Entry.find(params[:id])
-        @corrections = @entry.corrections.paginate(page: params[:page])
+        require 'differ'
+        Differ.format = :html
+        @original = @entry.content
+        @corrections = @entry.corrections
+        @corrections.each do |correction|
+            correction.update_attributes!(content: Differ.diff_by_word(@original, correction))
+        end
+        #@corrections = @entry.corrections.paginate(page: params[:page])
     end
 
     def update

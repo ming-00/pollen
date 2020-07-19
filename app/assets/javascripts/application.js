@@ -19,6 +19,23 @@
 //= require rails-ujs
 //= require bootstrap
 
+$(document).ready(function() {
+
+    // Put your offset checking in a function
+    function checkOffset() {
+        $(".navbar-fixed-top").toggleClass("top-nav-collapse", $(".navbar").offset().top > 10);
+    }
+
+    // Run it when the page loads
+    checkOffset();
+
+
+    // Run function when scrolling
+    $(window).scroll(function() {
+        checkOffset();
+    });
+});
+
 $(document).on('turbolinks:load', function() {
     $("#journal-button").click(function(){
         $("#journal-form").toggle();

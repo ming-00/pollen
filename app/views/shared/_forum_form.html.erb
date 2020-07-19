@@ -1,21 +1,29 @@
 <%= form_with(model: @forumpost, local: true) do |f| %>
     <div class="field">
-        <section>
-            <%= f.text_area :title, placeholder: "Add a title to post..." %>
-        </section>
-        <%= f.text_area :content, placeholder: "Compose new reply..." %>
+        <div class ="title-field">
+            <%= f.text_area :title, placeholder: "Add a title to thread..." %>
+        </div>
+        <div class = "entry-text-field">
+        <%= f.text_area :content, placeholder: "Type body of thread here..." %>
+        </div>
     </div>
     <div>
+    <table class="table-style">
+    <tr>
         <%= f.collection_check_boxes(:tag_list, valid_tags, :first, :first) do |b| %>
+            <td>
             <div class="form-check">
-            <label class="tag-deco"> 
-                <span class="tag-name">
-                    <%= b.check_box class: 'form-check-input' %>
-                    <%= b.value %>
-                </span>  
-            </label>
+                <label> 
+                    <span class="tag-name">
+                        <%= b.check_box class: 'form-check-input', :style => "margin-right: 0.5em;" %>
+                        <span class="forum-tag-label"><%= b.value %></span>
+                    </span>  
+                </label>
             </div>
-          <% end %>
+            </td>
+        <% end %>
+    </tr>
+    </table>
     </div>
     <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

@@ -316,6 +316,13 @@ aside {
     }
 }
 
+.title-field {
+    textarea {
+        height: 5em;
+        width: 40em;
+    }
+}
+
 /* avatar */
 .avatar {
   float: left;
@@ -553,4 +560,9 @@ select:focus {
         color: #850941;
         transform: translateX(8px) translateY(0);
     }
+}
+
+.table-style {
+    margin-left: auto;
+    margin-right: auto;
 }

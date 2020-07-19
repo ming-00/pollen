@@ -343,9 +343,14 @@ aside {
   border-radius: 1em;
 }
 
-.tiny-avatar {
-    height: 1em;
-    width: 1em;
+.mini-avatar {
+    float: left;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 3em;
+    height: 3em;
+    border-radius: 0.7em;
+    margin: 0.5em;
 }
 
 /* journal cover */
@@ -620,6 +625,9 @@ del {
     margin-right: 0.3em;
     padding-left: 0.2em;
     padding-right: 0.2em;
+    &:hover {
+        background-color: #a36a34;
+    }
 }
 
 ins {
@@ -628,6 +636,9 @@ ins {
     background-color: #4e8064;
     padding-left: 0.2em;
     padding-right: 0.2em;
+    &:hover {
+        background-color: #3a7074;
+    }
 }
 
 #no-choice {
@@ -640,4 +651,8 @@ ins {
 
 .navbar{
     border:none;
+ }
+
+ .beside-avatar {
+     margin-top: 0.4em;
  }

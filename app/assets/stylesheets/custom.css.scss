@@ -329,8 +329,9 @@ aside {
 }
 
 .f-select-standard {
-    padding: 3em;
+    padding: 0.5em 1em;
     background-color: white;
+    border-radius: 2em;
 }
 
 /* avatar */
@@ -437,6 +438,9 @@ select:focus {
     &:hover {
         background-color: #c57d5c;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 #perfection-button {
@@ -446,6 +450,9 @@ select:focus {
     transition: all .2s ease;
     &:hover {
         background-color: #59929c;
+    }
+    &:focus {
+        outline: none;
     }
 }
 

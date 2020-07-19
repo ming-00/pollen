@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="entry-particulars">
-                <%=  link_to "#{forumpost.user.firstname} #{forumpost.user.lastname}", forumpost.user%>
+                thread by <%=  link_to "#{forumpost.user.firstname} #{forumpost.user.lastname}", forumpost.user%>
                 ·   
                 posted <%= time_ago_in_words(forumpost.created_at) %> ago
             </div>

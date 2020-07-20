@@ -18,6 +18,7 @@
 //= require bootstrap
 
 $(document).on('turbolinks:load', function() {
+
     $("#journal-button").click(function(){
         $("#journal-form").toggle();
     });

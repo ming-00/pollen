@@ -78,3 +78,4 @@ gem 'rails-controller-testing', "~> 1.0.1"
 gem "punching_bag"
 gem 'jquery-rails'
 gem 'differ', '~> 0.1.2'
+gem 'animate.css-rails', '~> 3.2'

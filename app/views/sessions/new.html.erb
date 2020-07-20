@@ -3,18 +3,21 @@
     <html>
         <head>
                 <title><%= full_title(yield(:title)) %></title>
+                <meta name="turbolinks-cache-control" content="no-cache">
         </head>
         <body>
           <div id="clearance" class="sign-in">
-            <div class="w5-container">
-              <%= image_tag 'bottom-mountain.png', :class => "sign-in-pic" %>
-              <br>
-              <br>
-              <h3><%= t(".title") %></h3>
-              <br>
-              <%= render partial: '/sessions/form' %>
-              <br>
-            </div>
+            <div class="w5-container flip-come" id="animate-me">
+              <div class="pop-out">
+                <%= image_tag 'bottom-mountain.png', :class => "sign-in-pic" %>
+                <br>
+                <br>
+                <h3><%= t(".title") %></h3>
+                <br>
+                  <%= render partial: '/sessions/form' %>
+                </div>
+                <br>
+              </div>
           </div>
         </body>
     </html>

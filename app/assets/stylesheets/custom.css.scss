@@ -364,10 +364,12 @@ aside {
     position: absolute;
     z-index: -1;
     pointer-events: none;
+    transform-style: preserve-3d;  
     width: 31.5%;
     height: 770px;
-    background: linear-gradient(rgba(112, 112, 112, 0.15) 0%,   rgba(148, 148, 148, 0) 30%, rgba(129, 129, 129, 0) 100%);
-    transform: translateX(-2em) translateY(-34.5em) rotateZ(-56deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
+    background: linear-gradient(rgba(112, 112, 112, 0.15) 0%,   rgba(136, 134, 134, 0) 30%, rgba(129, 129, 129, 0) 100%);
+    -webkit-transform: translateX(-20%) translateY(-34.5em) rotateZ(-56deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
+    transform: translateX(-11%) translateY(-34.5em) rotateZ(-56deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
 }
 /* form text area */
 textarea {

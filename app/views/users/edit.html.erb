@@ -1,52 +1,58 @@
 <html>
     <head>
-        <% provide(:title, "edit user") %>
-        <h1>update <%= current_user.lastname %>'s profile</h1>
+        <% provide(:title, "Edit user") %>
     </head>
 
     <body>
+        <div class="w6-container flip-come">
+            <div class="pop-out">
+                <h3>Update <%= current_user.lastname %>'s profile</h3>
+                <br>
+                <%= form_with(model: @user, local: true) do |f| %>
+                    <table summary="Edit user form fields">
+            
+                    <div class ="user-edit-field">
+                        <label>
+                            <%= f.label :firstname, 'First Name' %>
+                        </label>
+                        <%= f.text_field :firstname %></td>
+                    </div>
 
-        <%= form_with(model: @user, local: true) do |f| %>
-            <table summary="Edit user form fields">
-    
-            <div class ="user-edit-field">
-                <label>
-                    <%= f.label :firstname, 'First Name' %>
-                </label>
-                <%= f.text_field :firstname %></td>
+                    <div class ="user-edit-field">
+                        <label>
+                            <%= f.label :lastname, 'Last Name' %>
+                        </label>
+                        <%= f.text_field :lastname %>
+                    </div>
+
+                    <div class ="user-edit-field">
+                        <label>
+                            <%= f.label :email, 'Email' %>
+                        </label>
+                        <%= f.email_field :email %>
+                    </div>
+
+                    <div class ="user-edit-field">
+                        <label>
+                            <%= f.label :password, 'Password' %>
+                        </label>
+                        <%= f.password_field :password %>
+                    </div>
+
+                    <div class ="user-edit-field">
+                        <%= f.label :language, 'Language to Learn' %>
+                        <%= f.select :temp_id, [['Arabic', 1], ['Bahasa Indonesia', 2], ['Chinese', 3], 
+                            ['French', 4], ['German', 5], ['Hindi', 6], ['Japanese', 7], 
+                            ['Korean', 8], ['Malay', 9], ['Spanish', 10], ['Tamil', 11], ['Thai', 12],
+                            ['Vietnamese', 13],], {}, {class: 'collection-select-class'} %>
+                        <%= f.select :f_temp_id, [['Beginner', 1], ['Lower Intermediate', 2],
+                            ['Upper Intermediate', 3], ['Advanced', 4], ['Full Proficiency', 5]], {}, {class:'collection-select-class'} %>
+                    </div>
+
+                    <br>
+                    <%= f.submit "Update Profile" %>
+                <% end %>
             </div>
-
-            <div class ="user-edit-field">
-                <label>
-                    <%= f.label :lastname, 'Last Name' %>
-                </label>
-                <%= f.text_field :lastname %>
-            </div>
-
-            <div class ="user-edit-field">
-                <label>
-                    <%= f.label :email, 'Email' %>
-                </label>
-                <%= f.email_field :email %>
-            </div>
-
-            <div class ="user-edit-field">
-                <label>
-                    <%= f.label :password, 'Password' %>
-                </label>
-                <%= f.password_field :password %>
-            </div>
-
-            <div class ="user-edit-field">
-                <%= f.label :language, 'Language to Learn' %>
-                <%= f.select :temp_id, [['Japanese', 1], ['French', 2], ['German', 3], 
-                    ['Spanish', 4], ['Korean', 5]], {}, {class: 'collection-select-class'} %>
-                <%= f.select :f_temp_id, [['Beginner', 1], ['Lower Intermediate', 2],
-                    ['Upper Intermediate', 3], ['Advanced', 4], ['Full Proficiency', 5]], {}, {class:'collection-select-class'} %>
-            </div>
-
-            <br>
-            <%= f.submit "Update User" %>
-        <% end %>
+        </div>
     </body>
 </html>

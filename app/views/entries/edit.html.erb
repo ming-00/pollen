@@ -1,27 +1,24 @@
-<html>
-    <head>
-        <% provide(:title, "edit entry: ${@entry.title}") %>
-        <h3>edit <%= @entry.title %> </h3>
-        <br>
-    </head>
+<head>
+    <% provide(:title, "Edit entry: ${@entry.title}") %>
+    <h3>Edit entry: <%= @entry.title %></h3>
+    <br>
+</head>
 
-    <body>
-        <%= form_with(model: @entry, local: true) do |f| %>
-            <div class="field">
-                <div class ="entry-edit-particulars">
-                    <%= f.label :title, 'Title' %>
-                    <%= f.text_field :title, style: 'width: 60%' %>
-                </div>
-                <div>
-                    <%= f.text_area :content, placeholder: "Start typing...", :rows => 20, style: 'width:70%' %>
-                </div>
-                <div class ="entry-edit-particulars">
-                    <%= f.label :journal_id, 'Journal' %>
-                    <%= f.collection_select(:journal_id, current_user.journals.all, :id, :title) %>
-                </div>
-                <%= f.submit "Update Entry", class: "btn btn-primary" %>
-                </div>
-        <% end %>
-    </body>
-</html>
-
+<body>
+    <%= form_with(model: @entry, local: true) do |f| %>
+        <div class="field">
+            <div class ="futura-this">
+                <%= f.label :title, 'Title' %>
+                <%= f.text_field :title, class: "entry-title-field", style: 'width: 30%' %>
+            </div>
+            <div class="entry-text-field">
+                <%= f.text_area :content, placeholder: "Start typing..." %>
+            </div>
+            <div class ="entry-edit-particulars">
+                <%= f.label :journal_id, 'Journal' %>
+                <%= f.collection_select(:journal_id, current_user.journals.all, :id, :title) %>
+            </div>
+            <%= f.submit "Update Entry", class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</body>

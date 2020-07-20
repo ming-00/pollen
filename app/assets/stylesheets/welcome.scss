@@ -131,3 +131,39 @@
     width: 15em;
     margin-left: 0.5em;
 }
+
+.fade1 {
+    -webkit-animation: fade-in 1s;
+    animation: fade-in 2s;
+    animation-iteration-count: 1;
+}
+
+ @-webkit-keyframes fade-in {
+    0% {
+        opacity:0;
+        visibility: hidden;
+    }
+
+    1% {
+        visibility: visible;
+    }
+    100% {
+        opacity:1;
+        visibility: visible;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity:0;
+        visibility: hidden;
+    }
+
+    1% {
+        visibility: visible;
+    }
+    100% {
+        opacity:1;
+        visibility: visible;
+    }
+}

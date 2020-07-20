@@ -3,23 +3,31 @@
     <html>
         <head>
           <title><%= full_title(yield(:title)) %></title>
+          <meta name="turbolinks-cache-control" content="no-cache">
         </head>
         <body>
-          <div id="clearance" class="sign-up">
-            <h3><%= t(".title") %></h3>
-            <br>
+          <div id="clearance" class="sign-up w4-container flip-come">
+          <div class="pop-out">
+            <%= image_tag 'side-mountain.png', :class => "sign-up-pic" %>
+              <div class="sign-up-words">
+                <br>
+                <h3><%= t(".title") %></h3>
+                <br>
 
-            <%= form_for @user do |form| %>
-              <%= render partial: '/users/form', object: form %>
+                <%= form_for @user do |form| %>
+                  <%= render partial: '/users/form', object: form %>
 
-              <div class="submit-field">
-                <%= form.submit %>
+                  <div class="submit-field">
+                    <%= form.submit %>
+                  </div>
+
+                  <div class="other-links">
+                    <%= link_to t(".sign_in"), sign_in_path %>
+                  </div>
+                <% end %>
+                <br>
               </div>
-
-              <div class="other-links">
-                <%= link_to t(".sign_in"), sign_in_path %>
-              </div>
-            <% end %>
+            </div>
           </div>
         </body>
     </html>

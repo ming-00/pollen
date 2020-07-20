@@ -1,9 +1,13 @@
 <%= form_with(model: @forumpost, local: true) do |f| %>
-    <div class="field">
-        <section>
-            <%= f.text_area :title, placeholder: "Add a title to post..." %>
-        </section>
-        <%= f.text_area :content, placeholder: "Compose new reply..." %>
+    <section>
+    <br>
+    <div class = "futura-this" %>
+        <%= f.label :title, "Title" %>
+        <%= f.text_field :title, class: "entry-title-field", style: 'width: 30%' %>
+        <br>
+    </div>
+    <div class = "entry-text-field" %>
+        <%= f.text_area :content, placeholder: "Start typing..."%>
     </div>
     <div>
         <%= f.collection_check_boxes(:tag_list, valid_tags, :first, :first) do |b| %>

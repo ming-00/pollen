@@ -670,44 +670,37 @@ ins {
      padding-left: 1em;
  }
 
- .w4-container {
+ .w4-container, .w5-container, .w6-container {
     transition: all .3s ease;
     text-align: center;
     display: inline-block;
+    background-color:white;
+    border-radius: 2.5em;
+    box-shadow: 12px 12px 25px 0px #ac89a5;
+ }
+
+ .w4-container {
     margin-top: 3em;
     margin-bottom: 3em;
     padding: 0em;
     width: relative;
     padding-right: 3em;
     height: 34em;
-    background-color:white;
-    border-radius: 2.5em;
-    box-shadow: 12px 12px 25px 0px #ac89a5;
 }
 
 .w4-container img {
     height: 100%;
 }
 
-.w4-container:hover {
+.w4-container:hover, .w5-container:hover, .w6-container:hover {
     box-shadow: 12px 12px 25px 0px #96628b;
 }
 
 .w5-container {
-    transition: all .3s ease;
-    text-align: center;
-    display: inline-block;
     margin-top: 3em;
     margin-bottom: 3em;
     padding-bottom: 1em;
     width: 60%;
-    background-color:white;
-    border-radius: 2.5em;
-    box-shadow: 12px 12px 25px 0px #ac89a5;
-}
-
-.w5-container:hover {
-    box-shadow: 12px 12px 25px 0px #96628b;
 }
 
 .w5-container img {
@@ -718,4 +711,11 @@ ins {
 .sign-in-pic {
     border-top-left-radius: 2.5em;
     border-top-right-radius: 2.5em;
+}
+
+.w6-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 20px 30px;
+    width: 60%;
 }

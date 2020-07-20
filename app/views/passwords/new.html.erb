@@ -5,11 +5,11 @@
           <title><%= full_title(yield(:title)) %></title>
         </head>
         <body>
-          <div id="clearance" class="password-reset">
-            <h2><%= t(".title") %></h2>
+          <div id="clearance" class="password-reset w4-container">
+            <h3><%= t(".title") %></h3>
 
-            <p><%= t(".description") %></p>
-
+            <h5><%= t(".description") %></h5>
+            <br>
             <%= form_for :password, url: passwords_path do |form| %>
               <div class="text-field">
                 <%= form.label :email %>

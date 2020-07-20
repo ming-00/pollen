@@ -656,3 +656,66 @@ ins {
  .beside-avatar {
      margin-top: 0.4em;
  }
+
+ .sign-up-pic {
+     float: left;
+     padding: 0em;
+     margin: 0em;
+     border-top-left-radius: 2.5em;
+     border-bottom-left-radius: 2.5em;
+ }
+
+ .sign-up-words {
+     float: right;
+     padding-left: 1em;
+ }
+
+ .w4-container {
+    transition: all .3s ease;
+    text-align: center;
+    display: inline-block;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 0em;
+    width: relative;
+    padding-right: 3em;
+    height: 34em;
+    background-color:white;
+    border-radius: 2.5em;
+    box-shadow: 12px 12px 25px 0px #ac89a5;
+}
+
+.w4-container img {
+    height: 100%;
+}
+
+.w4-container:hover {
+    box-shadow: 12px 12px 25px 0px #96628b;
+}
+
+.w5-container {
+    transition: all .3s ease;
+    text-align: center;
+    display: inline-block;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding-bottom: 1em;
+    width: 60%;
+    background-color:white;
+    border-radius: 2.5em;
+    box-shadow: 12px 12px 25px 0px #ac89a5;
+}
+
+.w5-container:hover {
+    box-shadow: 12px 12px 25px 0px #96628b;
+}
+
+.w5-container img {
+    width: 100%;
+    height: relative;
+}
+
+.sign-in-pic {
+    border-top-left-radius: 2.5em;
+    border-top-right-radius: 2.5em;
+}

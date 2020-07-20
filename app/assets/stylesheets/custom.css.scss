@@ -682,8 +682,15 @@ ins {
     box-shadow: 12px 12px 25px 0px #ac89a5;
  }
 
+ .flip-come1 {
+    -webkit-animation: flip-in 1.5s;
+    animation: flip-in 1.5s;
+    animation-iteration-count: 1;
+    transform-style: preserve-3d;
+ }
+
  .flip-come {
-    animation: flip-in 1s;
+    animation: flip-in 1.5s;
     animation-iteration-count: 1;
     transform-style: preserve-3d;
  }
@@ -693,6 +700,15 @@ ins {
     animation-iteration-count: 1;
     transform-style: preserve-3d;
  }
+
+ @-webkit-keyframes flip-in {
+    0% {
+        transform: rotateY(-90deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+  }
 
  @keyframes flip-in {
     0% {
@@ -751,4 +767,14 @@ ins {
 
 .pop-out {
     transform: translateZ(100px);
+}
+
+.dropshadow{
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    width: 45.5%;
+    height: 770px;
+    background: linear-gradient(rgba(112, 112, 112, 0.15) 0%,   rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 100%);
+    transform: translateX(-58px) translateY(-731px) rotateZ(-45deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
 }

@@ -10,6 +10,7 @@ class ForumpostsController < ApplicationController
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save
             flash[:success] = "Post created and published in forum!"
+            @forumpost.user.increment!(:points)
             redirect_to "/forum"
         else
             flash[:danger] = "Please fill in title and content."
@@ -21,6 +22,7 @@ class ForumpostsController < ApplicationController
     def destroy
         @forumpost = Forumpost.find(params[:id])
         @forumpost.destroy
+        @forumpost.user.decrement!(:points)
         flash[:success] = "Thread deleted!"
         redirect_to request.referrer
     end
@@ -54,6 +56,10 @@ class ForumpostsController < ApplicationController
         @forumposts.punch(request)
     end
 
+    def tag_cloud
+        @tags = Forumpost.tag_counts_on(:tags)
+      end
+
     def markaccepted
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.accepted == false
@@ -64,9 +70,8 @@ class ForumpostsController < ApplicationController
         redirect_to request.referrer
     end
 
-
     private
     def forumpost_params
-        params.require(:forumpost).permit(:content, :title, :tag_list)
+        params.require(:forumpost).permit(:content, :title, :tag_list => [])
     end
 end

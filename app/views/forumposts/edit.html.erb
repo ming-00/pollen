@@ -14,6 +14,16 @@
             <div class = "entry-text-field" %>
                 <%= f.text_area :content, placeholder: "Start typing..." %>
             </div>
+            <%= f.collection_check_boxes(:tag_list, valid_tags, :first, :first) do |b| %>
+                <div class="form-check">
+                <label class="tag-deco"> 
+                    <span class="tag-name">
+                        <%= b.check_box class: 'form-check-input' %>
+                        <%= b.value %>
+                    </span>  
+                </label>
+                </div>
+              <% end %>
             <%= f.hidden_field :id %>
             <%= hidden_field_tag :user_id, current_user.id%>
             <%= f.submit "Update Thread", class: "btn btn-primary" %>

@@ -24,14 +24,8 @@ class CorrectionsController < ApplicationController
 
     def show
         @entry = Entry.find(params[:id])
-        require 'differ'
-        Differ.format = :html
         @original = @entry.content
-        @corrections = @entry.corrections
-        @corrections.each do |correction|
-            correction.update_attributes!(content: Differ.diff_by_word(@original, correction))
-        end
-        #@corrections = @entry.corrections.paginate(page: params[:page])
+        @corrections = @entry.corrections.paginate(page: params[:page])
     end
 
     def update

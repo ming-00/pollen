@@ -17,4 +17,9 @@ module ApplicationHelper
         when 'alert' then "alert alert-warning"
       end
     end
+
+    def markdown(text)
+      options = [:hard_wrap, :autolink, :fenced_code_blocks, :strikethrough, :underline, :highlight]
+      Markdown.new(text, *options).to_html.html_safe
+    end
   end

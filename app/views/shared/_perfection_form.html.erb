@@ -2,7 +2,7 @@
     <div class = "text-field"%>
         <div class = "correction-form">
             <%= f.label :comment, "Comments (Optional)"%>
-            <%= f.text_area :comment, :rows => 3, style: 'width:80%' %>
+            <%= f.text_area :comment, :rows => 3, style: 'width:80%' , :placeholder => "Provide encouragement and advice..."%>
         </div>
         <%= f.submit "Submit" %>
     </div>
@@ -10,7 +10,11 @@
     <%= f.hidden_field :entry_id %>
     <%= hidden_field_tag :user_id, current_user.id%>
     <%= f.hidden_field :correct, :value => true %>
-    <%= f.hidden_field :content, :value => @correction.entry.corrections.order("created_at").first.content %>
+    <% if @correction.entry.corrections.any? %>
+        <%= f.hidden_field :content, :value => @correction.entry.corrections.order("created_at").first.content %>
+    <% else %> 
+        <%= f.hidden_field :content, :value => @correction.entry.content %>
+    <%end%>
 
 <% end %>
 <%= tinymce %>

@@ -8,12 +8,13 @@
   list-style: none;
   padding: 0;
   display: inline-block;
+  overflow-x: hidden;
   text-align: center;
   li {
     padding: 10px 1em;
     margin-right: 0.5em;
     margin-left: 0.5em;
-    width: 30%;
+    width: 16.5em;
     height: 25em;
     border-top: 1px solid #e8e8e8;
     float: left;
@@ -43,7 +44,6 @@
 .journal-preview-title {
   font-family: 'Futura Std';
   font-size: 1.05em;
-  padding-top: 0.9em;
   line-height: 1;
   .link-colour {
     color: black;

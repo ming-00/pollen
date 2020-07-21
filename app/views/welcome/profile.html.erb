@@ -53,6 +53,10 @@
                     </span>
                 </p>
                     <br>
+                    <br>
+                        <%= render 'shared/trophies' %>
+                    <br>
+                    <br>
                     <p>
                     <% if signed_in? %>
                         <section class="stats">
@@ -78,7 +82,12 @@
                 <div id="journal-form">
                     <%= render 'shared/journal_form' %>
                 </div>
-                <% if current_user.journals.any? %>
+                <% if current_user.journals.count == 0 %>
+                    <div class = "no-corrections">
+                        <br>
+                        No journals yet. Add a journal to start writing!
+                    </div>
+                <% else %>
                     <ol class="journals">
                         <%= render @journals %>
                     </ol>

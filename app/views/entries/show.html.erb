@@ -66,8 +66,8 @@
                     <div class="entry-particulars">
                         Contributors:
                         <br>
-                        <% @entry.corrections.each do |correction| %>
-                            <%= tiny_avatar_for(correction.user) %>
+                        <% User.joins(:corrections).where(corrections: {entry_id: @entry.id}).uniq.each do |user| %>
+                                <%= tiny_avatar_for(user) %>
                         <% end %>
                     </div>
                 </section>
@@ -88,7 +88,11 @@
                     </button>
                 
                     <button type="button" id="correction-button">
-                        provide correction
+                        <% if @entry.corrections.any? %>
+                            add to corrections
+                        <% else %>
+                            provide correction
+                        <% end %>
                     </button>
                     <br>
                     <br>

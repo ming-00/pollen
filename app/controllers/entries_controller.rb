@@ -54,6 +54,7 @@ class EntriesController < ApplicationController
     def destroy
         @journal = @entry.journal
         @entry.destroy
+        @journal.user.decrement!(:points)
         flash[:success] = "Entry deleted"
         redirect_to @journal
     end

@@ -17,7 +17,9 @@
       <br>
     </span>
     <div class="journal-art">
-      <%= cover_for(journal) %>
+      <a href="<%= journal_path(journal) %>">
+        <%= cover_for(journal) %>
+      </a>
     </div>
     <div class="dropshadow">
     </div>

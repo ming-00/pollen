@@ -133,37 +133,39 @@
 }
 
 .fade1 {
-    -webkit-animation: fade-in 1s;
-    animation: fade-in 2s;
+    -webkit-animation: fade-in1 2s;
+    animation: fade-in1 2s;
     animation-iteration-count: 1;
 }
 
- @-webkit-keyframes fade-in {
+.fade2 {
+    -webkit-animation: fade-in2 4s;
+    animation: fade-in2 4s;
+    animation-iteration-count: 1;
+}
+
+ @-webkit-keyframes fade-in1 {
     0% {
         opacity:0;
-        visibility: hidden;
-    }
-
-    1% {
-        visibility: visible;
     }
     100% {
         opacity:1;
-        visibility: visible;
     }
 }
 
-@keyframes fade-in {
+@keyframes fade-in2 {
     0% {
         opacity:0;
-        visibility: hidden;
     }
 
-    1% {
-        visibility: visible;
+    50% {
+        opacity: 0;
     }
     100% {
         opacity:1;
-        visibility: visible;
     }
+}
+
+.row {
+    overflow-x: hidden !important;
 }

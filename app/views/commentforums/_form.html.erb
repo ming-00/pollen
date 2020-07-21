@@ -4,10 +4,10 @@
 <br>  
     <%= form_for([@forumposts, @forumposts.commentforums.build]) do |f| %>
         <div class="text-field">
-        <%= f.text_area :reply, placeholder: "Compose new comment...", style: 'width: 200%' %>
+            <%= f.text_area :reply, placeholder: "Compose new comment...", style: 'width: 200%' %>
         </div>
-        <div>
-        <div id="commentforum-button">
-            <%= f.submit "Post", class: "btn btn-primary"%>
+        <div id="important-button">
+            <%= f.submit "Post", class: "btn btn-primary align-this"%>
         </div>
     <% end %>
+</div>

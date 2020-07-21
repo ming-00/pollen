@@ -17,7 +17,7 @@
           </div>
 
           <div class ="user-edit-field">
-            <%= form.label :email %>
+            <%= form.label :email, 'Email' %>
             <%= form.text_field :email, type: 'email' %>
           </div>
 
@@ -28,8 +28,10 @@
 
           <div class ="user-edit-field">
             <%= form.label :temp_id, 'Language to Learn' %>
-            <%= form.select :temp_id, [['Japanese', 1], ['French', 2], ['German', 3], 
-              ['Spanish', 4], ['Korean', 5]], {}, {class: 'collection-select-class'} %>
+            <%= form.select :temp_id, [['Arabic', 1], ['Bahasa Indonesia', 2], ['Chinese', 3], 
+              ['French', 4], ['German', 5], ['Hindi', 6], ['Japanese', 7], 
+              ['Korean', 8], ['Malay', 9], ['Spanish', 10], ['Tamil', 11], ['Thai', 12],
+              ['Vietnamese', 13],], {}, {class: 'collection-select-class'} %>
             <%= form.select :f_temp_id, [['Beginner', 1], ['Elementary', 2], ['Intermediate', 3],
               ['Upper Intermediate', 4], ['Advanced', 5], ['Full Proficiency', 6]], {}, {class: 'collection-select-class'} %>
           </div>

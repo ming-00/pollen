@@ -5,13 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Language.create(lang: 'Japanese')
+Language.create(lang: 'Arabic')
+Language.create(lang: 'Bahasa Indonesia')
+Language.create(lang: 'Chinese')
 Language.create(lang: 'French')
 Language.create(lang: 'German')
-Language.create(lang: 'Spanish')
+Language.create(lang: 'Hindi')
+Language.create(lang: 'Japanese')
 Language.create(lang: 'Korean')
+Language.create(lang: 'Malay')
+Language.create(lang: 'Spanish')
+Language.create(lang: 'Tamil')
+Language.create(lang: 'Thai')
+Language.create(lang: 'Vietnamese')
 
-list = ['English', 'French', 'Japanese', 'German', 'Spanish', 'Korean']
+list = ['Arabic', 'Bahasa Indonesia', 'Chinese', 'French', 'German', 'Hindi', 
+  'Japanese','Korean', 'Malay', 'Spanish', 'Tamil', 'Thai, 'Vietnamese']
 list.each do |tag|
   ActsAsTaggableOn::Tag.new(:name => tag).save
 end

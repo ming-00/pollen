@@ -5,7 +5,7 @@
     </div>
     <div class="select-field">
         <%= f.label :private, 'Privacy mode' %>
-        <%= f.select :private, [['Private', true], ['Public', false]] %>
+        <%= f.select(:private, [['Private', true], ['Public', false]], {}, {:class => "f-select-standard"})%>
     </div>
     <%= f.submit "Create", class: "btn btn-primary" %>
 <% end %>

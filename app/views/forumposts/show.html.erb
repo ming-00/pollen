@@ -24,7 +24,7 @@
                 <br>
             </div>
             <div class="entry-content">
-                <%= @forumposts.content %>
+                <%= markdown(@forumposts.content) %>
                 <br>
                 <br>
             </div>
@@ -83,7 +83,7 @@
                             <%= avatar_for(l.user) %>
                         </div>
                         <div class="forumpost-content">
-                            <%= l.reply %>
+                            <%= markdown(l.reply) %>
                         </div>
                         <br>
                         <% pre_like = l.commentforumlikes.find { |like| like.user_id == current_user.id} %>

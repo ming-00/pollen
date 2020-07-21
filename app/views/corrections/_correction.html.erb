@@ -19,7 +19,7 @@
         <div class="correction-content" id="no-choice">
             <br>
             Comments: 
-            <%= correction.comment %>
+            <%= markdown(correction.comment) %>
         </div>
     <% end %>
     <div class="correction-particulars">

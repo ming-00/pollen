@@ -1,8 +1,8 @@
 class Correction < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
 
-  validates :user_id, :uniqueness => { :scope => :entry_id,
-    :message => "may only provide one correction per post." }
+  #validates :user_id, :uniqueness => { :scope => :entry_id,
+    #:message => "may only provide one correction per post." }
 
   belongs_to :entry
   belongs_to :user

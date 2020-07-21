@@ -33,17 +33,20 @@ module UsersHelper
         end
     end
 
-    def award_for(user)
-        case user.points
-            when 0...5
-
-            when 5...10
-
-            when 10...20
-
-            when 20...50
-
+    def tiny_blank_avatar_for(user)
+        case (user.id) % 6
+            when 0
+                image_tag 'profile1.png', :class => "mini-avatar"
+            when 1
+                image_tag 'profile2.png', :class => "mini-avatar"
+            when 2
+                image_tag 'profile3.png', :class => "mini-avatar"
+            when 3
+                image_tag 'profile4.png', :class => "mini-avatar"
+            when 4
+                image_tag 'profile5.png', :class => "mini-avatar"
             else
+                image_tag 'profile6.png', :class => "mini-avatar"
         end
     end
 end

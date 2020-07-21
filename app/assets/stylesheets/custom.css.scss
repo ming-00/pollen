@@ -560,6 +560,54 @@ select:focus {
     }
 }
 
+#level1 {
+    vertical-align: -0.1em;
+    color: #975280;
+    &:hover {
+        color: rgb(183, 125, 197);
+    }
+}
+
+#level2 {
+    vertical-align: -0.1em;
+    color: #a5703e;
+    &:hover {
+        color: #c08265;
+    }
+}
+
+#level3 {
+    vertical-align: -0.1em;
+    color: #8bafbe;
+    &:hover {
+        color: #9cc3d4;
+    }
+}
+
+#level4 {
+    vertical-align: -0.1em;
+    color: #cfbc4c;
+    &:hover {
+        color: #e9c493;
+    }
+}
+
+#level5 {
+    vertical-align: -0.1em;
+    color: #457b8b;
+    &:hover {
+        color: #62b1b1;
+    }
+}
+
+#grey-out {
+    vertical-align: -0.1em;
+    color: #cecece;
+    &:hover {
+        color: #b3b3b3;
+    }
+}
+
 #like-heart {
     vertical-align: -0.18em;
     color: grey;

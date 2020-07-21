@@ -727,8 +727,8 @@ ins {
  }
 
  .flip-come {
-    -webkit-animation: flip-in 1s;
-    animation: flip-in 1s;
+    -webkit-animation: flip-in 1.5s;
+    animation: flip-in 1.5s;
     animation-iteration-count: 1;
     transform-style: preserve-3d;
  }

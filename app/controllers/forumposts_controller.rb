@@ -10,6 +10,7 @@ class ForumpostsController < ApplicationController
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save
             flash[:success] = "Post created and published in forum!"
+            @forumpost.update_attributes(forumpostlangid: @forumpost.user.temp_id)
             @forumpost.user.increment!(:points)
             redirect_to "/forum"
         else

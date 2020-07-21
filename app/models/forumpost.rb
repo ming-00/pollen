@@ -27,5 +27,6 @@ class Forumpost < ApplicationRecord
 
     def set_defaults
       self.accepted = false if self.accepted.nil?
+      self.forumpostlangid = 0 if self.forumpostlangid.nil?
     end
 end

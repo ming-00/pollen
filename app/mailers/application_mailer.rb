@@ -6,6 +6,6 @@ class ApplicationMailer < ActionMailer::Base
     @user = user
     @greeting = "Hi"
 
-    mail(:to => "#{user.name} <#{user.email}>", :subject => "Please confirm your registration")
+    mail(:to => "#{user.firstname} <#{user.email}>", :subject => "Please confirm your registration")
   end 
 end

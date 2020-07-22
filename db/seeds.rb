@@ -19,7 +19,7 @@ Language.create(lang: 'Tamil')
 Language.create(lang: 'Thai')
 Language.create(lang: 'Vietnamese')
 
-list = ['grammar', 'vocabulary']
+list = ['grammar', 'vocabulary', 'advice']
 list.each do |tag|
   ActsAsTaggableOn::Tag.new(:name => tag).save
 end

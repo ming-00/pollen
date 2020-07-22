@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, only: [:create]
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
   resource  :session,
     :controller => 'sessions',
     :only => [:new, :create, :destroy]
@@ -26,6 +32,7 @@ Rails.application.routes.draw do
 
   get "/session", to: redirect("/sign_in")
   get "/entries", to: redirect("/entries/new")
+  get "/corrections", to: redirect("/feed")
 
   Rails.application.routes.draw do
   

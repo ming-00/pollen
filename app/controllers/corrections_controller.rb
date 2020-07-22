@@ -13,6 +13,13 @@ class CorrectionsController < ApplicationController
         @correction = @entry.corrections.build(correction_params)
         @correction.user = current_user
         if @correction.save
+            # Create notifications
+            (@entry.users.uniq - [current_user]).each do |user|
+                Notification.create(title: @title, recipient: user, actor: current_user, action: "provided", notifiable: @correction)
+            end
+            # This part you do not need to do if the creator of the forumpost shows up on forumpost.users -> check with rails console or ask me if not sure
+            Notification.create(title: @title, recipient: @entry.journal.user, actor: current_user, action: "provided", notifiable: @correction)
+
             @correction.user.increment!(:points)
             flash[:success] = "Correction created!"
             redirect_to @entry
@@ -34,11 +41,15 @@ class CorrectionsController < ApplicationController
         @correction.user = current_user
         @entry = @correction.entry
         if @correction.update(correction_params)
-          flash[:success] = "Correction updated"
-          redirect_to @entry
+            (@entry.users.uniq - [current_user]).each do |user|
+                Notification.create(title: @entry.title, recipient: user, actor: current_user, action: "updated", notifiable: @correction)
+            end
+            Notification.create(title: @entry.title, recipient: @entry.journal.user, actor: current_user, action: "updated", notifiable: @correction)
+            flash[:success] = "Correction updated"
+            redirect_to @entry
         else 
-          flash[:danger] = @correction.errors.full_messages[0]
-          redirect_to @entry
+            flash[:danger] = @correction.errors.full_messages[0]
+            redirect_to @entry
         end
     end
 
@@ -59,6 +70,8 @@ class CorrectionsController < ApplicationController
         @correction = Correction.find(params[:id])
         if @correction.accepted == false
             @correction.user.increment!(:points, by = 5)
+            # Create notifications
+            Notification.create(title: @correction.entry.title, recipient: @correction.user, actor: current_user, action: "accepted", notifiable: @correction)
             @correction.update_attributes(accepted: true)
             flash[:success] = "Correction accepted!"
         else 

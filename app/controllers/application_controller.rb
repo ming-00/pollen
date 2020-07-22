@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
     current_user.following.include?(other_user)
   end
 
+  def confirm_email!
+    Notifier.deliver_welcome(self)
+    super
+  end
+
   # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?

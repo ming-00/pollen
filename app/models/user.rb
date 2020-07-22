@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Clearance::User
 
   after_initialize :set_defaults, unless: :persisted?
+  before_create :confirmation_token
 
   has_many :commentforums
   has_many :fluencies
@@ -74,6 +75,17 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def confirm_email!
+    Notifier.deliver_welcome(self)
+    super
+  end
+
+  def confirmation_token
+    if  self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end 
 
   module Validations
     extend ActiveSupport::Concern

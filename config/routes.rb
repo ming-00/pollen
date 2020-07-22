@@ -38,7 +38,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index, :show, :update, :edit]
+  resources :users, only: [:index, :show, :update, :edit] do
+    member do
+      get :confirm_email
+    end
+  end 
   resources :journals, only: [:show, :create, :destroy]
   resources :forumposts, only: [:new, :create, :destroy, :show, :edit, :update, :search] do
     resources :forumpostlikes, only: [:create, :destroy]

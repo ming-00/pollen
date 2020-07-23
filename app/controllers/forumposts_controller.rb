@@ -66,9 +66,6 @@ class ForumpostsController < ApplicationController
         if @forumpost.accepted == false
             @forumpost.update_attributes(accepted: true)
         else 
-            @forumpost.tag_list.remove("resolved")
-            @forumpost.tag_list.add("unresolved")
-            @forumpost.save
             @forumpost.update_attributes(accepted: false)
         end
         redirect_to request.referrer

@@ -5,12 +5,6 @@ class TagsController < ApplicationController
     
     def show
         @tag =  ActsAsTaggableOn::Tag.find(params[:id])
-        current_user.taglist << @tag.name
-        @forumpostss = Forumpost.tagged_with(@tag.name)
-        current_user.taglist.each do |tag|
-
-            @forumpostss = @forumpostss.tagged_with(tag)
-        end
-        @forumposts = @forumpostss
+        @forumposts = Forumpost.tagged_with(@tag.name)
     end
 end

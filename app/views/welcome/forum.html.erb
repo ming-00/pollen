@@ -28,7 +28,6 @@
                         <% end %>
                     <% end %>
                         <h3>Filter by</h3>
-                        <%= current_user.taglist%>
                         <% @forumpost.tag_counts_on(:tags).each do |tag| %>
                         <div class="tag">
                             <%= render tag %>

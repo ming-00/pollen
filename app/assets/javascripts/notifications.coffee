@@ -8,6 +8,7 @@ class Notifications
         @setup() if @notifications.length >0
 
     setup: -> 
+        $('#clear').hide()
         $("[data-behavior='notifications-link']").on "click", @handleClick
         $.ajax(
             url: "/notifications.json"
@@ -23,6 +24,7 @@ class Notifications
             method: "POST"
             success: ->
                 $("[data-behavior='unread-count']").text(0)
+                location.reload(true);
         )
     
     handleSuccess: (data) => 
@@ -31,10 +33,10 @@ class Notifications
         if items.length > 0
             $("[data-behavior='unread-count']").text(items.length)
             $("[data-behavior='notification-items']").html(items)
+            $('#clear').show()
         else 
             $("[data-behavior='unread-count']").text(items.length)
             $("[data-behavior='notification-items']").html("No new notifications")
-        
 
 jQuery -> 
     new Notifications

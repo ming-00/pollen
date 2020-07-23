@@ -5,10 +5,10 @@
     json.action notification.action
     json.title notification.title
     json.notifiable do
-        if (notification.notifiable.is_a? Entry) 
-            json.type "an #{notification.notifiable.model_name.human.downcase}"
-        elsif (notification.notifiable.is_a? Entry)
+        if (notification.notifiable.is_a? Correction) 
             json.type "a #{notification.notifiable.model_name.human.downcase}"
+        elsif (notification.notifiable.is_a? Entry)
+            json.type "an #{notification.notifiable.model_name.human.downcase}"
         elsif (notification.notifiable.is_a? User)
             json.type "you"
         end

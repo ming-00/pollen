@@ -13,7 +13,8 @@ class CorrectionsController < ApplicationController
         @correction = @entry.corrections.build(correction_params)
         @correction.user = current_user
         if @correction.save
-            # Create notifications
+            # Create notifications, change the each do loop accordingly with common sense :) rmb to 
+            # update forumpost model for this to work, look at entry.rb for example if you havent alr
             (@entry.users.uniq - [current_user]).each do |user|
                 Notification.create(title: @title, recipient: user, actor: current_user, action: "provided", notifiable: @correction)
             end

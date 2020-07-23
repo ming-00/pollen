@@ -11,6 +11,7 @@ class CorrectionlikesController < ApplicationController
             flash[:notice] = "You can't like your own correction."
         else
           @correction.correctionlikes.create(user_id: current_user.id)
+          Notification.create(title: @correction.entry.title, recipient: @correction.user, actor: current_user, action: "liked", notifiable: @correction)
           @correction_user = @correction.user
           @correction_user.increment!(:points)
         end

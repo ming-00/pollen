@@ -9,7 +9,7 @@ class EntrylikesController < ApplicationController
           flash[:notice] = "You can't like more than once"
         else
           @entry_user = @entry.journal.user
-          #Notification.create(title: @entry.title, recipient: @entry_user, actor: current_user, action: "liked", notifiable: @entry)
+          Notification.create(title: @entry.title, recipient: @entry_user, actor: current_user, action: "liked", notifiable: @entry)
           @entry.entrylikes.create(user_id: current_user.id)
           @entry_user.increment!(:points)
         end

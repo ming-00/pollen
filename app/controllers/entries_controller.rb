@@ -15,6 +15,11 @@ class EntriesController < ApplicationController
         @journal = Journal.find(params[:entry][:journal_id])
         @entry = @journal.entries.build(entry_params)
         if @entry.save
+            if @entry.journal.private == false
+                (@entry.journal.user.followers).each do |user|
+                    Notification.create(title: @entry.title, recipient: user, actor: current_user, action: "created", notifiable: @entry)
+                end
+            end
             @entry.journal.user.increment!(:points)
             flash[:success] = "Entry created!"
             redirect_to @entry

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "/session", to: redirect("/sign_in")
   get "/entries", to: redirect("/entries/new")
   get "/corrections", to: redirect("/feed")
+  get "/relationships", to: redirect("/profile")
 
   Rails.application.routes.draw do
   

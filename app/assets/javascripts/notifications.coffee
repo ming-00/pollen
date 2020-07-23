@@ -27,7 +27,7 @@ class Notifications
     
     handleSuccess: (data) => 
         items = $.map data, (notification) -> 
-            "<li><a href='#{notification.url}'>#{notification.title}</a>: #{notification.actor} #{notification.action} #{notification.notifiable.type}</li>"
+            "<li>#{notification.title}: #{notification.actor} #{notification.action} #{notification.notifiable.type}. <a href='#{notification.url}'>view</a></li>"
         if items.length > 0
             $("[data-behavior='unread-count']").text(items.length)
             $("[data-behavior='notification-items']").html(items)

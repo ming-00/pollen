@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_174623) do
+ActiveRecord::Schema.define(version: 2020_07_23_211801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,24 +179,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_174623) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", null: false
-    t.string "password_digest"
-    t.string "encrypted_password", limit: 128, null: false
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128, null: false
-    t.string "firstname"
-    t.string "lastname"
-    t.integer "temp_id"
-    t.integer "f_temp_id"
-    t.integer "points"
-    t.datetime "confirmed_at"
-    t.boolean "email_confirmed"
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["remember_token"], name: "index_users_on_remember_token"
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'tags' for column 'tlist'
 
   add_foreign_key "commentforumlikes", "commentforums"
   add_foreign_key "commentforumlikes", "users"

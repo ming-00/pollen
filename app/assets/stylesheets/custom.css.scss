@@ -727,8 +727,8 @@ ins {
  }
 
  .flip-come {
-    -webkit-animation: flip-in 2s;
-    animation: flip-in 2s;
+    -webkit-animation: flip-in 1.5s;
+    animation: flip-in 1.5s;
     animation-iteration-count: 1;
     transform-style: preserve-3d;
  }
@@ -743,7 +743,7 @@ ins {
     0% {
         transform: rotateY(-90deg);
     }
-    8% {
+    11% {
         transform: rotateY(-90deg);
     }
     100% {

@@ -139,8 +139,8 @@
 }
 
 .fade2 {
-    -webkit-animation: fade-in2 4s;
-    animation: fade-in2 4s;
+    -webkit-animation: fade-in2 3s;
+    animation: fade-in2 3s;
     animation-iteration-count: 1;
 }
 
@@ -158,7 +158,7 @@
         opacity:0;
     }
 
-    50% {
+    60% {
         opacity: 0;
     }
     100% {

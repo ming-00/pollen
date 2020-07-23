@@ -12,8 +12,6 @@ class ForumpostsController < ApplicationController
             flash[:success] = "Thread created and published in forum!"
             @forumpost.update_attributes(forumpostlangid: @forumpost.user.temp_id)
             @forumpost.user.increment!(:points)
-            @forumpost.tag_list.add("unresolved")
-            @forumpost.save
             redirect_to "/forum"
         else
             flash[:danger] = "Please fill in title and content."
@@ -66,9 +64,6 @@ class ForumpostsController < ApplicationController
     def markaccepted
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.accepted == false
-            @forumpost.tag_list.remove("unresolved")
-            @forumpost.tag_list.add("resolved")
-            @forumpost.save
             @forumpost.update_attributes(accepted: true)
         else 
             @forumpost.tag_list.remove("resolved")

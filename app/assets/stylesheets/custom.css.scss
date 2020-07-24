@@ -369,7 +369,7 @@ aside {
     height: 770px;
     background: linear-gradient(rgba(112, 112, 112, 0.15) 0%,   rgba(136, 134, 134, 0) 30%, rgba(129, 129, 129, 0) 100%);
     -webkit-transform: translateX(-20%) translateY(-34.5em) rotateZ(-56deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
-    transform: translateX(-11%) translateY(-34.5em) rotateZ(-56deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
+    transform: translateX(-10%) translateY(-34.5em) rotateZ(-56deg)  skewX(0deg) translateY(385px) scaleX(0.956161);
 }
 /* form text area */
 textarea {
@@ -727,8 +727,8 @@ ins {
  }
 
  .flip-come {
-    -webkit-animation: flip-in 2s;
-    animation: flip-in 2s;
+    -webkit-animation: flip-in 1.5s;
+    animation: flip-in 1.5s;
     animation-iteration-count: 1;
     transform-style: preserve-3d;
  }
@@ -743,7 +743,7 @@ ins {
     0% {
         transform: rotateY(-90deg);
     }
-    7% {
+    11% {
         transform: rotateY(-90deg);
     }
     100% {
@@ -817,16 +817,4 @@ ins {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Futura Std';
-::-webkit-input-placeholder {
-    font-style: italic;
- }
- :-moz-placeholder {
-    font-style: italic;  
- }
- ::-moz-placeholder {
-    font-style: italic;  
- }
- :-ms-input-placeholder {  
-    font-style: italic; 
-}
 }

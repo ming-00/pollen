@@ -8,8 +8,9 @@ class EntrylikesController < ApplicationController
         if already_liked?
           flash[:notice] = "You can't like more than once"
         else
-          @entry.entrylikes.create(user_id: current_user.id)
           @entry_user = @entry.journal.user
+          Notification.create(title: @entry.title, recipient: @entry_user, actor: current_user, action: "liked", notifiable: @entry)
+          @entry.entrylikes.create(user_id: current_user.id)
           @entry_user.increment!(:points)
         end
         redirect_to @entry

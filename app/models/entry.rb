@@ -8,6 +8,9 @@ class Entry < ApplicationRecord
   has_many :corrections, :dependent => :destroy
   default_scope -> { order(created_at: :desc) }
 
+  # Create notifications
+  has_many :users, through: :corrections
+
   has_many :entrylikes, :dependent => :destroy
 
   validates :title,

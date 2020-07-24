@@ -15,6 +15,11 @@ class EntriesController < ApplicationController
         @journal = Journal.find(params[:entry][:journal_id])
         @entry = @journal.entries.build(entry_params)
         if @entry.save
+            if @entry.journal.private == false
+                (@entry.journal.user.followers).each do |user|
+                    Notification.create(title: @entry.title, recipient: user, actor: current_user, action: "created", notifiable: @entry)
+                end
+            end
             @entry.journal.user.increment!(:points)
             flash[:success] = "Entry created!"
             redirect_to @entry
@@ -62,13 +67,16 @@ class EntriesController < ApplicationController
     def markresolved
         @entry = Entry.find(params[:id])
         if @entry.resolved == false
+            (@entry.users.uniq - [current_user]).each do |user|
+                Notification.create(title: @entry.title, recipient: user, actor: current_user, action: "resolved", notifiable: @entry)
+            end
             @entry.update_attributes(resolved: true)
             flash[:success] = "Entry marked resolved and removed from journal feed!"
         else 
             @entry.update_attributes(resolved: false)
             flash[:success] = "Entry marked unresolved and added back to journal feed!"
         end
-        redirect_to request.referrer
+        redirect_to @entry
     end
 
     def correct_user

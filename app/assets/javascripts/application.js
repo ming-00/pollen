@@ -15,7 +15,9 @@
 //= require_tree .
 //= require jquery
 //= require rails-ujs
+//= require bootstrap.min
 //= require bootstrap
+//= require notifications
 
 $(document).on('turbolinks:load', function() {
 

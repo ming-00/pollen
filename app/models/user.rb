@@ -4,6 +4,8 @@ class User < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
   before_create :confirmation_token
 
+  has_many :notifications, foreign_key: :recipient_id
+
   has_many :commentforums
   has_many :fluencies
   has_many :languages, through: :fluencies

@@ -1,0 +1,35 @@
+// Place all the styles related to the Notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.notifications {
+    font-family: 'Futura Std';
+    text-align: left;
+}
+
+.notification-list {
+    color: #850941;
+}
+
+.notification-item {
+    list-style: none;
+    li {
+        padding: 1em 7em 1em 0em;
+        
+        border-bottom: 1px solid #e8e8e8;
+    }
+    float: left;
+    text-align: left;
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+#clear {
+    background-color: transparent;
+    border-radius: 2em;
+    border-color: black;
+    padding: 0.3em 2em;
+    margin-bottom: 1em;
+    float: right;
+    outline: none;
+}

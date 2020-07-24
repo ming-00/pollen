@@ -9,8 +9,11 @@ class ForumpostsController < ApplicationController
     def create
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save
-            flash[:success] = "Post created and published in forum!"
+            flash[:success] = "Thread created and published in forum!"
+            @forumpost.update_attributes(forumpostlangid: @forumpost.user.temp_id)
             @forumpost.user.increment!(:points)
+            @forumpost.tag_list.add("unresolved")
+            @forumpost.save
             redirect_to "/forum"
         else
             flash[:danger] = "Please fill in title and content."
@@ -64,7 +67,13 @@ class ForumpostsController < ApplicationController
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.accepted == false
             @forumpost.update_attributes(accepted: true)
+            @forumpost.tag_list.remove("unresolved")
+            @forumpost.tag_list.add("resolved")
+            @forumpost.save
         else 
+            @forumpost.tag_list.remove("resolved")
+            @forumpost.tag_list.add("unresolved")
+            @forumpost.save
             @forumpost.update_attributes(accepted: false)
         end
         redirect_to request.referrer

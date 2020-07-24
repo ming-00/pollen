@@ -9,7 +9,11 @@ class ForumpostsController < ApplicationController
     def create
         @forumpost = current_user.forumposts.build(forumpost_params)
         if @forumpost.save
+            @title = @forumpost.title
             flash[:success] = "Thread created and published in forum!"
+            (@forumpost.user.followers.uniq).each do |user|
+                Notification.create(title: @title, recipient: user, actor: current_user, action: "created ", notifiable: @forumpost)
+            end
             @forumpost.update_attributes(forumpostlangid: @forumpost.user.temp_id)
             @forumpost.user.increment!(:points)
             @forumpost.tag_list.add("unresolved")
@@ -66,6 +70,9 @@ class ForumpostsController < ApplicationController
     def markaccepted
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.accepted == false
+            (User.joins(:commentforums).where(commentforums: {forumpost_id: @forumpost.id}).uniq - [current_user]).uniq.each do |user|
+                Notification.create(title: @forumpost.title, recipient: user, actor: current_user, action: "resolved", notifiable: @forumpost)
+            end
             @forumpost.update_attributes(accepted: true)
             @forumpost.tag_list.remove("unresolved")
             @forumpost.tag_list.add("resolved")

@@ -126,11 +126,6 @@ ActiveRecord::Schema.define(version: 2020_07_23_215403) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "notifiers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-  
   create_table "notifications", force: :cascade do |t|
     t.integer "recipient_id"
     t.integer "actor_id"
@@ -212,7 +207,6 @@ ActiveRecord::Schema.define(version: 2020_07_23_215403) do
     t.integer "points"
     t.boolean "email_confirmed"
     t.datetime "confirmed_at"
-    t.string "tagslist", array: true
     t.string "tagarray", array: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"

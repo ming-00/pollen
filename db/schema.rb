@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_174623) do
+ActiveRecord::Schema.define(version: 2020_07_23_215403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_174623) do
     t.integer "points"
     t.datetime "confirmed_at"
     t.boolean "email_confirmed"
+    t.string "tagarray", array: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

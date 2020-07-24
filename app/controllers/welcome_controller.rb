@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   before_action :require_login, except: [:landing]
+  before_action :clear,  except: [:landing]
 
   def landing
     render :layout => false
@@ -22,6 +23,13 @@ class WelcomeController < ApplicationController
 
   def feed
     @entries = Entry.all.paginate(page: params[:page])
+  end
+
+  private
+  def clear
+    current_user.tagarray.each do |tag|
+      User.update_all(['tagarray = array_remove(tagarray, ?)', tag])
+    end
   end
 
 end

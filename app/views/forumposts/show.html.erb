@@ -98,7 +98,7 @@
                     <%= link_to "delete", @forumposts, method: :delete,
                     data: { confirm: "This thread will be permanently deleted." } %>
                 <% else %>
-                    <%= link_to "back to forum", forum_path %>
+                    <%= link_to "back to forum", "welcome#forum" %>
                 <%end%>
             </div>
         </section> 

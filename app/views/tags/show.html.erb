@@ -28,12 +28,18 @@
                         <% end %>
                     <% end %>
                     </section>
+                    <h3>Filter by</h3>
+                    <% @forumposts.tag_counts_on(:tags).each do |tag| %>
+                    <div class="tag">
+                        <%= render tag %>
+                    </div>
+                    <% end %>
                 </div>
             <% else %>
             <% end %>
             </aside>
             <div class="col-md-8">
-            <h3><%= @tag.name %></h3>
+            <h3>Search Results</h3>
             <% @forumposts.each do |forumpost| %>
                 <% if (forumpost.forumpostlangid == current_user.temp_id) %>
                     <ol class= "entries"> 

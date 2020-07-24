@@ -10,16 +10,23 @@
         <%= f.text_area :content, placeholder: "Start typing..."%>
     </div>
     <div>
+    <%= f.label :tag_list, "Select tag(s)", :style => "font-family: 'Futura Std';" %> 
+    <table class="table-style">
+    <tr>
         <%= f.collection_check_boxes(:tag_list, valid_tags, :first, :first) do |b| %>
+            <td>
             <div class="form-check">
-            <label class="tag-deco"> 
-                <span class="tag-name">
-                    <%= b.check_box class: 'form-check-input' %>
-                    <%= b.value %>
-                </span>  
-            </label>
+                <label> 
+                    <span class="tag-name">
+                        <%= b.check_box class: 'form-check-input', :style => "margin-right: 0.5em; font-family: 'Futura Std';" %>
+                        <span class="forum-tag-label"><%= b.value %></span>
+                    </span>  
+                </label>
             </div>
-          <% end %>
+            </td>
+        <% end %>
+    </tr>
+    </table>
     </div>
     <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

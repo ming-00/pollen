@@ -1,12 +1,82 @@
 // Place all the styles related to the Tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.tag-deco {
-    background-color: #850941;
+.tag-deco-1 {
+    background-color: #a85b6b;
     color: white;
     padding: 0.4em 2em;
     border-radius: 3em;
     margin-right: 1em;
+    font-size: 1em;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.tag-deco-2 {
+    background-color:#75a784;
+    color: white;
+    padding: 0.4em 2em;
+    border-radius: 3em;
+    margin-right: 1em;
+    font-size: 1em;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.tag-deco-3 {
+    background-color:  #004D80;
+    color: white;
+    padding: 0.4em 2em;
+    border-radius: 3em;
+    margin-right: 1em;
+    font-size: 1em;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.tag-deco-4 {
+    background-color: #dd9b73;
+    color: white;
+    padding: 0.4em 2em;
+    border-radius: 3em;
+    margin-right: 1em;
+    font-size: 1em;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.tag-deco-5 {
+    background-color: #d66b6b;
+    color: white;
+    padding: 0.4em 2em;
+    border-radius: 3em;
+    margin-right: 1em;
+    font-size: 1em;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.tag-deco-form {
+    background-color: #d66b6b;
+    color: white;
+    padding: 0.6em 3em;
+    border-radius: 5em;
+    margin-right: 2em;
     font-size: 1em;
 
     &:hover {

@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_171612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "accepted"
+    t.integer "forumpostlangid"
     t.index ["user_id", "created_at"], name: "index_forumposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_forumposts_on_user_id"
   end
@@ -125,6 +126,11 @@ ActiveRecord::Schema.define(version: 2020_07_22_171612) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifiers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+  
   create_table "notifications", force: :cascade do |t|
     t.integer "recipient_id"
     t.integer "actor_id"
@@ -199,6 +205,9 @@ ActiveRecord::Schema.define(version: 2020_07_22_171612) do
     t.integer "temp_id"
     t.integer "f_temp_id"
     t.integer "points"
+    t.datetime "confirmed_at"
+    t.boolean "email_confirmed"
+    t.string "tagarray", array: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

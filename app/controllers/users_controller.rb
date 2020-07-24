@@ -21,6 +21,7 @@ class UsersController < Clearance::UsersController
     @user = user_from_params
 
     if @user.save
+      #ApplicationMailer.registration_confirmation(@user).deliver
       @user.fluencies.create(level: @user.f_temp_id, language_id: @user.temp_id)
       flash[:success] = "Welcome to Pollen!"
       sign_in @user

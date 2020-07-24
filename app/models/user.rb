@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Clearance::User
 
   after_initialize :set_defaults, unless: :persisted?
+  before_create :confirmation_token
 
   has_many :notifications, foreign_key: :recipient_id
 
@@ -52,6 +53,7 @@ class User < ApplicationRecord
 
   def set_defaults
     self.points = 0 if self.points.nil?
+    self.tagarray = [] if self.tagarray.nil?
   end
   
   class << self
@@ -76,6 +78,22 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def confirm_email!
+    Notifier.deliver_welcome(self)
+    super
+  end
+
+  def add_tag(tag)
+    self.tagarray = [] if self.tagarray == nil
+    update_attributes tagarray: self.tagarray + [ tag ]
+  end
+
+  def confirmation_token
+    if  self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end 
 
   module Validations
     extend ActiveSupport::Concern

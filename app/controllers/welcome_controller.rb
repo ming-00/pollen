@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   before_action :require_login, except: [:landing]
-  #before_action :clear,  except: [:landing]
+  before_action :clear,  except: [:landing, :index]
 
   def landing
     render :layout => false

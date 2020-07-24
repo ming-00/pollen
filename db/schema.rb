@@ -135,7 +135,6 @@ ActiveRecord::Schema.define(version: 2020_07_23_215403) do
     t.string "notifiable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "overall_title"
     t.string "title"
   end
 

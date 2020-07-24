@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_171612) do
+ActiveRecord::Schema.define(version: 2020_07_23_215403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_171612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "accepted"
+    t.integer "forumpostlangid"
     t.index ["user_id", "created_at"], name: "index_forumposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_forumposts_on_user_id"
   end
@@ -136,6 +137,11 @@ ActiveRecord::Schema.define(version: 2020_07_22_171612) do
     t.datetime "updated_at", null: false
     t.string "overall_title"
     t.string "title"
+  end
+
+  create_table "notifiers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "punches", id: :serial, force: :cascade do |t|
@@ -199,6 +205,10 @@ ActiveRecord::Schema.define(version: 2020_07_22_171612) do
     t.integer "temp_id"
     t.integer "f_temp_id"
     t.integer "points"
+    t.boolean "email_confirmed"
+    t.datetime "confirmed_at"
+    t.string "tagslist", array: true
+    t.string "tagarray", array: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

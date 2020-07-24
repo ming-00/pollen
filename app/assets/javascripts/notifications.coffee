@@ -36,7 +36,7 @@ class Notifications
             $('#clear').show()
         else 
             $("[data-behavior='unread-count']").text(items.length)
-            $("[data-behavior='notification-items']").html("No new notifications")
+            $("[data-behavior='notification-items']").html("No new notifications!")
 
 jQuery -> 
     new Notifications

@@ -8,9 +8,9 @@ module UsersHelper
             when 2
                 image_tag 'profile3.png', :class => "avatar"
             when 3
-                image_tag 'profile1.png', :class => "avatar"
-            when 4
                 image_tag 'profile5.png', :class => "avatar"
+            when 4
+                image_tag 'profile1.png', :class => "avatar"
             else
                 image_tag 'profile6.png', :class => "avatar"
         end
@@ -25,9 +25,9 @@ module UsersHelper
             when 2
                 image_tag 'profile3.png', :class => "mini-avatar", data: { toggle: 'tooltip' }, title: "#{user.firstname} #{user.lastname}"
             when 3
-                image_tag 'profile1.png', :class => "mini-avatar", data: { toggle: 'tooltip' }, title: "#{user.firstname} #{user.lastname}"
-            when 4
                 image_tag 'profile5.png', :class => "mini-avatar", data: { toggle: 'tooltip' }, title: "#{user.firstname} #{user.lastname}"
+            when 4
+                image_tag 'profile1.png', :class => "mini-avatar", data: { toggle: 'tooltip' }, title: "#{user.firstname} #{user.lastname}"
             else
                 image_tag 'profile6.png', :class => "mini-avatar", data: { toggle: 'tooltip' }, title: "#{user.firstname} #{user.lastname}"
         end
@@ -42,9 +42,9 @@ module UsersHelper
             when 2
                 image_tag 'profile3.png', :class => "mini-avatar"
             when 3
-                image_tag 'profile1.png', :class => "mini-avatar"
-            when 4
                 image_tag 'profile5.png', :class => "mini-avatar"
+            when 4
+                image_tag 'profile1.png', :class => "mini-avatar"
             else
                 image_tag 'profile6.png', :class => "mini-avatar"
         end

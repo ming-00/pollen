@@ -47,7 +47,7 @@
 </div>
 </section> 
 <%= form_for ([@forumpost, @commentforum]) do |f| %>
-    <%= f.text_area :reply, placeholder: "Start typing...", :rows => 20, style: 'width:70%' %>
+    <%= f.text_area :reply, placeholder: "Start typing...", :rows => 10, style: 'width:60%' %>
     <br>
     <%= f.submit "Update comment", class: "btn btn-primary"%>
 <% end %>

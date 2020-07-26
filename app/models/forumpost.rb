@@ -1,6 +1,6 @@
 class Forumpost < ApplicationRecord
   belongs_to :user
-  has_many :commentforums
+  has_many :commentforums, dependent: :destroy
   has_many :forumpostlikes, dependent: :destroy
   TAGS = ['grammar', 'vocabulary', 'administrative','lesson clarification', 'study advice']
   acts_as_taggable_on :tags

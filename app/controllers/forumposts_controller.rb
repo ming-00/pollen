@@ -36,6 +36,8 @@ class ForumpostsController < ApplicationController
 
     def update
         @forumpost = Forumpost.find(params[:id])
+        @forumpost.tag_list.add("unresolved")
+        @forumpost.save
         if @forumpost.update(forumpost_params)
           flash[:success] = "Thread updated!"
           redirect_to @forumpost
@@ -47,6 +49,9 @@ class ForumpostsController < ApplicationController
 
     def edit
         @forumpost = Forumpost.find(params[:id])
+        @forumpost.tag_list.add("unresolved")
+        @forumpost.save
+
     end
 
     def search
@@ -71,7 +76,7 @@ class ForumpostsController < ApplicationController
         @forumpost = Forumpost.find(params[:id])
         if @forumpost.accepted == false
             (User.joins(:commentforums).where(commentforums: {forumpost_id: @forumpost.id}).uniq - [current_user]).uniq.each do |user|
-                Notification.create(title: @forumpost.title, recipient: user, actor: current_user, action: "resolved", notifiable: @forumpost)
+                Notification.create(title: @forumpost.title, recipient: forumpost.user, actor: current_user, action: "resolved", notifiable: @forumpost)
             end
             @forumpost.update_attributes(accepted: true)
             @forumpost.tag_list.remove("unresolved")

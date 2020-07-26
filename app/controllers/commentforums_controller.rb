@@ -10,9 +10,9 @@ class CommentforumsController < ApplicationController
         if @commentforum.save
             flash[:success] = "Comment created!"
             (User.joins(:commentforums).where(commentforums: {forumpost_id: @forumpost.id}).uniq - [current_user]).uniq.each do |user|
-                Notification.create(title: @forumpost.title, recipient: user, actor: current_user, action: "created", notifiable: @commentforum)
+                Notification.create(title: @forumpost.title, recipient: user, actor: current_user, action: "commented", notifiable: @commentforum)
             end
-            Notification.create(title: @forumpost.title, recipient: @forumpost.user, actor: current_user, action: "created", notifiable: @commentforum)
+            Notification.create(title: @forumpost.title, recipient: @forumpost.user, actor: current_user, action: "commented", notifiable: @commentforum)
             @commentforum.user.increment!(:points)
             redirect_to forumpost_path(@forumpost)
         else

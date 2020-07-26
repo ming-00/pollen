@@ -817,4 +817,9 @@ ins {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Futura Std';
+  text-align: left;
+}
+
+input[type="checkbox"] {
+    float:left;
 }

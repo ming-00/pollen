@@ -2,7 +2,7 @@ class Forumpost < ApplicationRecord
   belongs_to :user
   has_many :commentforums, dependent: :destroy
   has_many :forumpostlikes, dependent: :destroy
-  TAGS = ['grammar', 'vocabulary', 'administrative','lesson clarification', 'study advice']
+  TAGS = ['grammar', 'vocabulary', 'administrative', 'study advice', 'lesson clarification']
   acts_as_taggable_on :tags
   acts_as_punchable
   default_scope -> { order(created_at: :desc) }

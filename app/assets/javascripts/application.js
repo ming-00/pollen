@@ -12,11 +12,12 @@
 //
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require jquery
+//= require jquery_ujs
 //= require rails-ujs
 //= require bootstrap.min
 //= require bootstrap
+//= require_tree .
 //= require notifications
 
 $(document).on('turbolinks:load', function() {

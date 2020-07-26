@@ -204,9 +204,9 @@ ActiveRecord::Schema.define(version: 2020_07_23_215403) do
     t.integer "temp_id"
     t.integer "f_temp_id"
     t.integer "points"
-    t.boolean "email_confirmed"
     t.datetime "confirmed_at"
-    t.string "tagarray", array: true
+    t.boolean "email_confirmed"
+    t.string "tagarray", default: [], array: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end

@@ -11,6 +11,10 @@
             json.type "an #{notification.notifiable.model_name.human.downcase}"
         elsif (notification.notifiable.is_a? User)
             json.type "you"
+        elsif (notification.notifiable.is_a? Forumpost)
+            json.type "a thread"
+        elsif (notification.notifiable.is_a? Commentforum)
+            json.type "a comment"
         end
     end
     if (notification.notifiable.is_a? Correction) 
@@ -19,5 +23,9 @@
         json.url entry_path(notification.notifiable)
     elsif (notification.notifiable.is_a? User)
         json.url user_path(notification.actor)
+    elsif (notification.notifiable.is_a? Forumpost)
+        json.url forumpost_path(notification.notifiable)
+    elsif (notification.notifiable.is_a? Commentforum)
+        json.url forumpost_path(notification.notifiable)
     end
 end

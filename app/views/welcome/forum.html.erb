@@ -94,7 +94,7 @@
                                     </div>
                                     <br>
                                     <div class="entry-content">
-                                        <%= truncate(markdown(forumpost.content), :length => 150, :separator => ' ') %>
+                                        <%= truncate(forumpost.content, :length => 150, :separator => ' ') %>
                                         <div>
                                             <div class="thread-tag">
                                                 <%= render forumpost.tags %>

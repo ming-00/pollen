@@ -9,6 +9,7 @@ class CommentforumlikesController < ApplicationController
         if already_liked?
             flash[:notice] = "You can't like more than once"
         else
+            Notification.create(title: @commentforum.forumpost.title, recipient: @commentforum.user, actor: current_user, action: "liked", notifiable: @commentforum)
             @commentforum.commentforumlikes.create(user_id: current_user.id)
         end
         redirect_to forumpost_path(@forumpost)

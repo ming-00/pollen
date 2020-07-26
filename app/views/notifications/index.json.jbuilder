@@ -26,6 +26,6 @@
     elsif (notification.notifiable.is_a? Forumpost)
         json.url forumpost_path(notification.notifiable)
     elsif (notification.notifiable.is_a? Commentforum)
-        json.url forumpost_path(notification.notifiable)
+        json.url forumpost_path(notification.notifiable.forumpost)
     end
 end

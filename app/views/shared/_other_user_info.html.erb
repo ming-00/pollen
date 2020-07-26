@@ -43,10 +43,12 @@
             <% if l.level == 1 %>
                 <%= "(Beginner)" %>
             <% elsif l.level == 2 %>
-                <%= "(Lower Intemediate)" %>
+                <%= "(Elementary)" %>
             <% elsif l.level == 3 %>
-                <%= "(Upper Intermediate)" %>
+                <%= "(Lower Intermediate)" %>
             <% elsif l.level == 4 %>
+                <%= "(Upper Intermediate)" %>
+            <% elsif l.level == 5 %>
                 <%= "(Advanced)" %>
             <% else %>
                 <%= "(Full Proficiency)" %>

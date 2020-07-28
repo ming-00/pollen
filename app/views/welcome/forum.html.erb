@@ -29,9 +29,12 @@
                     <% end %>
                         <h3>Filter by</h3>
                         <% @forumpost.tag_counts_on(:tags).each do |tag| %>
+                            <% if (tag.name) == "Vacabulary" %>
+                        <% else %>
                         <div class="tag">
                             <%= render tag %>
                         </div>
+                        <% end %>
                         <% end %>
                     </section>
                 </div>

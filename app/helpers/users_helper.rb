@@ -1,4 +1,5 @@
 module UsersHelper
+    
     def avatar_for(user)
         case (user.id) % 6
             when 0

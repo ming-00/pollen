@@ -40,7 +40,7 @@
     <% end %>
     <% current_user.fluencies.each do |l| %>
         <% if l.level == 1 %>
-                <%= "(Beginner)" %>
+            <%= "(Beginner)" %>
         <% elsif l.level == 2 %>
             <%= "(Elementary)" %>
         <% elsif l.level == 3 %>

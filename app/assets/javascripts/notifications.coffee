@@ -2,20 +2,19 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-class Notifications
+class @Notifications
     constructor: -> 
         @notifications = $("[data-behavior='notifications']")
         @setup() if @notifications.length >0
 
     setup: -> 
-        $('#clear').hide()
-        $("[data-behavior='notifications-link']").on "click", @handleClick
         $.ajax(
             url: "/notifications.json"
             dataType: "JSON"
             method: "GET"
             success: @handleSuccess
         )
+        $("[data-behavior='notifications-link']").on "click", @handleClick
 
     handleClick: (e) =>
         $.ajax(

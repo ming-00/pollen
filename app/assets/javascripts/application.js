@@ -21,6 +21,8 @@
 
 $(document).on('turbolinks:load', function() {
 
+    new Notifications().constructor();
+
     $("#journal-button").click(function(){
         $("#journal-form").toggle();
     });

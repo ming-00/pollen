@@ -55,12 +55,18 @@ class CommentforumsController < ApplicationController
             @commentforum.user.increment!(:points, by = 5) unless @commentforum.user == @forumpost.user
             @commentforum.update_attributes(acceptedscore: true)
             @commentforum.update_attributes(accepted: true)
+            @forumpost.tag_list.remove("unresolved")
+            @forumpost.tag_list.add("resolved")
+            @forumpost.save
             @commentforum.increment!(:acceptedscore, by = 10)
             flash[:success] = "Comment accepted as best answer and thread is resolved!"
             @commentforum.forumpost.update_attributes(accepted: true)
         else 
             @commentforum.update_attributes(accepted: false)
             @commentforum.decrement!(:acceptedscore, by = 10)
+            @forumpost.tag_list.remove("unresolved")
+            @forumpost.tag_list.add("resolved")
+            @forumpost.save
             @commentforum.user.decrement!(:points, by = 5) unless @commentforum.user == @forumpost.user
             flash[:success] = "Correction unaccepted!"
             @commentforum.forumpost.update_attributes(accepted: false)

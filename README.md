@@ -6,3 +6,8 @@ Check out our demo [here](https://vimeo.com/441937922) and test our deployed app
 
 
 # Screenshots
+![Dashboard](https://github.com/ming-00/pollen/blob/master/app/assets/images/demo1.png)
+
+![Profile Page](https://github.com/ming-00/pollen/blob/master/app/assets/images/demo2.png)
+
+![Corrected Entry](https://github.com/ming-00/pollen/blob/master/app/assets/images/demo3.png)

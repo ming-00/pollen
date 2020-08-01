@@ -27,7 +27,7 @@
                 </section>
             </section>
             <% if @journal.user == current_user %>
-                <%= button_to "Create new entry", entries_path, :method => :get %>
+                <%= button_to "Create new entry", entries_path(journal: @journal), :method => :get, params: {journal: @journal} %>
             <%end%>
         </aside>
     <div class="col-md-8">
@@ -42,5 +42,3 @@
     </div>
     </div>
 </html>
-
-

@@ -132,3 +132,35 @@ body {
     color: rgb(115, 165, 100);
     vertical-align: -0.2em;
 }
+
+#generator {
+    background-color: transparent;
+    border-radius: 2em;
+    border-color: black;
+    border-style: solid;
+    padding: 0.3em 2em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    outline: none;
+    font-family: 'Futura Std';
+    position: absolute;
+    top: 8.5em;
+    left: 38%;
+}
+
+#generator:hover {
+    color: #850941;
+    border-color: #850941;
+}
+
+#generator-field {
+    background-color: white;
+    padding: 1em 2em;
+    width: 50%;
+    height: 13em;
+    display: inline-block;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    border-radius: 7em;
+    position: relative;
+}

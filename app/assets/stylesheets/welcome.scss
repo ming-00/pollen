@@ -29,18 +29,25 @@
 }
 
 #journal-button {
+    vertical-align: middle;
+}
+
+#inspiration-pop {
+    vertical-align: -0.1em;
+}
+
+#journal-button, #inspiration-pop {
     font-family: 'Futura Std';
     border: none;
     background-color: transparent;
     color: black;
-    vertical-align: middle;
     &:hover {
         color: #850941;
         text-decoration: none;
     }
 }
 
-#journal-button:focus {
+#journal-button:focus, #inspiration-pop:focus {
     outline: none;
 }
 

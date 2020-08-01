@@ -427,7 +427,7 @@ select:focus {
     outline: none;
 }
 
-#journal-form, #load-correction, #no-correction {
+#journal-form, #load-correction, #no-correction, #generator-field {
     display:none;
 }
 
@@ -726,6 +726,11 @@ ins {
     box-shadow: 12px 12px 25px 0px #ac89a5;
  }
 
+ #generator-field {
+    transition: all .3s ease;
+    box-shadow: 12px 12px 25px 0px #ac89a5;
+ }
+
  .flip-come {
     -webkit-animation: flip-in 1.5s;
     animation: flip-in 1.5s;
@@ -781,7 +786,7 @@ ins {
     height: 34em;
 }
 
-.w4-container:hover, .w5-container:hover, .w6-container:hover {
+.w4-container:hover, .w5-container:hover, .w6-container:hover, #generator-field:hover {
     box-shadow: 12px 12px 25px 0px #96628b;
 }
 

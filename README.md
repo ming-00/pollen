@@ -1,4 +1,4 @@
-# README
+# Pollen
 
 Pollen is a language learning application designed for students to support one another in their journey designed by Weiming and Lihan. 
 

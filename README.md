@@ -1,9 +1,5 @@
 # Pollen
 
-
-![Home](https://user-images.githubusercontent.com/59130765/114438870-e6213f80-9bfa-11eb-8fc7-6dfe3e164387.mp4)
-
-
 Pollen is a language learning application designed for students to support one another in their journey designed by Weiming and Lihan. 
 
 Check out our demo [here](https://vimeo.com/441937922) and test our deployed app [here](http://tragically-worms-62590.herokuapp.com).

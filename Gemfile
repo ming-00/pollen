@@ -67,7 +67,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # Added gems 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'clearance', '~> 2.1.0'
+gem 'clearance', '~> 2.5.0'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'email_spec'
 gem 'acts-as-taggable-on', '~> 6.0'
